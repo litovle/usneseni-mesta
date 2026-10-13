@@ -15,7 +15,7 @@ except ImportError:
     from tools.archive_zm_common import read_json, resolved_file_url_from_id, write_json
 
 
-USER_AGENT = "usneseni-mesta-archive-zm-download/1.0 (+https://github.com/honza-kasik/usneseni-mesta)"
+USER_AGENT = "usneseni-mesta-archive-zm-download/1.0 (+https://github.com/litovle/usneseni-mesta)"
 
 
 def resolve_flipbook_url(item: dict, session: requests.Session) -> str | None:

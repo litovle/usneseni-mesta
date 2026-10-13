@@ -183,3 +183,6 @@ pyrightconfig.json
 .fseventsd/
 .TemporaryItems/
 .VolumeIcon.icns
+
+# Generated classifier reports (reviewed decisions are stored in resolution data)
+/work/classifier/

@@ -6,19 +6,19 @@ from pathlib import Path
 from unittest.mock import patch
 
 import phase2_resolution_analysis
-from pipeline import build_phases
+from pipeline import build_stages
 from phase3_resolve_references import process_resolutions
 
 
 class PipelineClassificationTest(unittest.TestCase):
-    def test_pipeline_enables_final_classifier_in_analysis_phase(self):
-        phases = build_phases(Path("pdf"), Path("ro"), Path("work"), Path("export"),
+    def test_pipeline_enables_final_classifier_in_enrich_stage(self):
+        stages = build_stages(Path("pdf"), Path("ro"), Path("work"), Path("export"),
                               classifier_url="https://example.com/model.tar.gz", classifier_sha256="a" * 64)
-        command = next(phase for phase in phases if phase["number"] == 3)["cmd"]()
+        command = next(stage for stage in stages if stage["name"] == "enrich")["operations"][0]["command"]
         self.assertEqual(command[command.index("--classifier-url") + 1], "https://example.com/model.tar.gz")
         self.assertEqual(command[command.index("--classifier-sha256") + 1], "a" * 64)
         self.assertEqual(command[command.index("--classification-output") + 1], "work/classifier")
-        self.assertEqual([phase["number"] for phase in phases], list(range(1, 10)))
+        self.assertEqual([stage["name"] for stage in stages], ["extract", "enrich", "export"])
 
     def test_classification_survives_analysis_and_reference_resolution(self):
         classification = {"category": "culture", "source": "manual_override", "status": "classified",

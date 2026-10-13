@@ -20,7 +20,7 @@ from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.litovel.eu"
 NOTICE_BOARD_URL = f"{BASE_URL}/cs/urad/uredni-deska/aktualni-oznameni.html"
-USER_AGENT = "usneseni-mesta-litovel-sync/1.0 (+https://github.com/honza-kasik/usneseni-mesta)"
+USER_AGENT = "usneseni-mesta-litovel-sync/1.0 (+https://github.com/litovle/usneseni-mesta)"
 
 
 @dataclass(frozen=True)

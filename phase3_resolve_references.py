@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Phase 3 - resolvování referencí.
+Enrich: resolvování referencí a volebních období.
 
 Usnesení mohou odkazovat jedno na druhé. V této fázi se resolvují reference
   - imlicitní: Uváděné v textu rozhodnutí pouze jako ID_ROZHODNUTI/CISLO_SCHUZE, například 1853/60 je resolvováno na RM/1853/60/2025
@@ -13,13 +13,13 @@ Resolvované reference se vloží do nového klíče references_in a odkaz je ta
 Na závěr jsou do konzole vytištěné statistiky.
 
 Vstup:
-  - adresář s JSON soubory ve struktuře z phase 2
+  - adresář s analyzovanými usneseními, včetně classification
 
 Výstup:
-  - jeden JSON soubor = jedno usnesení
+  - usneseni.json se všemi usneseními; classification se zachovává
 
 Použití:
-  python phase3_resolve_references.py --input phase2_dir/ --output phase3_dir/
+  python phase3_resolve_references.py --input work/phase3 --output work/phase4
 """
 
 import json

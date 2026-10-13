@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Analýza a tematická klasifikace usnesení (fáze 3 v pipeline.py).
+Analýza a tematická klasifikace usnesení (Enrich v pipeline.py).
 
 Samostatný běh bez --classifier-url provede strukturální analýzu.
 Pipeline předává URL finálního modelového balíčku, jeho SHA-256 a cestu k cache;
@@ -52,7 +52,7 @@ na
   - z usnesení s více body jsou jednotlivé akce extrahovány a body rozděleny
   - odděleny jsou subject a tail (text před a za body) pokud jsou přítomny
   - jsou extrahovány peněžní částky
-  - jsou hrubě extrahovány reference (resolvuje je fáze 4 v pipeline.py)
+  - jsou hrubě extrahovány reference (resolvuje je další operace v Enrich)
   - při zadání --classifier-url se přidá tematická klasifikace
 
 Vstup:

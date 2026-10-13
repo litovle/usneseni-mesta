@@ -39,7 +39,7 @@ except ImportError:
     )
 
 
-USER_AGENT = "usneseni-mesta-archive-zm-crawl/1.0 (+https://github.com/honza-kasik/usneseni-mesta)"
+USER_AGENT = "usneseni-mesta-archive-zm-crawl/1.0 (+https://github.com/litovle/usneseni-mesta)"
 
 
 def fetch_html(url: str) -> str:

@@ -1,6 +1,6 @@
 = Parsování usnesení města Litovel
 
-image:https://github.com/honza-kasik/usneseni-mesta/actions/workflows/sync-litovel-notices.yml/badge.svg[Synchronizace úřední desky,link=https://github.com/honza-kasik/usneseni-mesta/actions/workflows/sync-litovel-notices.yml]
+image:https://github.com/litovle/usneseni-mesta/actions/workflows/sync-litovel-notices.yml/badge.svg[Synchronizace úřední desky,link=https://github.com/litovle/usneseni-mesta/actions/workflows/sync-litovel-notices.yml]
 
 :toc:
 :toclevels: 2
@@ -19,9 +19,9 @@ Cílem je:
 - parsování a propojení rozpočtových opatření,
 - maximální reprodukovatelnost a auditovatelnost.
 
-Každá fáze je samostatný skript.
-Fáze 1 a 3 ukládají každé usnesení do samostatného JSON souboru; fáze 4 je
-sloučí do `usneseni.json` a fáze 5 exportuje data po jednotlivých letech.
+Runner má tři pojmenované etapy. Jednotlivé operace zůstávají samostatnými
+skripty pro testování a cílené opakování. Extrakce a analýza ukládají usnesení
+samostatně; resolvování referencí je sloučí a export zapisuje JSON po letech.
 
 == Architektura
 
@@ -35,41 +35,23 @@ Podrobný tok dat, role modulů, schéma rozhodnutí, formát modelového balí�
 a provoz v GitHub Actions popisuje
 link:docs/classification-architecture.md[Architektura tematické klasifikace].
 
-Pipeline má šest hlavních fází a tři navazující fáze pro rozpočtová opatření:
+Pipeline má tři etapy; publikování přes pull requesty zůstává v GitHub Actions:
 
 [cols="1,3"]
 |===
-|Phase 1
-|Parsování PDF → základní JSON
+|Extract
+|Parsování PDF usnesení a rozpočtových opatření, doplnění podporovaných archivních záznamů
 
-|Phase 2
-|Parsování rozpočtových opatření
+|Enrich
+|Analýza a klasifikace usnesení, resolvování referencí a volebních období, propojení rozpočtových opatření
 
-|Phase 3
-|Strukturální analýza a tematická klasifikace usnesení
-
-|Phase 4
-|Resolvování referencí mezi usneseními
-
-|Phase 5
-|Vytvoření fulltextového indexu usnesení
-
-|Phase 6
-|Statický export webu bez rozpočtových opatření
-
-|Phase 7
-|Propojení rozpočtových opatření s usneseními
-
-|Phase 8
-|Vytvoření fulltextového indexu rozpočtových opatření
-
-|Phase 9
-|Statický export z propojených dat
+|Export
+|Indexy a roční JSON z finálních obohacených dat; jeden statický export stránek a sitemap
 |===
 
-Fáze 5 a 6 jsou na sobě nezávislé – obě čerpají z výstupu fáze 4. Fáze 7 až 9
-lze typicky opakovat bez znovuspuštění parsování rozpočtových opatření ve fázi
-2.
+GitHub Actions parsuje pouze PDF uvedená v manifestu, zachová uložený korpus
+a spustí Enrich → Export. Klasifikace, reference a rozpočtové vazby se přepočítají
+nad celým korpusem. Export samotný neopakuje parsování ani inference.
 
 == Pipeline skript
 
@@ -80,25 +62,26 @@ Všechny fáze lze spustit najednou pomocí `pipeline.py`.
 [source,bash]
 ----
 # Celý pipeline od začátku s daty v tomto repozitáři
-python pipeline.py --pdf resources --from-phase 1 --to-phase 9
+python pipeline.py --pdf resources
 
-# Přeskočit parsování a pokračovat od analýzy usnesení
-python pipeline.py --pdf pdf_dir/ --from-phase 3
+# Obohatit již extrahovaný korpus a přegenerovat export (také Actions)
+python pipeline.py --from-stage enrich --to-stage export
 
-# Spustit pouze parsování RO a analýzu usnesení nad existující fází 1
-python pipeline.py --pdf pdf_dir/ --from-phase 2 --to-phase 3
+# Spustit pouze extrakci nebo pouze obohacení
+python pipeline.py --pdf resources --to-stage extract
+python pipeline.py --from-stage enrich --to-stage enrich
 
 # Vlastní pracovní adresář a výstup
 python pipeline.py --pdf pdf_dir/ --workdir moje_data/ --export vystup/
 
-# Naparsovat rozpočtová opatření a propojit je s existujícími usneseními z Phase 4
-python pipeline.py --from-phase 2 --to-phase 7
-
-# Přegenerovat pouze návazné kroky nad existujícími RO JSON daty
-python pipeline.py --from-phase 7 --to-phase 9
+# Export existujících finálních dat bez opakování klasifikace
+python pipeline.py --from-stage export
 
 # Vlastní adresář s PDF rozpočtových opatření
-python pipeline.py --from-phase 2 --to-phase 9 --ro-pdf resources/rozpoctova-opatreni
+python pipeline.py --pdf resources --ro-pdf resources/rozpoctova-opatreni
+
+# Samostatný výstup usnesení bez RO; existující exportované soubory se nemažou
+python pipeline.py --pdf resources --without-budget --export export-usneseni
 
 # Zobrazit příkazy bez spuštění
 python pipeline.py --pdf pdf_dir/ --dry-run
@@ -122,18 +105,18 @@ produkčního běhu; neslouží jako cache modelových vah.
 
 === Tematický klasifikátor
 
-Fáze 3 automaticky používá finální tematický model `v1.0.0` s taxonomií `v7`.
+Enrich automaticky používá finální tematický model `v1.0.0` s taxonomií `v7`.
 Váhy se stáhnou z versionované GitHub Release URL. Pipeline nepotřebuje checkout
 ani instalaci repozitáře klasifikátoru:
 
 [source,bash]
 ----
 python -m pip install -r requirements.txt
-python pipeline.py --from-phase 3 --to-phase 9
+python pipeline.py --from-stage enrich --to-stage export
 ----
 
 Výchozí URL:
-`https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz`.
+`https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz`.
 Při prvním použití se ověří SHA-256 a model se uloží do
 `.cache/resolution-classifier`. Další běhy použijí ověřenou cache. Inference
 probíhá lokálně. `--classifier-url URL` a `--classifier-sha256 SHA` umožňují
@@ -148,35 +131,36 @@ s konfigurací, tokenizerem a váhami, `manifest.json`, `taxonomy/v7.md`,
 `MODEL_LICENSE.md` a `DATA_LICENSE.md`. Manifest určuje verzi modelu, taxonomie
 a seznam `labels`.
 
-Každé usnesení ve fázi 3, fázi 4 a exportovaných ročních JSON datech obsahuje
+Každé usnesení v analyzovaných, resolvovaných a exportovaných ročních JSON datech obsahuje
 objekt `classification`: kategorii, verzi modelu a taxonomie, zdroj rozhodnutí,
 stav a původní skóre modelu. Ruční opravy z finálního balíčku mají přednost.
 Známé nejednoznačné případy mají `category: null` a stav
 `manual_review_required`. Chybějící predikce nebo zastaralé ruční rozhodnutí
 zastaví pipeline. Predikce a fronta pro kontrolu se ukládají do `work/classifier`.
-Při novém běhu fáze 3 se klasifikace přepočítá; běhy od fáze 4 používají
-klasifikace uložené předchozím během fáze 3.
+Při novém běhu Enrich se klasifikace přepočítá; samostatný Export používá
+klasifikace uložené předchozím během Enrich.
 
 Oba GitHub Actions workflows instalují CPU variantu PyTorch a uchovávají cache
 modelu přes `actions/cache`. URL a checksum lze změnit pomocí repository
 variables `RESOLUTION_CLASSIFIER_URL` a `RESOLUTION_CLASSIFIER_SHA256` (nastavte
 obě společně). Cache modelu není součástí generovaných pull requestů.
-Čísla ostatních fází zůstávají stejná.
+Číselné volby `--from-phase` a `--to-phase` byly nahrazeny pojmenovanými etapami.
+Historické názvy skriptů a pracovních adresářů jsou interní konvence.
 
 [source]
 ----
 pdf_dir/          ← vstupní PDF soubory (rekurzivně prohledáváno)
-work/phase1/      ← výstup fáze 1
-work/phase3/      ← výstup fáze 3
-work/phase4/      ← výstup fáze 4
+work/phase1/      ← Extract: syrové usnesení
+work/phase3/      ← Enrich: analýza a classification
+work/phase4/      ← Enrich: resolvované reference a volební období
 work/classifier/  ← predikce finálního tematického modelu a fronta pro kontrolu
-work/rozpoctova-opatreni/        ← výstup fáze 2
-work/rozpoctova-opatreni-linked/ ← výstup fáze 7
+work/rozpoctova-opatreni/        ← Extract: rozpočtová opatření
+work/rozpoctova-opatreni-linked/ ← Enrich: finální usnesení a rozpočtové vazby
 work/archive_rm/  ← pracovní data historického archivu rady města
 work/archive_zm/  ← pracovní data historického archivu zastupitelstva
-export/assets/usneseni/    ← výstup fáze 5
-export/assets/usneseni/ro/ ← výstup fáze 8
-export/           ← výstup fáze 6 nebo 9
+export/assets/usneseni/    ← Export: index a roční data z finálního usneseni.json
+export/assets/usneseni/ro/ ← Export: index RO
+export/           ← Export: jednou generované stránky a sitemap
 ----
 
 === Parametry
@@ -185,7 +169,7 @@ export/           ← výstup fáze 6 nebo 9
 |===
 |`--pdf DIR`
 |Adresář se vstupními PDF usnesení. Prohledává se rekurzivně. Povinný jen při
-spuštění fáze 1. Pokud adresář obsahuje i `--ro-pdf`, rozpočtová opatření se
+spuštění Extract. Pokud adresář obsahuje i `--ro-pdf`, rozpočtová opatření se
 při parsování usnesení přeskočí.
 
 |`--ro-pdf DIR`
@@ -198,11 +182,15 @@ při parsování usnesení přeskočí.
 |`--export DIR`
 |Cílový adresář statického exportu (výchozí: `export/`)
 
-|`--from-phase N`
-|Začít od fáze N (výchozí: 1)
+|`--from-stage STAGE`
+|Začít od `extract`, `enrich` nebo `export` (výchozí: `extract`).
 
-|`--to-phase N`
-|Skončit po fázi N (výchozí: 6; fáze 7–9 doplňují rozpočtová opatření)
+|`--to-stage STAGE`
+|Skončit po zvolené etapě (výchozí: `export`). Rozsah musí odpovídat pořadí etap.
+
+|`--without-budget`
+|Přeskočit parsování, propojení a export RO. Použije resolvované usnesení z
+`work/phase4/usneseni.json` a vypne autodetekci RO. Existující výstupní soubory nemaže.
 
 |`--dry-run`
 |Pouze zobrazí příkazy, nespustí je
@@ -242,13 +230,13 @@ oznámení na úřední desce Litovle a hledá nové dokumenty:
 
 Nové PDF uloží do `resources/`, naparsuje jen nově stažené soubory, přegeneruje
 navazující data a připraví jeden pull request v tomto repozitáři a jeden pull
-request v `honza-kasik/litovle.cz`. Workflow lze spustit i ručně přes
+request v `litovle/litovle.cz`. Workflow lze spustit i ručně přes
 `workflow_dispatch`; volba `dry_run` pouze vypíše, co by se stáhlo. Pokud
 automatický běh selže, workflow založí nebo okomentuje issue přiřazenou správci.
 
 Pro pull request do `litovle.cz` musí být v tomto repozitáři nastavený secret
 `LITOVLE_CZ_PAT` s oprávněním zapisovat obsah a vytvářet pull requesty v
-`honza-kasik/litovle.cz`.
+`litovle/litovle.cz`.
 
 === Ruční zpracování PDF
 
@@ -268,14 +256,14 @@ Workflow PDF uloží do správného adresáře v `resources/`, naparsuje jej,
 přegeneruje návazná data a připraví pull requesty v obou repozitářích.
 Alternativně lze vyplnit `pdf_path`, pokud už je PDF v repozitáři.
 
-== Phase 1 – Parsování PDF
+== Extract: parsování PDF usnesení
 
 Parsování PDF s usneseními Rady nebo Zastupitelstva města Litovel.
 
 Při spuštění přes `pipeline.py` se po běžném parsování PDF může doplnit také
 moderní část archivu. Dokumenty z archivu, které v extrahovaném textu obsahují
 bloky `Číslo: RM/.../.../...` nebo `Číslo: ZM/.../.../...`, se zapíší jako
-běžné Phase 1 záznamy a projdou současnou pipeline. Starší archivní dokumenty
+běžné záznamy extrakce a projdou současnou pipeline. Starší archivní dokumenty
 bez tohoto formátu zůstávají v samostatném archivním zpracování.
 
 Hranice mezi současnou a archivní větví je tedy formát dat, ne původní stránka:
@@ -307,10 +295,10 @@ python phase1_parse_pdf.py input.pdf output_dir/
 python phase1_parse_pdf.py pdf_dir/ output_dir/
 ----
 
-== Phase 2 – Parsování rozpočtových opatření
+== Extract: parsování rozpočtových opatření
 
 Rozpočtová opatření jsou samostatný typ PDF dokumentů, proto se neparsují přes
-Phase 1 určenou pro usnesení. Parser vytváří jeden JSON soubor pro každé
+parser usnesení. Parser vytváří jeden JSON soubor pro každé
 opatření.
 
 === Výstupní struktura
@@ -363,9 +351,9 @@ opatření.
 python parse_rozpoctova_opatreni.py resources/rozpoctova-opatreni work/rozpoctova-opatreni
 ----
 
-== Phase 3 – Analýza a tematická klasifikace usnesení
+== Enrich: analýza a tematická klasifikace
 
-Zpracuje JSON z Phase 1.
+Zpracuje syrové JSON z Extract.
 
 === Vstupní struktura
 
@@ -413,7 +401,7 @@ Zpracuje JSON z Phase 1.
     "status": "classified",
     "model_version": "1.0.0",
     "taxonomy_version": "v7",
-    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
     "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
       "category": "property",
@@ -427,7 +415,7 @@ Zpracuje JSON z Phase 1.
 }
 ----
 
-=== Co fáze dělá
+=== Co operace dělá
 
 - extrahuje akce (např. „schvaluje", „bere na vědomí"),
 - rozděluje vícepoložková usnesení na jednotlivé body,
@@ -448,13 +436,13 @@ neodebere. Známé nejednoznačné případy mají `category: null`.
 [source,bash]
 ----
 # Produkční analýza a klasifikace extrahovaných usnesení
-python pipeline.py --from-phase 3 --to-phase 3
+python pipeline.py --from-stage enrich --to-stage enrich
 
 # Samostatná strukturální analýza bez klasifikace
 python phase2_resolution_analysis.py --input phase1_dir/ --output phase3_dir/
 ----
 
-== Phase 4 – Resolvování referencí
+== Enrich: resolvování referencí
 
 Usnesení mohou odkazovat jedno na druhé.
 V této fázi se resolvují reference:
@@ -489,7 +477,7 @@ Na závěr jsou vypsány statistiky do konzole.
 
 === Vstup
 
-- adresář s JSON soubory ze Phase 3
+- adresář s JSON soubory z analýzy v Enrich
 
 === Výstup
 
@@ -505,7 +493,7 @@ python phase3_resolve_references.py --input phase3_dir/ --output phase4_dir/
 python phase3_resolve_references.py --input phase3_dir/ --output phase4_dir/ --terms terms.json
 ----
 
-== Phase 5 – Vytvoření indexu usnesení
+== Export: index a roční JSON usnesení
 
 Vytvoří index pro fulltextové vyhledávání.
 
@@ -515,7 +503,8 @@ nebo ve filtru toto omezení přepíše.
 
 === Vstup
 
-- `usneseni.json` ze Phase 4
+- `work/rozpoctova-opatreni-linked/usneseni.json` z finálního Enrich;
+  při `--without-budget` se používá `work/phase4/usneseni.json`.
 
 === Výstupní struktura
 
@@ -527,10 +516,10 @@ nebo ve filtru toto omezení přepíše.
 
 [source,bash]
 ----
-python phase4_index_build.py --input phase4_dir/usneseni.json --output export/assets/usneseni/
+python phase4_index_build.py --input work/rozpoctova-opatreni-linked/usneseni.json --output export/assets/usneseni/
 ----
 
-== Phase 6 – Statický export bez rozpočtových opatření
+== Export: režim pouze usnesení
 
 Generuje statické stránky ve struktuře vhodné pro Jekyll.
 
@@ -544,7 +533,7 @@ Negeneruje hlavní stránku `/usneseni/` (ta existuje ručně). Nepřepisuje hla
 
 === Vstup
 
-- `usneseni.json` ze Phase 4 (stejný vstup jako Phase 5)
+- `usneseni.json` z resolvování referencí (režim bez RO)
 
 === Výstupní struktura
 
@@ -563,12 +552,12 @@ export/
 
 [source,bash]
 ----
-python phase5_static_export.py --input phase4_dir/usneseni.json --output export_dir/
+python phase5_static_export.py --input phase4_dir/usneseni.json --output export_dir/ --without-budget
 ----
 
 Název sitemap souboru lze změnit volbou `--sitemap-filename`, výchozí hodnota je `sitemap-usneseni.xml`.
 
-== Phase 7 – Propojení rozpočtových opatření s usneseními
+== Enrich: propojení rozpočtových opatření
 
 Po parsování lze vytvořit odvozenou datovou vrstvu, která propojí:
 
@@ -591,16 +580,16 @@ Výstup:
 - `budget_change_index.json` – index rozpočtových změn podle `RZ`,
 - `stats.json` – statistiky a případné opravy zjevných překlepů v odkazech.
 
-Statický export lze následně vygenerovat z propojených dat spuštěním pipeline do
-fáze 9:
+Statický export lze následně vygenerovat z již propojených dat bez opakování
+obohacení:
 
 [source,bash]
 ----
-python pipeline.py --from-phase 7 --to-phase 9
+python pipeline.py --from-stage export
 ----
 
 Stránky usnesení pak obsahují také sekci `Rozpočtová opatření`, pokud má dané
-usnesení vazbu na konkrétní `RO` nebo `RZ`. Fáze 9 zároveň generuje samostatné
+usnesení vazbu na konkrétní `RO` nebo `RZ`. Export zároveň generuje samostatné
 statické stránky rozpočtových opatření:
 
 [source]
@@ -620,7 +609,7 @@ rozpočtového opatření, např.:
 /rozpoctova-opatreni/RO-6-2026/#rz-53-2026-rm
 ----
 
-== Phase 8 – Vytvoření indexu rozpočtových opatření
+== Export: index rozpočtových opatření
 
 Vytvoří fulltextový index rozpočtových opatření pro frontendové vyhledávání.
 Index se generuje z propojených RO JSON dat a ukládá se přímo do exportní
@@ -645,7 +634,7 @@ python phase4_ro_index_build.py \
   --output export/assets/usneseni/ro
 ----
 
-== Phase 9 – Statický export včetně rozpočtových opatření
+== Export: finální statické stránky
 
 Přegeneruje statický web nad propojenými daty tak, aby stránky usnesení
 obsahovaly vazby na `RO` a současně vznikly samostatné stránky rozpočtových
@@ -672,11 +661,11 @@ python phase5_static_export.py \
 
 == Principy návrhu
 
-- Jedno usnesení = jeden JSON soubor.
-- Žádná interpretace obsahu.
-- Deterministické zpracování.
-- Každá fáze je spustitelná samostatně.
-- Vše je rekonstruovatelné z původních PDF.
+- Extrakce a analýza uchovávají usnesení samostatně; další operace vytvářejí agregovaná data.
+- Strukturální parsování je oddělené od modelové tematické klasifikace.
+- Model, taxonomie a ruční rozhodnutí jsou versionované a auditovatelné.
+- Každá operace je spustitelná samostatně.
+- Výstupy lze přegenerovat z PDF, modelového balíčku a ručních rozhodnutí.
 
 == Poznámky
 
