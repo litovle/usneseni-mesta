@@ -5,7 +5,8 @@
 phase5_static_export
 ====================
 
-Statický export usnesení do struktury vhodné pro Jekyll.
+Export: jednou generuje stránky usnesení, RO a sitemap z finálních dat pro Jekyll.
+--without-budget vypíná načítání i autodetekci RO; existující výstupy nemaže.
 """
 
 from __future__ import annotations
@@ -63,6 +64,8 @@ def main() -> None:
         default="sitemap-usneseni.xml",
         help="Název sitemap souboru pro generované stránky usnesení.",
     )
+    parser.add_argument("--without-budget", action="store_true",
+                        help="Exportovat pouze usnesení; vypnout načítání i autodetekci rozpočtových opatření.")
     args = parser.parse_args()
 
     if not args.input.exists():
@@ -74,7 +77,7 @@ def main() -> None:
     if not isinstance(data, list):
         raise SystemExit("Input JSON must be a list of resolutions.")
 
-    opatreni_list = load_opatreni_dir(args.input, args.opatreni)
+    opatreni_list = [] if args.without_budget else load_opatreni_dir(args.input, args.opatreni)
 
     refs_out_map: Dict[str, List[str]] = defaultdict(list)
     refs_in_map: Dict[str, List[str]] = defaultdict(list)

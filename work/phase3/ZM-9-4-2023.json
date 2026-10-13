@@ -31,5 +31,22 @@
     "2.213.000 Kč",
     "2.213.100 Kč",
     "3.324.568 Kč"
-  ]
+  ],
+  "classification": {
+    "model_version": "1.0.0",
+    "taxonomy_version": "v7",
+    "category": "waste",
+    "source": "model",
+    "status": "classified",
+    "prediction": {
+      "category": "waste",
+      "confidence": 0.9806231260299683,
+      "second_category": "planning",
+      "second_confidence": 0.007572335656732321,
+      "margin": 0.9730507731437683,
+      "entropy": 0.12113411598058958
+    },
+    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+  }
 }

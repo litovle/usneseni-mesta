@@ -21,7 +21,7 @@ except ImportError:
 ARCHIVE_URL = "https://www.litovel.eu/cs/mesto/rada-mesta/usneseni-rady-archiv.html"
 ORGAN = "Rada města Litovel"
 ORG_CODE = "RM"
-USER_AGENT = "usneseni-mesta-archive-rm-crawl/1.0 (+https://github.com/honza-kasik/usneseni-mesta)"
+USER_AGENT = "usneseni-mesta-archive-rm-crawl/1.0 (+https://github.com/litovle/usneseni-mesta)"
 
 
 def fetch_html(url: str) -> str:

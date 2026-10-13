@@ -18,5 +18,22 @@
   ],
   "tail": "se zhotovitelem AGPOL s.r.o. Olomouc.",
   "references_out": [],
-  "amounts": []
+  "amounts": [],
+  "classification": {
+    "model_version": "1.0.0",
+    "taxonomy_version": "v7",
+    "category": "transport",
+    "source": "model",
+    "status": "classified",
+    "prediction": {
+      "category": "transport",
+      "confidence": 0.9900340437889099,
+      "second_category": "infrastructure",
+      "second_confidence": 0.003545838175341487,
+      "margin": 0.9864882230758667,
+      "entropy": 0.0677875086333595
+    },
+    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+  }
 }

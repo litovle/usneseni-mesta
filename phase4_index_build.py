@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-Vytvoří index pro fulltextové vyhledávání
+Export: vytvoří index usnesení a roční JSON z finálních obohacených dat.
 
 Vstup:
-  - adresář s JSON soubory ve struktuře z phase 3
+  - usneseni.json s klasifikací, referencemi a při plném běhu i rozpočtovými vazbami
 
 Výstup:
   - index adresář s indexy pro vyhledávání. Jeden JSON soubor = jeden rok.
@@ -13,7 +13,7 @@ Výstup:
   - meta.json se statistickými metadaty, například počty rozhodnutí za jednotlivé roky
 
 Použití:
-  python phase4_index_build.py --input phase3_dir/ --output phase4_dir/
+  python phase4_index_build.py --input work/rozpoctova-opatreni-linked/usneseni.json --output export/assets/usneseni
 """
 
 import json

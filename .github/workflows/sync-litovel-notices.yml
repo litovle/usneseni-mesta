@@ -23,6 +23,9 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    env:
+      CLASSIFIER_URL: ${{ vars.RESOLUTION_CLASSIFIER_URL || 'https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz' }}
+      CLASSIFIER_SHA256: ${{ vars.RESOLUTION_CLASSIFIER_SHA256 || '6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a' }}
 
     steps:
       - name: Checkout usneseni-mesta
@@ -39,7 +42,9 @@ jobs:
 
       - name: Install dependencies
         working-directory: usneseni-mesta
-        run: python -m pip install -r requirements.txt
+        run: |
+          python -m pip install 'torch>=2.2,<3' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements.txt
 
       - name: Scan notice board
         id: scan
@@ -64,9 +69,16 @@ jobs:
         if: steps.scan.outputs.found == 'true' && steps.scan.outputs.dry_run != 'true'
         uses: actions/checkout@v5
         with:
-          repository: honza-kasik/litovle.cz
+          repository: litovle/litovle.cz
           token: ${{ secrets.LITOVLE_CZ_PAT }}
           path: litovle.cz
+
+      - name: Cache final resolution classifier
+        if: steps.scan.outputs.found == 'true' && steps.scan.outputs.dry_run != 'true'
+        uses: actions/cache@v5
+        with:
+          path: usneseni-mesta/.cache/resolution-classifier
+          key: ${{ runner.os }}-resolution-classifier-model-v2-${{ env.CLASSIFIER_SHA256 }}
 
       - name: Parse new PDFs and regenerate export
         if: steps.scan.outputs.found == 'true' && steps.scan.outputs.dry_run != 'true'
@@ -74,6 +86,7 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          import os
           import subprocess
           import sys
           from pathlib import Path
@@ -98,6 +111,10 @@ jobs:
               [
                   sys.executable,
                   "pipeline.py",
+                  "--classifier-url",
+                  os.environ["CLASSIFIER_URL"],
+                  "--classifier-sha256",
+                  os.environ["CLASSIFIER_SHA256"],
                   "--pdf",
                   "resources",
                   "--ro-pdf",
@@ -106,10 +123,10 @@ jobs:
                   "work",
                   "--export",
                   "../litovle.cz",
-                  "--from-phase",
-                  "3",
-                  "--to-phase",
-                  "9",
+                  "--from-stage",
+                  "enrich",
+                  "--to-stage",
+                  "export",
               ],
               check=True,
           )

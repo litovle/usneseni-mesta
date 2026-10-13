@@ -21,5 +21,22 @@
   "references_out": [],
   "amounts": [
     "5.000 Kč"
-  ]
+  ],
+  "classification": {
+    "model_version": "1.0.0",
+    "taxonomy_version": "v7",
+    "category": "sport",
+    "source": "model",
+    "status": "classified",
+    "prediction": {
+      "category": "sport",
+      "confidence": 0.6061320900917053,
+      "second_category": "culture",
+      "second_confidence": 0.3864620625972748,
+      "margin": 0.21967002749443054,
+      "entropy": 0.7158992513487463
+    },
+    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+  }
 }

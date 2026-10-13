@@ -20,7 +20,7 @@ except ImportError:
     from tools.sync_litovel_notices import DownloadedFile, slugify_pdf_name
 
 
-USER_AGENT = "usneseni-mesta-litovel-manual-pdf/1.0 (+https://github.com/honza-kasik/usneseni-mesta)"
+USER_AGENT = "usneseni-mesta-litovel-manual-pdf/1.0 (+https://github.com/litovle/usneseni-mesta)"
 
 
 @dataclass(frozen=True)

@@ -2,7 +2,14 @@
 # -*- coding: utf-8 -*-
 
 """
-Phase 2 - analýza syrového textu usnesení
+Analýza a tematická klasifikace usnesení (Enrich v pipeline.py).
+
+Samostatný běh bez --classifier-url provede strukturální analýzu.
+Pipeline předává URL finálního modelového balíčku, jeho SHA-256 a cestu k cache;
+pak se do každého výstupu přidá classification s kategorií, zdrojem, stavem,
+verzemi modelu/taxonomie a původními skóre modelu. Ruční opravy mají přednost;
+známé nejednoznačné případy mají category=null a manual_review_required.
+Inference používá stažené lokální váhy a nepotřebuje repozitář klasifikátoru.
 
 Zpracuje JSON z phase 1
 
@@ -45,7 +52,8 @@ na
   - z usnesení s více body jsou jednotlivé akce extrahovány a body rozděleny
   - odděleny jsou subject a tail (text před a za body) pokud jsou přítomny
   - jsou extrahovány peněžní částky
-  - jsou hrubě extrahovány reference bez resolvování (to je předmětem phase 3)
+  - jsou hrubě extrahovány reference (resolvuje je další operace v Enrich)
+  - při zadání --classifier-url se přidá tematická klasifikace
 
 Vstup:
   - adresář s JSON soubory ve výše definované struktuře z phase 1
@@ -54,7 +62,12 @@ Výstup:
   - jeden JSON soubor = jedno usnesení
 
 Použití:
-  python phase2_resolution_analysis.py --input phase1_dir/ --output phase2_dir/
+  python phase2_resolution_analysis.py --input work/phase1 --output work/phase3
+  python phase2_resolution_analysis.py --input work/phase1 --output work/phase3 \
+    --classifier-url MODEL_URL --classifier-sha256 SHA256
+
+Predikce a fronta pro kontrolu se zapisují do --classification-output (výchozí:
+classifier/ vedle výstupního adresáře). --classifier-cache určuje cache modelu.
 """
 
 import json
@@ -364,7 +377,28 @@ def main():
     ap.add_argument("-i", "--input", type=Path, required=True)
     ap.add_argument("-o", "--output", type=Path, required=True)
     ap.add_argument("-v", "--verbose", action="store_true")
+    ap.add_argument("--classifier-url", help="URL finálního tematického modelového balíčku.")
+    ap.add_argument("--classifier-sha256", help="Očekávaný SHA-256 modelového balíčku.")
+    ap.add_argument("--classifier-cache", type=Path, default=Path(".cache/resolution-classifier"))
+    ap.add_argument("--classification-output", type=Path, help="Adresář predikcí a fronty pro kontrolu.")
     args = ap.parse_args()
+
+    classifications = {}
+    if args.classifier_url:
+        from resolution_classification import DEFAULT_SHA256
+        from resolution_classification.runner import classify_records
+
+        records = {}
+        for p in sorted(args.input.glob("*.json")):
+            raw = json.loads(p.read_text(encoding="utf-8"))
+            if raw["id"] in records:
+                ap.error(f"Duplicitní ID usnesení: {raw['id']}")
+            records[raw["id"]] = raw
+        classifications = classify_records(
+            records, args.input,
+            args.classification_output or args.output.parent / "classifier",
+            args.classifier_url, args.classifier_sha256 or DEFAULT_SHA256, args.classifier_cache,
+        )
 
     args.output.mkdir(parents=True, exist_ok=True)
 
@@ -380,6 +414,8 @@ def main():
             continue
 
         parsed = process_usneseni(raw)
+        if args.classifier_url:
+            parsed["classification"] = classifications[raw["id"]]
         stats["total"] += 1
 
         for a in parsed["actions"]:

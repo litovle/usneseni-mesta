@@ -19,5 +19,22 @@
   ],
   "tail": null,
   "references_out": [],
-  "amounts": []
+  "amounts": [],
+  "classification": {
+    "model_version": "1.0.0",
+    "taxonomy_version": "v7",
+    "category": "waste",
+    "source": "model",
+    "status": "classified",
+    "prediction": {
+      "category": "waste",
+      "confidence": 0.9603920578956604,
+      "second_category": "infrastructure",
+      "second_confidence": 0.024225836619734764,
+      "margin": 0.9361662268638611,
+      "entropy": 0.21156901794481625
+    },
+    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+  }
 }

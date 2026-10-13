@@ -173,4 +173,16 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
+.TemporaryItems/
+.VolumeIcon.icns
 
+# Generated classifier reports (reviewed decisions are stored in resolution data)
+/work/classifier/
