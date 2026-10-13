@@ -50,6 +50,9 @@ concurrency:
 jobs:
   process:
     runs-on: ubuntu-latest
+    env:
+      CLASSIFIER_URL: ${{ vars.RESOLUTION_CLASSIFIER_URL || 'https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz' }}
+      CLASSIFIER_SHA256: ${{ vars.RESOLUTION_CLASSIFIER_SHA256 || '6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a' }}
 
     steps:
       - name: Checkout usneseni-mesta
@@ -66,7 +69,9 @@ jobs:
 
       - name: Install dependencies
         working-directory: usneseni-mesta
-        run: python -m pip install -r requirements.txt
+        run: |
+          python -m pip install 'torch>=2.2,<3' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements.txt
 
       - name: Prepare manual PDF
         id: prepare
@@ -105,12 +110,20 @@ jobs:
           token: ${{ secrets.LITOVLE_CZ_PAT }}
           path: litovle.cz
 
+      - name: Cache final resolution classifier
+        if: steps.prepare.outputs.dry_run != 'true'
+        uses: actions/cache@v5
+        with:
+          path: usneseni-mesta/.cache/resolution-classifier
+          key: ${{ runner.os }}-resolution-classifier-${{ env.CLASSIFIER_SHA256 }}-${{ hashFiles('usneseni-mesta/resolution_classification/final-v1/manifest.json') }}
+
       - name: Parse PDF and regenerate export
         if: steps.prepare.outputs.dry_run != 'true'
         working-directory: usneseni-mesta
         run: |
           python - <<'PY'
           import json
+          import os
           import subprocess
           import sys
           from pathlib import Path
@@ -135,6 +148,10 @@ jobs:
               [
                   sys.executable,
                   "pipeline.py",
+                  "--classifier-url",
+                  os.environ["CLASSIFIER_URL"],
+                  "--classifier-sha256",
+                  os.environ["CLASSIFIER_SHA256"],
                   "--pdf",
                   "resources",
                   "--ro-pdf",

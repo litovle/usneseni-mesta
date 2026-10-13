@@ -21,5 +21,22 @@
   "references_out": [],
   "amounts": [
     "10.000 Kč"
-  ]
+  ],
+  "classification": {
+    "model_version": "1.0.0",
+    "taxonomy_version": "v7",
+    "category": "culture",
+    "source": "model",
+    "status": "classified",
+    "prediction": {
+      "category": "culture",
+      "confidence": 0.9923433661460876,
+      "second_category": "education",
+      "second_confidence": 0.004042773973196745,
+      "margin": 0.988300621509552,
+      "entropy": 0.05358093226372092
+    },
+    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+  }
 }

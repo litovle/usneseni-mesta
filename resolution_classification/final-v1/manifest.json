@@ -1,0 +1,82 @@
+{
+  "model_version": "1.0.0",
+  "base_model": "ufal/eleczech-lc-small",
+  "base_model_license": "CC BY-NC-SA 4.0",
+  "model_license": "CC BY-NC-SA 4.0",
+
+  "taxonomy_version": "v7",
+  "taxonomy_path": "taxonomy/v7.md",
+
+  "dataset_version": "gold-v1",
+  "dataset_path": "data/gold-v1.jsonl",
+  "examples": 733,
+
+  "labels": [
+    "administration",
+    "culture",
+    "education",
+    "environment",
+    "finance",
+    "infrastructure",
+    "planning",
+    "property",
+    "security",
+    "social",
+    "sport",
+    "strategy",
+    "transport",
+    "waste"
+  ],
+  "class_counts": {
+    "administration": 97,
+    "culture": 66,
+    "education": 44,
+    "environment": 51,
+    "finance": 67,
+    "infrastructure": 66,
+    "planning": 14,
+    "property": 89,
+    "security": 43,
+    "social": 49,
+    "sport": 54,
+    "strategy": 14,
+    "transport": 52,
+    "waste": 27
+  },
+  "seed": 42,
+  "stage1": {
+    "train_count": 623,
+    "validation_count": 110,
+    "learning_rate": 0.0001,
+    "max_epochs": 45,
+    "patience": 6,
+    "best_validation_macro_f1": 0.9095804988662133
+  },
+  "stage2": {
+    "learning_rate": 2e-05,
+    "epochs": 4,
+    "examples": 733
+  },
+  "training_set_fit_check": {
+    "accuracy": 0.9959072305593452,
+    "macro_f1": 0.9946346658988974,
+    "per_class_recall": {
+      "administration": 1.0,
+      "culture": 1.0,
+      "education": 1.0,
+      "environment": 1.0,
+      "finance": 1.0,
+      "infrastructure": 1.0,
+      "planning": 1.0,
+      "property": 1.0,
+      "security": 1.0,
+      "social": 0.9795918367346939,
+      "sport": 1.0,
+      "strategy": 1.0,
+      "transport": 0.9615384615384616,
+      "waste": 1.0
+    }
+  },
+  "release_asset": "litovel-resolution-classifier-v1.0.0.tar.gz",
+  "sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+}

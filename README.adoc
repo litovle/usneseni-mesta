@@ -5,12 +5,14 @@ image:https://github.com/honza-kasik/usneseni-mesta/actions/workflows/sync-litov
 :toc:
 :toclevels: 2
 
-Pipeline pro deterministické zpracování usnesení Rady a Zastupitelstva města Litovel.
+Pipeline pro strukturované zpracování a tematickou klasifikaci usnesení Rady
+a Zastupitelstva města Litovel.
 
 Cílem je:
 
 - převod PDF do strukturované podoby,
 - extrakce struktury usnesení,
+- tematická klasifikace finálním lokálním modelem,
 - resolvování vzájemných referencí,
 - vytvoření fulltextového indexu,
 - statický export do Jekyll struktury,
@@ -18,9 +20,20 @@ Cílem je:
 - maximální reprodukovatelnost a auditovatelnost.
 
 Každá fáze je samostatný skript.
-Jedno usnesení = jeden JSON soubor.
+Fáze 1 a 3 ukládají každé usnesení do samostatného JSON souboru; fáze 4 je
+sloučí do `usneseni.json` a fáze 5 exportuje data po jednotlivých letech.
 
 == Architektura
+
+Produkční inferenční modul `resolution_classification/` je součástí tohoto
+repozitáře a musí být commitnutý společně s jeho metadaty a integračními testy.
+Samostatný repozitář `litovel-resolution-classifier` spravuje trénink, kurátorované
+datasety a modelové releasy. Pipeline z něj načítá pouze versionovaný artefakt
+přes URL a SHA-256; nepotřebuje jeho checkout ani Python balíček.
+
+Podrobný tok dat, role modulů, schéma rozhodnutí, formát modelového balíčku
+a provoz v GitHub Actions popisuje
+link:docs/classification-architecture.md[Architektura tematické klasifikace].
 
 Pipeline má šest hlavních fází a tři navazující fáze pro rozpočtová opatření:
 
@@ -33,7 +46,7 @@ Pipeline má šest hlavních fází a tři navazující fáze pro rozpočtová o
 |Parsování rozpočtových opatření
 
 |Phase 3
-|Strukturální analýza usnesení
+|Strukturální analýza a tematická klasifikace usnesení
 
 |Phase 4
 |Resolvování referencí mezi usneseními
@@ -95,10 +108,68 @@ python pipeline.py --pdf pdf_dir/ --dry-run
 
 [source]
 ----
+resolution_classification/       ← produkční inference a adaptér pipeline
+resolution_classification/final-v1/ ← metadata přesně odpovídající releasu v1
+tests/test_classifier_bundle.py ← testy stažení, integrity a cache modelu
+tests/test_pipeline_classification.py ← testy zapojení do pipeline
+.cache/resolution-classifier/    ← stažené váhy (ignorované Gitem, cache v Actions)
+----
+
+Historické trénovací skripty, vývojové datasety a reporty byly přesunuty do
+`development-archive/` repozitáře klasifikátoru. Staré váhy a trénovací checkpointy
+byly odstraněny. `work/classifier/` jsou nové generované predikce a reporty
+produkčního běhu; neslouží jako cache modelových vah.
+
+=== Tematický klasifikátor
+
+Fáze 3 automaticky používá finální tematický model `v1.0.0` s taxonomií `v7`.
+Váhy se stáhnou z versionované GitHub Release URL. Pipeline nepotřebuje checkout
+ani instalaci repozitáře klasifikátoru:
+
+[source,bash]
+----
+python -m pip install -r requirements.txt
+python pipeline.py --from-phase 3 --to-phase 9
+----
+
+Výchozí URL:
+`https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz`.
+Při prvním použití se ověří SHA-256 a model se uloží do
+`.cache/resolution-classifier`. Další běhy použijí ověřenou cache. Inference
+probíhá lokálně. `--classifier-url URL` a `--classifier-sha256 SHA` umožňují
+zvolit jiný versionovaný balíček; `--classifier-cache DIR` mění umístění cache.
+Pro lokální archiv lze použít URL `file:///absolutni/cesta/model.tar.gz`.
+
+Publikovaný release v1 obsahuje pouze váhy. Jeho přesně odpovídající manifest,
+taxonomie, ruční opravy a licence jsou součástí pipeline v
+`resolution_classification/final-v1`. Jiné archivy musí být kompletní: `model/`
+s konfigurací, tokenizerem a váhami, `manifest.json`, `taxonomy/v7.md`,
+`data/manual-overrides-v1.jsonl`, `data/manual-review-required-v1.jsonl`,
+`MODEL_LICENSE.md` a `DATA_LICENSE.md`. Manifest určuje verzi modelu, taxonomie
+a seznam `labels`.
+
+Každé usnesení ve fázi 3, fázi 4 a exportovaných ročních JSON datech obsahuje
+objekt `classification`: kategorii, verzi modelu a taxonomie, zdroj rozhodnutí,
+stav a původní skóre modelu. Ruční opravy z finálního balíčku mají přednost.
+Známé nejednoznačné případy mají `category: null` a stav
+`manual_review_required`. Chybějící predikce nebo zastaralé ruční rozhodnutí
+zastaví pipeline. Predikce a fronta pro kontrolu se ukládají do `work/classifier`.
+Při novém běhu fáze 3 se klasifikace přepočítá; běhy od fáze 4 používají
+klasifikace uložené předchozím během fáze 3.
+
+Oba GitHub Actions workflows instalují CPU variantu PyTorch a uchovávají cache
+modelu přes `actions/cache`. URL a checksum lze změnit pomocí repository
+variables `RESOLUTION_CLASSIFIER_URL` a `RESOLUTION_CLASSIFIER_SHA256` (nastavte
+obě společně). Cache modelu není součástí generovaných pull requestů.
+Čísla ostatních fází zůstávají stejná.
+
+[source]
+----
 pdf_dir/          ← vstupní PDF soubory (rekurzivně prohledáváno)
 work/phase1/      ← výstup fáze 1
 work/phase3/      ← výstup fáze 3
 work/phase4/      ← výstup fáze 4
+work/classifier/  ← predikce finálního tematického modelu a fronta pro kontrolu
 work/rozpoctova-opatreni/        ← výstup fáze 2
 work/rozpoctova-opatreni-linked/ ← výstup fáze 7
 work/archive_rm/  ← pracovní data historického archivu rady města
@@ -145,6 +216,15 @@ Volbu lze opakovat. Pokud není uvedena, použijí se existující
 |`--no-archive-current`
 |Vypne doplnění archivních dokumentů ve formátu současných usnesení do hlavní
 pipeline.
+
+|`--classifier-url URL`
+|URL modelového archivu. Výchozí je veřejný, versionovaný release v1.0.0.
+
+|`--classifier-sha256 SHA`
+|Očekávaný SHA-256 archivu; měňte společně s URL.
+
+|`--classifier-cache DIR`
+|Cache ověřených modelů (výchozí: `.cache/resolution-classifier`).
 
 |`--terms FILE`
 |Volitelný JSON seznam volebních období pro fázi resolvování referencí.
@@ -283,7 +363,7 @@ opatření.
 python parse_rozpoctova_opatreni.py resources/rozpoctova-opatreni work/rozpoctova-opatreni
 ----
 
-== Phase 3 – Analýza syrového textu usnesení
+== Phase 3 – Analýza a tematická klasifikace usnesení
 
 Zpracuje JSON z Phase 1.
 
@@ -326,7 +406,24 @@ Zpracuje JSON z Phase 1.
   "references_out": [],
   "amounts": [
     "10.000 Kč"
-  ]
+  ],
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_version": "1.0.0",
+    "taxonomy_version": "v7",
+    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "prediction": {
+      "category": "property",
+      "confidence": 0.9,
+      "second_category": "transport",
+      "second_confidence": 0.04,
+      "margin": 0.86,
+      "entropy": 0.5
+    }
+  }
 }
 ----
 
@@ -337,11 +434,23 @@ Zpracuje JSON z Phase 1.
 - odděluje `subject` (text před body) a `tail` (text za body),
 - extrahuje peněžní částky,
 - hrubě extrahuje reference (bez resolvování).
+- při běhu přes pipeline přiřadí tematickou kategorii, uchová původní predikci
+  a použije odpovídající ruční opravy a příznaky pro kontrolu.
+
+Ukázkové kategorie a skóre v JSON výše jsou ilustrativní. `classification` se
+přidává při spuštění přes `pipeline.py` nebo při zadání `--classifier-url`.
+Samostatný příkaz bez URL provádí pouze strukturální analýzu. Skóre modelu
+není kalibrovaná pravděpodobnost správnosti; nízké skóre samo o sobě kategorii
+neodebere. Známé nejednoznačné případy mají `category: null`.
 
 === Použití
 
 [source,bash]
 ----
+# Produkční analýza a klasifikace extrahovaných usnesení
+python pipeline.py --from-phase 3 --to-phase 3
+
+# Samostatná strukturální analýza bez klasifikace
 python phase2_resolution_analysis.py --input phase1_dir/ --output phase3_dir/
 ----
 

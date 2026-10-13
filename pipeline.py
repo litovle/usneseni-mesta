@@ -4,11 +4,21 @@
 """
 Pipeline – spustí všechny fáze zpracování usnesení za sebou.
 
+Fáze 3 analyzuje text a klasifikuje usnesení finálním tematickým modelem.
+Modelový balíček se načítá z --classifier-url a ověřuje přes --classifier-sha256.
+Výchozí je GitHub Release v1.0.0; jiný checkout není potřeba. Stažené váhy se
+uchovávají v --classifier-cache a další běhy používají lokální cache.
+Ruční opravy mají přednost před predikcí. Nejednoznačné případy mají kategorii
+null a stav manual_review_required. Objekt classification se zachovává v
+navazujících fázích a ročních JSON datech statického exportu.
+
 Výchozí adresářová struktura (lze přepsat argumenty):
   pdf_dir/          ← vstupní PDF soubory pro usnesení
   work/phase1/      ← výstup fáze 1
   work/phase3/      ← výstup fáze 3
   work/phase4/      ← výstup fáze 4
+  work/classifier/  ← predikce modelu, ruční rozhodnutí a fronta pro kontrolu
+  .cache/resolution-classifier/ ← ověřené modelové balíčky (také cache v Actions)
   work/rozpoctova-opatreni/        ← výstup fáze 2
   work/rozpoctova-opatreni-linked/ ← výstup fáze 7
   export/assets/usneseni/    ← výstup fáze 5
@@ -19,8 +29,11 @@ Použití:
   # Celý pipeline od začátku
   python pipeline.py --pdf pdf_dir/
 
-  # Přeskočit parsování a pokračovat od analýzy usnesení
-  python pipeline.py --pdf pdf_dir/ --from-phase 3
+  # Klasifikovat již extrahovaná usnesení a přegenerovat celý export
+  python pipeline.py --from-phase 3 --to-phase 9
+
+  # Jiný versionovaný modelový balíček a jeho checksum
+  python pipeline.py --from-phase 3 --classifier-url MODEL_URL --classifier-sha256 SHA256
 
   # Spustit pouze parsování RO a analýzu usnesení nad existující fází 1
   python pipeline.py --pdf pdf_dir/ --from-phase 2 --to-phase 3
@@ -40,6 +53,8 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+
+from resolution_classification import DEFAULT_SHA256, DEFAULT_URL
 
 
 # ──────────────────────────────────────────────
@@ -215,13 +230,19 @@ def build_phases(
     workdir: Path,
     export_dir: Path,
     terms: Path | None = None,
+    classifier_url: str = DEFAULT_URL,
+    classifier_sha256: str = DEFAULT_SHA256,
+    classifier_cache: Path = Path(".cache/resolution-classifier"),
 ) -> list[dict]:
     """
     Vrátí seznam fází. Každá fáze je slovník:
       number  – číslo fáze (int)
       name    – popis
-      cmd     – callable(dirs) -> list[str|Path]
-      check   – callable(dirs) -> bool  (ověří, zda výstup existuje)
+      cmd     – callable() -> list[str] (příkaz fáze)
+      output_check – callable() -> bool (ověří existenci výstupu)
+
+    Fáze 3 předává URL, SHA-256 a cache lokálnímu inferenčnímu modulu.
+    Čísla fází 1–9 se při přidání klasifikace nemění.
     """
 
     phase1 = workdir / "phase1"
@@ -254,11 +275,15 @@ def build_phases(
         },
         {
             "number": 3,
-            "name": "Fáze 3 – analýza usnesení",
+            "name": "Fáze 3 – analýza a tematická klasifikace usnesení",
             "cmd": lambda: [
                 sys.executable, "phase2_resolution_analysis.py",
                 "--input", str(phase1),
                 "--output", str(phase3),
+                "--classifier-url", classifier_url,
+                "--classifier-sha256", classifier_sha256,
+                "--classifier-cache", str(classifier_cache),
+                "--classification-output", str(workdir / "classifier"),
             ],
             "output_check": lambda: phase3.exists() and any(phase3.glob("*.json")),
             "output_hint": str(phase3),
@@ -397,6 +422,18 @@ def main():
         type=Path,
         help="Volitelný JSON se seznamem volebních období pro fázi resolvování referencí.",
     )
+    ap.add_argument(
+        "--classifier-url", default=DEFAULT_URL,
+        help="URL versionovaného modelového balíčku (výchozí: finální release v1.0.0).",
+    )
+    ap.add_argument(
+        "--classifier-sha256", default=DEFAULT_SHA256,
+        help="Očekávaný SHA-256 modelového balíčku (výchozí: finální release v1.0.0).",
+    )
+    ap.add_argument(
+        "--classifier-cache", type=Path, default=Path(".cache/resolution-classifier"),
+        help="Lokální cache modelových balíčků; vhodná i pro actions/cache.",
+    )
     args = ap.parse_args()
 
     if not (1 <= args.from_phase <= 9 and 1 <= args.to_phase <= 9):
@@ -419,7 +456,8 @@ def main():
         failure(f"Soubor volebních období neexistuje: {args.terms}")
         sys.exit(1)
 
-    phases = build_phases(args.pdf, args.ro_pdf, args.workdir, args.export, args.terms)
+    phases = build_phases(args.pdf, args.ro_pdf, args.workdir, args.export, args.terms,
+                          args.classifier_url, args.classifier_sha256, args.classifier_cache)
     selected = [p for p in phases if args.from_phase <= p["number"] <= args.to_phase]
 
     if any(p.get("requires_ro_pdf") for p in selected) and not args.ro_pdf.exists():

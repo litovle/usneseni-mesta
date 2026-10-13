@@ -13,5 +13,22 @@
     "100.000 Kč",
     "200.000 Kč",
     "300.000 Kč"
-  ]
+  ],
+  "classification": {
+    "model_version": "1.0.0",
+    "taxonomy_version": "v7",
+    "category": "finance",
+    "source": "model",
+    "status": "classified",
+    "prediction": {
+      "category": "finance",
+      "confidence": 0.8786153197288513,
+      "second_category": "social",
+      "second_confidence": 0.10824403166770935,
+      "margin": 0.7703713178634644,
+      "entropy": 0.42397260899757494
+    },
+    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+  }
 }

@@ -2,3 +2,5 @@ beautifulsoup4
 pdfplumber
 python-docx
 requests
+torch>=2.2,<3
+transformers>=4.45,<6
