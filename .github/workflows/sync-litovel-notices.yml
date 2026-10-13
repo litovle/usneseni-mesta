@@ -78,7 +78,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: usneseni-mesta/.cache/resolution-classifier
-          key: ${{ runner.os }}-resolution-classifier-${{ env.CLASSIFIER_SHA256 }}-${{ hashFiles('usneseni-mesta/resolution_classification/final-v1/manifest.json') }}
+          key: ${{ runner.os }}-resolution-classifier-model-v2-${{ env.CLASSIFIER_SHA256 }}
 
       - name: Parse new PDFs and regenerate export
         if: steps.scan.outputs.found == 'true' && steps.scan.outputs.dry_run != 'true'

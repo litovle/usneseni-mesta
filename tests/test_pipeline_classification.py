@@ -21,8 +21,8 @@ class PipelineClassificationTest(unittest.TestCase):
         self.assertEqual([stage["name"] for stage in stages], ["extract", "enrich", "export"])
 
     def test_classification_survives_analysis_and_reference_resolution(self):
-        classification = {"category": "culture", "source": "manual_override", "status": "classified",
-                          "prediction": {"category": "education", "confidence": 0.54}}
+        classification = {"category": "culture", "source": "model", "status": "classified",
+                          "prediction": {"category": "culture", "confidence": 0.54}}
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = root / "phase1"

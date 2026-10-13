@@ -7,16 +7,14 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from resolution_classification.bundle import METADATA_FILES, MODEL_FILES, load_bundle
+from resolution_classification.bundle import MODEL_FILES, load_bundle
 
 
-def make_bundle(path, metadata=True, symlink=False):
+def make_bundle(path, symlink=False):
     with tarfile.open(path, "w:gz") as archive:
         files = [f"model/{name}" for name in MODEL_FILES]
-        if metadata:
-            files += list(METADATA_FILES)
         for name in files:
-            body = json.dumps({"model_version": "1.0.0", "taxonomy_version": "v7", "labels": ["sport"]}).encode() if name == "manifest.json" else b"{}"
+            body = json.dumps({"id2label": {"0": "sport"}}).encode() if name == "model/config.json" else b"{}"
             member = tarfile.TarInfo(name)
             if symlink and name == "model/config.json":
                 member.type = tarfile.SYMTYPE
@@ -37,9 +35,10 @@ class ClassifierBundleTest(unittest.TestCase):
             root = Path(directory)
             archive = root / "bundle.tar.gz"
             checksum = make_bundle(archive)
-            bundle, manifest = load_bundle(archive.as_uri(), root / "cache", checksum)
-            self.assertEqual(manifest["model_version"], "1.0.0")
+            bundle, config = load_bundle(archive.as_uri(), root / "cache", checksum)
+            self.assertEqual(config["id2label"], {"0": "sport"})
             self.assertTrue((bundle / "model/model.safetensors").is_file())
+            self.assertFalse((bundle / "taxonomy").exists())
             archive.unlink()
             self.assertEqual(load_bundle(archive.as_uri(), root / "cache", checksum)[0], bundle)
             (bundle / "model/config.json").write_text("corrupt")
@@ -54,17 +53,31 @@ class ClassifierBundleTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "checksum"):
                 load_bundle(archive.as_uri(), root / "cache", "0" * 64)
 
-    def test_only_pinned_weights_only_release_can_use_packaged_decisions(self):
+    def test_weights_only_release_needs_no_training_metadata(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             archive = root / "bundle.tar.gz"
-            checksum = make_bundle(archive, metadata=False)
-            with self.assertRaisesRegex(ValueError, "Custom classifier"):
-                load_bundle(archive.as_uri(), root / "cache", checksum)
-            with patch("resolution_classification.bundle.DEFAULT_SHA256", checksum):
-                bundle, manifest = load_bundle(archive.as_uri(), root / "cache", checksum)
-            self.assertEqual(manifest["taxonomy_version"], "v7")
-            self.assertTrue((bundle / "data/manual-overrides-v1.jsonl").is_file())
+            checksum = make_bundle(archive)
+            bundle, config = load_bundle(archive.as_uri(), root / "cache", checksum)
+            self.assertEqual(config["id2label"], {"0": "sport"})
+            self.assertEqual({p.name for p in bundle.iterdir()}, {"model", "cache-inventory.json"})
+
+    def test_predictions_are_used_directly_and_stale_text_is_rejected(self):
+        from resolution_classification.runner import classify_records
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            records = {"RM/1103/37/2024": {"text_raw": "text"}}
+            predictions = [{"id": "RM/1103/37/2024", "text": "text", "category": "sport", "confidence": 0.54}]
+            with patch("resolution_classification.runner.load_bundle", return_value=(root, {"id2label": {"0": "sport"}})), \
+                    patch("resolution_classification.inference.run_classification", return_value=predictions):
+                decision = classify_records(records, root, root)["RM/1103/37/2024"]
+                self.assertEqual(decision["category"], "sport")
+                self.assertEqual(decision["source"], "model")
+                self.assertEqual(decision["status"], "classified")
+                self.assertEqual(decision["prediction"]["confidence"], 0.54)
+                records["RM/1103/37/2024"]["text_raw"] = "changed"
+                with self.assertRaisesRegex(ValueError, "stale_prediction"):
+                    classify_records(records, root, root)
 
     def test_symlink_member_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

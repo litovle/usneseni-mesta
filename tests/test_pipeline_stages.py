@@ -135,14 +135,14 @@ class PipelineStagesTest(unittest.TestCase):
             (source / "usneseni.json").write_text(json.dumps([{
                 "id": "RM/1/1/2022", "datum": "2022-10-27", "organ": "Rada města Litovel",
                 "actions": ["schvaluje"], "subject": "kulturní akci", "items": [], "amounts": [],
-                "classification": {"category": "culture", "source": "manual_override", "status": "classified"},
+                "classification": {"category": "culture", "source": "model", "status": "classified"},
             }]))
             # Actual index and static-export scripts execute; there is no inference.
             with contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(pipeline.main(["--from-stage", "export", "--without-budget",
                                                 "--workdir", str(root / "work"), "--export", str(root / "export")]), 0)
             data = json.loads((root / "export/assets/usneseni/data/2022.json").read_text())
-            self.assertEqual(data[0]["classification"]["source"], "manual_override")
+            self.assertEqual(data[0]["classification"]["source"], "model")
             self.assertFalse((root / "export/rozpoctova-opatreni").exists())
 
 

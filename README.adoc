@@ -92,7 +92,6 @@ python pipeline.py --pdf pdf_dir/ --dry-run
 [source]
 ----
 resolution_classification/       ← produkční inference a adaptér pipeline
-resolution_classification/final-v1/ ← metadata přesně odpovídající releasu v1
 tests/test_classifier_bundle.py ← testy stažení, integrity a cache modelu
 tests/test_pipeline_classification.py ← testy zapojení do pipeline
 .cache/resolution-classifier/    ← stažené váhy (ignorované Gitem, cache v Actions)
@@ -123,20 +122,16 @@ probíhá lokálně. `--classifier-url URL` a `--classifier-sha256 SHA` umožňu
 zvolit jiný versionovaný balíček; `--classifier-cache DIR` mění umístění cache.
 Pro lokální archiv lze použít URL `file:///absolutni/cesta/model.tar.gz`.
 
-Publikovaný release v1 obsahuje pouze váhy. Jeho přesně odpovídající manifest,
-taxonomie, ruční opravy a licence jsou součástí pipeline v
-`resolution_classification/final-v1`. Jiné archivy musí být kompletní: `model/`
-s konfigurací, tokenizerem a váhami, `manifest.json`, `taxonomy/v7.md`,
-`data/manual-overrides-v1.jsonl`, `data/manual-review-required-v1.jsonl`,
-`MODEL_LICENSE.md` a `DATA_LICENSE.md`. Manifest určuje verzi modelu, taxonomie
-a seznam `labels`.
+Modelový archiv musí obsahovat `model/config.json`, `model/tokenizer.json`,
+`model/tokenizer_config.json` a `model/model.safetensors`. Kategorie určuje
+mapování `id2label` v konfiguraci modelu. Metadata z trénování ani ruční opravy
+pipeline nepoužívá.
 
-Každé usnesení v analyzovaných, resolvovaných a exportovaných ročních JSON datech obsahuje
-objekt `classification`: kategorii, verzi modelu a taxonomie, zdroj rozhodnutí,
-stav a původní skóre modelu. Ruční opravy z finálního balíčku mají přednost.
-Známé nejednoznačné případy mají `category: null` a stav
-`manual_review_required`. Chybějící predikce nebo zastaralé ruční rozhodnutí
-zastaví pipeline. Predikce a fronta pro kontrolu se ukládají do `work/classifier`.
+Každé usnesení v analyzovaných, resolvovaných a exportovaných ročních JSON datech
+obsahuje objekt `classification`: kategorii z modelu, zdrojové URL a SHA-256
+archivu, stav a skóre modelu. Chybějící nebo duplicitní predikce a nesoulad
+vstupního textu zastaví pipeline. Predikce a fronta pro kontrolu se ukládají do
+`work/classifier`. Nízké skóre kategorii nemění.
 Při novém běhu Enrich se klasifikace přepočítá; samostatný Export používá
 klasifikace uložené předchozím během Enrich.
 
@@ -399,8 +394,6 @@ Zpracuje syrové JSON z Extract.
     "category": "property",
     "source": "model",
     "status": "classified",
-    "model_version": "1.0.0",
-    "taxonomy_version": "v7",
     "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
     "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
@@ -423,7 +416,7 @@ Zpracuje syrové JSON z Extract.
 - extrahuje peněžní částky,
 - hrubě extrahuje reference (bez resolvování).
 - při běhu přes pipeline přiřadí tematickou kategorii, uchová původní predikci
-  a použije odpovídající ruční opravy a příznaky pro kontrolu.
+  a ověřené URL a SHA-256 modelového archivu.
 
 Ukázkové kategorie a skóre v JSON výše jsou ilustrativní. `classification` se
 přidává při spuštění přes `pipeline.py` nebo při zadání `--classifier-url`.
@@ -663,9 +656,9 @@ python phase5_static_export.py \
 
 - Extrakce a analýza uchovávají usnesení samostatně; další operace vytvářejí agregovaná data.
 - Strukturální parsování je oddělené od modelové tematické klasifikace.
-- Model, taxonomie a ruční rozhodnutí jsou versionované a auditovatelné.
+- Modelový archiv je identifikovaný URL a ověřeným SHA-256.
 - Každá operace je spustitelná samostatně.
-- Výstupy lze přegenerovat z PDF, modelového balíčku a ručních rozhodnutí.
+- Výstupy lze přegenerovat z PDF a modelového balíčku.
 
 == Poznámky
 

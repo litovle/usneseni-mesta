@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Local inference on Phase 1 text using an extracted classifier model.
 
-The URL download, checksum validation and manual decisions are handled by
-resolution_classification.runner. Softmax scores are uncalibrated model scores.
+The URL download and checksum validation are handled by
+resolution_classification.bundle. Softmax scores are uncalibrated model scores.
 """
 import argparse
 import json
