@@ -28,8 +28,9 @@ pipeline at Export reuses the existing Enrich decisions. Both yearly JSON
 and pages read the final budget-linked resolutions. With `--without-budget`,
 they read resolved resolutions instead and budget autodetection is disabled.
 The numbered script and storage names are retained internal conventions.
-The current website templates do not display thematic categories or category
-filters; categories are available in the exported JSON data.
+The website uses exported categories for a topic filter and labels. Topic-only
+browsing needs no search phrase. Missing categories remain searchable under all
+topics or the unclassified option. The browser never runs model inference.
 
 ## Runtime modules and files
 
@@ -71,7 +72,12 @@ For each resolution, `classification` records:
 
 Predictions are used directly without training-data overrides or predefined
 review flags. Low scores and margins order the review queue; they do not
-withhold a category. Scores are uncalibrated softmax values.
+withhold a category. Scores are uncalibrated softmax values. Confidence, runner-up confidence,
+margin and entropy in attached classifications are rounded to two decimal places.
+The ignored inference reports retain full precision. Categories are selected
+before rounding; review ordering also uses the original scores. Rounding reduces
+numerical diffs across devices but cannot guarantee identical results at rounding
+boundaries.
 
 The runner stops on missing or duplicate prediction IDs, stale source text,
 model categories outside the config's labels, invalid bundle files, or checksum
@@ -151,3 +157,16 @@ The workflows keep their existing scan/manual-input triggers and pull request
 flow. No classifier checkout or external inference API is used. Local changes
 to code and workflows take effect in hosted runs after being committed and
 pushed to the branch those workflows execute.
+
+## Website topic metadata
+
+Export writes `assets/usneseni/topics.json`, mapping model category identifiers
+to Czech labels. Labels are defined in `static_export/topics.py`; unknown model
+categories use their identifiers as fallback labels. This is presentation data,
+not a dependency on training taxonomy documents.
+
+Generated resolution front matter includes `classification_category` and
+`classification_label` when a category exists. The website layout uses these
+fields for a topic link; yearly JSON preserves the original classification
+object. Search stores a single topic in the `category` URL parameter, with
+`unclassified` representing records without a category.

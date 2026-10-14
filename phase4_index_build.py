@@ -23,6 +23,8 @@ import re
 from pathlib import Path
 from collections import defaultdict
 
+from static_export.topics import topic_catalog
+
 
 WORD_RE = re.compile(r"[a-z0-9]{3,}")
 
@@ -88,6 +90,11 @@ def main():
 
     (args.output / "index").mkdir(parents=True, exist_ok=True)
     (args.output / "data").mkdir(parents=True, exist_ok=True)
+
+    (args.output / "topics.json").write_text(
+        json.dumps(topic_catalog(all_data), ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
 
     for year, items in sorted(by_year.items()):
         index = build_index(items)

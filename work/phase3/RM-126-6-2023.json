@@ -15,20 +15,18 @@
     "66 Kč"
   ],
   "classification": {
-    "model_version": "1.0.0",
-    "taxonomy_version": "v7",
     "category": "administration",
     "source": "model",
     "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
       "category": "administration",
-      "confidence": 0.9979227185249329,
+      "confidence": 1.0,
       "second_category": "social",
-      "second_confidence": 0.0008548436453565955,
-      "margin": 0.9970678687095642,
-      "entropy": 0.017347950271143324
-    },
-    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.02
+    }
   }
 }

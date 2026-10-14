@@ -22,20 +22,18 @@
     "39.325 Kč"
   ],
   "classification": {
-    "model_version": "1.0.0",
-    "taxonomy_version": "v7",
     "category": "education",
     "source": "model",
     "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
       "category": "education",
-      "confidence": 0.9950163960456848,
+      "confidence": 1.0,
       "second_category": "waste",
-      "second_confidence": 0.0023746874649077654,
-      "margin": 0.9926416873931885,
-      "entropy": 0.03797514532771099
-    },
-    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+      "second_confidence": 0.0,
+      "margin": 0.99,
+      "entropy": 0.04
+    }
   }
 }

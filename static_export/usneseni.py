@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import json
 import re
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -8,6 +9,7 @@ from typing import Dict, List, Optional, Tuple
 from .format import budget_change_count_label, format_date
 from .paths import meeting_from_id, resolution_url, ro_url, rz_anchor, slug_from_id
 from .ro_summary import summarize_opatreni_plain
+from .topics import topic_category, topic_label
 
 
 def organ_label(code: str) -> str:
@@ -211,6 +213,10 @@ def write_resolution(
         f'organ: "{resolution.get("organ", "")}"\n'
         f'datum: "{resolution.get("datum", "")}"\n'
     )
+    category = topic_category(resolution)
+    if category:
+        frontmatter += f"classification_category: {json.dumps(category, ensure_ascii=False)}\n"
+        frontmatter += f"classification_label: {json.dumps(topic_label(category), ensure_ascii=False)}\n"
     if resolution.get("term_id"):
         frontmatter += f'term_id: "{resolution.get("term_id")}"\n'
     if resolution.get("term_label"):

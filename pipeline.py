@@ -12,8 +12,8 @@ parserů a pak spouští Enrich → Export. Publikování přes pull requesty z�
 v Actions. Historické názvy skriptů a work/phase1, phase3, phase4 se nemění.
 
 Model se načítá přes --classifier-url a --classifier-sha256; cache je určena
---classifier-cache. Ruční opravy mají přednost a nejednoznačné případy mají
-category=null a manual_review_required. Export zachovává classification.
+--classifier-cache. Kategorie pochází přímo z modelu, bez ručních oprav.
+Export zachovává classification a přidává české názvy témat pro web.
 
 Použití:
   python pipeline.py --pdf resources

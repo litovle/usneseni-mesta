@@ -131,7 +131,13 @@ Každé usnesení v analyzovaných, resolvovaných a exportovaných ročních JS
 obsahuje objekt `classification`: kategorii z modelu, zdrojové URL a SHA-256
 archivu, stav a skóre modelu. Chybějící nebo duplicitní predikce a nesoulad
 vstupního textu zastaví pipeline. Predikce a fronta pro kontrolu se ukládají do
-`work/classifier`. Nízké skóre kategorii nemění.
+`work/classifier`. Nízké skóre kategorii nemění. Confidence, skóre druhé
+kategorie, margin a entropie v klasifikaci jsou zaokrouhlené na dvě desetinná
+místa; ignorované reporty v `work/classifier` zachovávají plnou přesnost.
+Zaokrouhlení snižuje rozdíly mezi zařízeními, ale nemění výběr kategorie.
+Export zapisuje české názvy kategorií do `assets/usneseni/topics.json` a
+klasifikaci přidává do front matter stránek. Web používá data pro filtr Téma
+(včetně procházení bez textového dotazu) a štítky výsledků a detailů.
 Při novém běhu Enrich se klasifikace přepočítá; samostatný Export používá
 klasifikace uložené předchozím během Enrich.
 

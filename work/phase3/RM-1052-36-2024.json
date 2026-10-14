@@ -23,20 +23,18 @@
     "6.000 Kč"
   ],
   "classification": {
-    "model_version": "1.0.0",
-    "taxonomy_version": "v7",
     "category": "social",
     "source": "model",
     "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
       "category": "social",
-      "confidence": 0.9567696452140808,
+      "confidence": 0.96,
       "second_category": "administration",
-      "second_confidence": 0.037940267473459244,
-      "margin": 0.9188293814659119,
-      "entropy": 0.19740842035002654
-    },
-    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+      "second_confidence": 0.04,
+      "margin": 0.92,
+      "entropy": 0.2
+    }
   }
 }

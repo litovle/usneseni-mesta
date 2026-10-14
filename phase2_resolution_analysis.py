@@ -7,8 +7,8 @@ Analýza a tematická klasifikace usnesení (Enrich v pipeline.py).
 Samostatný běh bez --classifier-url provede strukturální analýzu.
 Pipeline předává URL finálního modelového balíčku, jeho SHA-256 a cestu k cache;
 pak se do každého výstupu přidá classification s kategorií, zdrojem, stavem,
-verzemi modelu/taxonomie a původními skóre modelu. Ruční opravy mají přednost;
-známé nejednoznačné případy mají category=null a manual_review_required.
+URL a SHA-256 modelového archivu a skóre modelu na dvě desetinná místa. Kategorie pochází
+přímo z modelu, bez ručních oprav nebo předem určených příznaků pro kontrolu.
 Inference používá stažené lokální váhy a nepotřebuje repozitář klasifikátoru.
 
 Zpracuje JSON z phase 1
