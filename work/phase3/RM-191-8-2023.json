@@ -97,20 +97,18 @@
   "references_out": [],
   "amounts": [],
   "classification": {
-    "model_version": "1.0.0",
-    "taxonomy_version": "v7",
     "category": "education",
     "source": "model",
     "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
       "category": "education",
-      "confidence": 0.9451156258583069,
+      "confidence": 0.95,
       "second_category": "culture",
-      "second_confidence": 0.04760486260056496,
-      "margin": 0.8975107669830322,
-      "entropy": 0.23794763910656758
-    },
-    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+      "second_confidence": 0.05,
+      "margin": 0.9,
+      "entropy": 0.24
+    }
   }
 }

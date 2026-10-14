@@ -20,20 +20,18 @@
   "references_out": [],
   "amounts": [],
   "classification": {
-    "model_version": "1.0.0",
-    "taxonomy_version": "v7",
     "category": "transport",
     "source": "model",
     "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
       "category": "transport",
-      "confidence": 0.9930176734924316,
+      "confidence": 0.99,
       "second_category": "sport",
-      "second_confidence": 0.003139232052490115,
-      "margin": 0.9898784160614014,
-      "entropy": 0.0498221323737725
-    },
-    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+      "second_confidence": 0.0,
+      "margin": 0.99,
+      "entropy": 0.05
+    }
   }
 }

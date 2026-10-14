@@ -72,7 +72,12 @@ For each resolution, `classification` records:
 
 Predictions are used directly without training-data overrides or predefined
 review flags. Low scores and margins order the review queue; they do not
-withhold a category. Scores are uncalibrated softmax values.
+withhold a category. Scores are uncalibrated softmax values. Confidence, runner-up confidence,
+margin and entropy in attached classifications are rounded to two decimal places.
+The ignored inference reports retain full precision. Categories are selected
+before rounding; review ordering also uses the original scores. Rounding reduces
+numerical diffs across devices but cannot guarantee identical results at rounding
+boundaries.
 
 The runner stops on missing or duplicate prediction IDs, stale source text,
 model categories outside the config's labels, invalid bundle files, or checksum

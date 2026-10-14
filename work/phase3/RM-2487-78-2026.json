@@ -11,20 +11,18 @@
   "references_out": [],
   "amounts": [],
   "classification": {
-    "model_version": "1.0.0",
-    "taxonomy_version": "v7",
     "category": "administration",
     "source": "model",
     "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
       "category": "administration",
-      "confidence": 0.6659936308860779,
+      "confidence": 0.67,
       "second_category": "culture",
-      "second_confidence": 0.317859411239624,
-      "margin": 0.34813421964645386,
-      "entropy": 0.7108232273504406
-    },
-    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+      "second_confidence": 0.32,
+      "margin": 0.35,
+      "entropy": 0.71
+    }
   }
 }

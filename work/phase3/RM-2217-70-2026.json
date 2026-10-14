@@ -11,20 +11,18 @@
   "references_out": [],
   "amounts": [],
   "classification": {
-    "model_version": "1.0.0",
-    "taxonomy_version": "v7",
     "category": "transport",
     "source": "model",
     "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
       "category": "transport",
-      "confidence": 0.4945426285266876,
+      "confidence": 0.49,
       "second_category": "environment",
-      "second_confidence": 0.4640278220176697,
-      "margin": 0.030514806509017944,
-      "entropy": 0.8416937552635665
-    },
-    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+      "second_confidence": 0.46,
+      "margin": 0.03,
+      "entropy": 0.84
+    }
   }
 }

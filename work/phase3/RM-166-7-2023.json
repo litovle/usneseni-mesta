@@ -21,20 +21,18 @@
   "references_out": [],
   "amounts": [],
   "classification": {
-    "model_version": "1.0.0",
-    "taxonomy_version": "v7",
     "category": "environment",
     "source": "model",
     "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
       "category": "environment",
-      "confidence": 0.7432942390441895,
+      "confidence": 0.74,
       "second_category": "administration",
-      "second_confidence": 0.20412839949131012,
-      "margin": 0.5391658544540405,
-      "entropy": 0.742681044457444
-    },
-    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+      "second_confidence": 0.2,
+      "margin": 0.54,
+      "entropy": 0.74
+    }
   }
 }

@@ -67,7 +67,8 @@ class ClassifierBundleTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             records = {"RM/1103/37/2024": {"text_raw": "text"}}
-            predictions = [{"id": "RM/1103/37/2024", "text": "text", "category": "sport", "confidence": 0.54}]
+            predictions = [{"id": "RM/1103/37/2024", "text": "text", "category": "sport", "confidence": 0.543216,
+                            "second_confidence": 0.234567, "margin": 0.308649, "entropy": 1.234567}]
             with patch("resolution_classification.runner.load_bundle", return_value=(root, {"id2label": {"0": "sport"}})), \
                     patch("resolution_classification.inference.run_classification", return_value=predictions):
                 decision = classify_records(records, root, root)["RM/1103/37/2024"]
@@ -75,6 +76,11 @@ class ClassifierBundleTest(unittest.TestCase):
                 self.assertEqual(decision["source"], "model")
                 self.assertEqual(decision["status"], "classified")
                 self.assertEqual(decision["prediction"]["confidence"], 0.54)
+                self.assertEqual(decision["prediction"]["second_confidence"], 0.23)
+                self.assertEqual(decision["prediction"]["margin"], 0.31)
+                self.assertEqual(decision["prediction"]["entropy"], 1.23)
+                self.assertEqual(predictions[0]["confidence"], 0.543216)
+                self.assertEqual(predictions[0]["margin"], 0.308649)
                 records["RM/1103/37/2024"]["text_raw"] = "changed"
                 with self.assertRaisesRegex(ValueError, "stale_prediction"):
                     classify_records(records, root, root)

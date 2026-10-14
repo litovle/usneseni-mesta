@@ -24,20 +24,18 @@
     "20.000 Kč"
   ],
   "classification": {
-    "model_version": "1.0.0",
-    "taxonomy_version": "v7",
     "category": "education",
     "source": "model",
     "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
     "prediction": {
       "category": "education",
-      "confidence": 0.9952651262283325,
+      "confidence": 1.0,
       "second_category": "waste",
-      "second_confidence": 0.0018157490994781256,
-      "margin": 0.9934493899345398,
-      "entropy": 0.036563250029406864
-    },
-    "model_url": "https://github.com/honza-kasik/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a"
+      "second_confidence": 0.0,
+      "margin": 0.99,
+      "entropy": 0.04
+    }
   }
 }

@@ -6,10 +6,15 @@ from . import DEFAULT_SHA256, DEFAULT_URL
 from .bundle import load_bundle
 
 
+SCORE_FIELDS = {"confidence", "second_confidence", "margin", "entropy"}
+
+
 def classify_records(records, phase1, output, url=DEFAULT_URL, checksum=DEFAULT_SHA256, cache=Path(".cache/resolution-classifier")):
     """Return model predictions by ID, preserving scores and release identity.
 
-    Coverage gaps and stale input text raise before analysis outputs are written.
+    Scores in attached classifications are rounded to two decimal places; the
+    ignored inference reports retain full precision. Coverage gaps and stale
+    input text raise before analysis outputs are written.
     Inference runs on CPU, CUDA or MPS when available.
     """
     from .inference import run_classification
@@ -33,6 +38,9 @@ def classify_records(records, phase1, output, url=DEFAULT_URL, checksum=DEFAULT_
             "status": "classified",
             "model_url": url,
             "model_sha256": checksum,
-            "prediction": {key: value for key, value in prediction.items() if key not in {"id", "text"}},
+            "prediction": {
+                key: round(value, 2) if key in SCORE_FIELDS else value
+                for key, value in prediction.items() if key not in {"id", "text"}
+            },
         }
     return result
