@@ -127,6 +127,7 @@ jobs:
                   "enrich",
                   "--to-stage",
                   "export",
+                  "--incremental-classification",
               ],
               check=True,
           )
