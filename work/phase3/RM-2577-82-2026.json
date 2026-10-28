@@ -1,0 +1,28 @@
+{
+  "id": "RM/2577/82/2026",
+  "datum": "2026-10-22",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": "předloženou Smlouvu o realizaci přeložky distribučního zařízení ČEZ mezi městem\nLitovel a ČEZ Distribuce, a. s. v rámci akce Litovel - ul. Žerotínova mezi ul. Gemerská a Sušilova.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "classification": {
+    "category": "transport",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "prediction": {
+      "category": "transport",
+      "confidence": 0.9,
+      "second_category": "property",
+      "second_confidence": 0.07,
+      "margin": 0.83,
+      "entropy": 0.38
+    }
+  }
+}

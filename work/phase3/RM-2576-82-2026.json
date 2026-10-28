@@ -1,0 +1,28 @@
+{
+  "id": "RM/2576/82/2026",
+  "datum": "2026-10-22",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": "předložený Dodatek č. 1 k Nájemní smlouvě uzavřené mezi městem Litovel\na manželi V. a V. Z. dne 27. 3. 2025 na pronájem části pozemku parc.č. 59/1, k.ú. Rozvadovice.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "prediction": {
+      "category": "property",
+      "confidence": 1.0,
+      "second_category": "transport",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.01
+    }
+  }
+}

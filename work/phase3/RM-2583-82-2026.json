@@ -1,0 +1,38 @@
+{
+  "id": "RM/2583/82/2026",
+  "datum": "2026-10-22",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "bere na vědomí",
+    "schvaluje"
+  ],
+  "subject": null,
+  "items": [
+    {
+      "label": "a",
+      "text": "bere na vědomí důvodovou zprávu včetně příloh."
+    },
+    {
+      "label": "b",
+      "text": "schvaluje dle důvodové zprávy a příloh rozpočtové změny 179/2026/RM až 181/2026/RM."
+    }
+  ],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "classification": {
+    "category": "finance",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "prediction": {
+      "category": "finance",
+      "confidence": 1.0,
+      "second_category": "culture",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.02
+    }
+  }
+}
