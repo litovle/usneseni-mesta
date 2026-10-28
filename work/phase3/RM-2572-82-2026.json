@@ -1,0 +1,28 @@
+{
+  "id": "RM/2572/82/2026",
+  "datum": "2026-10-22",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": "zveřejnění adresného záměru pronájmu nebytových prostor sloužících k podnikání\nza účelem poskytování zdravotních služeb v oboru praktického lékařství pro děti a dorost, umístěných v I. NP\nbudovy č.p. 664/1, způsob využití: stavba občanského vybavení (Poliklinika), stojící na pozemku parc.č. st. 1 a st.\n118 v k.ú. Litovel, ul. Kollárova, o celkové výměře 41,25 m², společnosti Pediatrie Litovel s.r.o., IČO 24653951.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "prediction": {
+      "category": "property",
+      "confidence": 1.0,
+      "second_category": "transport",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.01
+    }
+  }
+}

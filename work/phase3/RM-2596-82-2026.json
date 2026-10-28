@@ -1,0 +1,47 @@
+{
+  "id": "RM/2596/82/2026",
+  "datum": "2026-10-22",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": "v souladu s ust. § 39, odst.1., zákona č.128/2000 Sb. o obcích, v platném znění, dle\nzveřejněného záměru města, na pronájem části pozemku, parcela číslo 1573/1, ostatní plocha/ostatní komunikace,\nv k.ú Litovel, předložené Smlouvy o nájmu pozemku (krátkodobý pronájem), na období od 15.11.2026\ndo15.1.2027, za cenu nájemného 125 Kč/m2/měsíc. Povinnost odvodu dle OZV 1/2024 o místním poplatku za\nužívání veřejného prostranství zůstává nedotčena. Spotřeba elektrické energie bude všem stánkařům přeúčtována\ndle skutečné spotřeby z odpočtových hodin, umístěných v každém stánku.\nJedná se o tyto smlouvy",
+  "items": [
+    {
+      "label": "a",
+      "text": "Smlouva o nájmu pozemku, krátkodobý pronájem, uzavřenou mezi městem Litovel a firmou STAVBEX s.r.o.\nIČ: 07890281, 40 m2, za účelem umístění vlastního stánku s odpočtovými hodinami, prodej vánočních punčů."
+    },
+    {
+      "label": "b",
+      "text": "Smlouva o nájmu pozemku, krátkodobý pronájem, uzavřenou mezi městem Litovel a panem J. M. ze Smržic,\npodnikající fyzická osoba, 16 m2, za účelem umístění vlastního stánku s odpočtovými hodinami, prodej vánočních\npunčů."
+    },
+    {
+      "label": "c",
+      "text": "Smlouva o nájmu pozemku, krátkodobý pronájem, uzavřenou mezi městem Litovel a panem S. Š. z Olomouce,\npodnikající fyzická osoba, 20 m2, za účelem umístění vlastního stánku s odpočtovými hodinami, prodej vánočních\npunčů."
+    },
+    {
+      "label": "d",
+      "text": "Smlouva o nájmu pozemku, krátkodobý pronájem, uzavřenou mezi městem Litovel a panem J. B. z Chomoutova,"
+    }
+  ],
+  "tail": "podnikající fyzická osoba, 20 m2, za účelem umístění vlastního stánku s odpočtovými hodinami, prodej občerstvení,\ngrilované klobásy, guláše apod.\nV době, kdy bude Městský klub Litovel pořádat kulturní vánoční akce na náměstí Přemysla Otakara v Litovli, se\ntyto stánky nevztahují do výběru poplatků za pronájem, ze strany Městského klubu Litovel nebude všem uvedeným\nstánkařům účtován ani nájem za umístění stánků a ani částka za spotřebu elektrické energie.\nViktor Kohout v. r. Mgr. Lubomír Broza v. r.\nstarosta města místostarosta města",
+  "references_out": [],
+  "amounts": [
+    "125 Kč"
+  ],
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "prediction": {
+      "category": "property",
+      "confidence": 1.0,
+      "second_category": "education",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.01
+    }
+  }
+}

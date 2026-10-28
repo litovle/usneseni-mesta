@@ -1,0 +1,42 @@
+{
+  "id": "RM/2595/82/2026",
+  "datum": "2026-10-22",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "bere na vědomí",
+    "schvaluje"
+  ],
+  "subject": null,
+  "items": [
+    {
+      "label": "a",
+      "text": "bere na vědomí důvodovou zprávu."
+    },
+    {
+      "label": "b",
+      "text": "schvaluje dle předložené písemné zprávy administrátora výběrového řízení společnosti ASHPA oběhová\nhospodářství, s.r.o. výběr dodavatele zakázky: Kompostárna Litovel - rozšíření společnost Spro stavby, obchod,\ndopravy a služby, s.r.o. se sídlem Dolní Novosadská 516/84, 779 00 Olomouc."
+    },
+    {
+      "label": "c",
+      "text": "schvaluje uzavření předložené Smlouvy o dílo (ve lhůtě stanovené zákonem č. 134/2016 Sb., o zadávání\nveřejných zakázek v platném znění a v souladu s § 124 zákona) mezi městem Litovel a společností Spro stavby,\nobchod, dopravu a služby, s.r.o. se sídlem Dolní Novosadská 516/84, 779 00 Olomouc."
+    }
+  ],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "classification": {
+    "category": "waste",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "prediction": {
+      "category": "waste",
+      "confidence": 0.96,
+      "second_category": "education",
+      "second_confidence": 0.03,
+      "margin": 0.93,
+      "entropy": 0.2
+    }
+  }
+}
