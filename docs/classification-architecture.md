@@ -26,7 +26,9 @@ Enrich analyzes the complete accumulated raw corpus on each run. In GitHub Actio
 `text_raw` SHA-256, model URL and model SHA-256 match. New or changed resolutions
 are classified; when none need classification, the model is not loaded. Existing
 classifications without `text_sha256` are classified once on the first incremental
-run. Without the flag, all resolutions are classified. Enrich attaches a
+run. The scheduled notice sync also checks stored classifications, so a model
+change triggers Enrich and Export even when no new PDF was found. Without the
+flag, all resolutions are classified. Enrich attaches a
 `classification` object to each analyzed resolution. Reference resolution,
 budget linking and yearly JSON export preserve that object. Starting the
 pipeline at Export reuses the existing Enrich decisions. Both yearly JSON

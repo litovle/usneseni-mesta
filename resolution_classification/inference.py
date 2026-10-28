@@ -38,6 +38,11 @@ def load_phase1(path: Path):
     return rows
 
 
+def select_phase1_rows(path: Path, selected_ids=None):
+    rows = load_phase1(path)
+    return rows if selected_ids is None else [row for row in rows if row["id"] in selected_ids]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument(
@@ -70,9 +75,7 @@ def run_classification(model_path, phase1, output, batch_size=32, include_probab
     """
     if batch_size < 1:
         raise ValueError("batch_size must be positive")
-    rows = load_phase1(phase1)
-    if selected_ids is not None:
-        rows = [row for row in rows if row["id"] in selected_ids]
+    rows = select_phase1_rows(phase1, selected_ids)
     if not rows:
         raise ValueError(f"No resolutions found in {phase1}")
     print(f"Resolutions: {len(rows)}")

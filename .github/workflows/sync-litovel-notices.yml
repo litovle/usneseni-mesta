@@ -61,12 +61,19 @@ jobs:
           fi
           python tools/sync_litovel_notices.py "${args[@]}"
 
-      - name: Stop when nothing new was found
-        if: steps.scan.outputs.found != 'true'
-        run: echo "No new Litovel resolution or budget-change PDFs found."
+      - name: Check classification updates
+        id: classification
+        working-directory: usneseni-mesta
+        run: |
+          python -m tools.check_classification_updates \
+            --model-url "$CLASSIFIER_URL" --model-sha256 "$CLASSIFIER_SHA256"
+
+      - name: Stop when no updates were found
+        if: steps.scan.outputs.found != 'true' && steps.classification.outputs.changed != 'true'
+        run: echo "No new PDFs or classification updates found."
 
       - name: Checkout litovle.cz
-        if: steps.scan.outputs.found == 'true' && steps.scan.outputs.dry_run != 'true'
+        if: (steps.scan.outputs.found == 'true' || steps.classification.outputs.changed == 'true') && steps.scan.outputs.dry_run != 'true'
         uses: actions/checkout@v5
         with:
           repository: litovle/litovle.cz
@@ -74,14 +81,14 @@ jobs:
           path: litovle.cz
 
       - name: Cache final resolution classifier
-        if: steps.scan.outputs.found == 'true' && steps.scan.outputs.dry_run != 'true'
+        if: (steps.scan.outputs.found == 'true' || steps.classification.outputs.changed == 'true') && steps.scan.outputs.dry_run != 'true'
         uses: actions/cache@v5
         with:
           path: usneseni-mesta/.cache/resolution-classifier
           key: ${{ runner.os }}-resolution-classifier-model-v2-${{ env.CLASSIFIER_SHA256 }}
 
       - name: Parse new PDFs and regenerate export
-        if: steps.scan.outputs.found == 'true' && steps.scan.outputs.dry_run != 'true'
+        if: (steps.scan.outputs.found == 'true' || steps.classification.outputs.changed == 'true') && steps.scan.outputs.dry_run != 'true'
         working-directory: usneseni-mesta
         run: |
           python - <<'PY'
@@ -134,18 +141,22 @@ jobs:
           PY
 
       - name: Build pull request body output
-        if: steps.scan.outputs.found == 'true'
+        if: steps.scan.outputs.found == 'true' || steps.classification.outputs.changed == 'true'
         id: pr_body
         working-directory: usneseni-mesta
         run: |
           {
             echo "body<<EOF"
             cat .litovel-sync-pr-body.md
+            if [ "${{ steps.classification.outputs.changed }}" = "true" ]; then
+              echo
+              echo "Classification updates required for the current model."
+            fi
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
       - name: Create usneseni-mesta pull request
-        if: steps.scan.outputs.found == 'true' && steps.scan.outputs.dry_run != 'true'
+        if: (steps.scan.outputs.found == 'true' || steps.classification.outputs.changed == 'true') && steps.scan.outputs.dry_run != 'true'
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.LITOVLE_CZ_PAT }}
@@ -163,7 +174,7 @@ jobs:
             work
 
       - name: Create litovle.cz pull request
-        if: steps.scan.outputs.found == 'true' && steps.scan.outputs.dry_run != 'true'
+        if: (steps.scan.outputs.found == 'true' || steps.classification.outputs.changed == 'true') && steps.scan.outputs.dry_run != 'true'
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.LITOVLE_CZ_PAT }}
