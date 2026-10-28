@@ -16,6 +16,7 @@
     "status": "classified",
     "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
     "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "de5b9159b48dc1ada4afb1c4167cfe8d1e47a1b9e0738beb91b4eab429f268c9",
     "prediction": {
       "category": "infrastructure",
       "confidence": 1.0,

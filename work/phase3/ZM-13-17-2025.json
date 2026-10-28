@@ -39,6 +39,7 @@
     "status": "classified",
     "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
     "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "16add166b0574f5861ef0a74ad81be01dd141b5aaba7e7e658b069211caf4982",
     "prediction": {
       "category": "finance",
       "confidence": 1.0,

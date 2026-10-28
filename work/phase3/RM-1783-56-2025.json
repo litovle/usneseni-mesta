@@ -16,6 +16,7 @@
     "status": "classified",
     "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
     "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "5875c2a0fdc2bd6e9a5284248ac37a2a7cf2b50f4443e03eae3116c4050c486b",
     "prediction": {
       "category": "transport",
       "confidence": 0.99,
