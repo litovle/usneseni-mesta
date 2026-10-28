@@ -38,6 +38,11 @@ def load_phase1(path: Path):
     return rows
 
 
+def select_phase1_rows(path: Path, selected_ids=None):
+    rows = load_phase1(path)
+    return rows if selected_ids is None else [row for row in rows if row["id"] in selected_ids]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument(
@@ -62,7 +67,7 @@ def main():
     run_classification(args.model, args.phase1, args.output, args.batch_size, args.include_probabilities)
 
 
-def run_classification(model_path, phase1, output, batch_size=32, include_probabilities=False):
+def run_classification(model_path, phase1, output, batch_size=32, include_probabilities=False, selected_ids=None):
     """Return raw predictions and write counts plus a low-margin review queue.
 
     Inputs are Phase 1 JSON files with id and text_raw. All model/tokenizer files
@@ -70,7 +75,7 @@ def run_classification(model_path, phase1, output, batch_size=32, include_probab
     """
     if batch_size < 1:
         raise ValueError("batch_size must be positive")
-    rows = load_phase1(phase1)
+    rows = select_phase1_rows(phase1, selected_ids)
     if not rows:
         raise ValueError(f"No resolutions found in {phase1}")
     print(f"Resolutions: {len(rows)}")
@@ -142,12 +147,19 @@ def run_classification(model_path, phase1, output, batch_size=32, include_probab
             if done % 320 == 0 or done == len(rows):
                 print(f"  {done}/{len(rows)}")
 
+    write_reports(results, model_path, phase1, output)
+    return results
+
+
+def write_reports(results, model_path, phase1, output):
+    """Write reports for predictions made in this run (possibly none)."""
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(
-        "\n".join(json.dumps(r, ensure_ascii=False) for r in results) + "\n",
+        "\n".join(json.dumps(r, ensure_ascii=False) for r in results) + ("\n" if results else ""),
         encoding="utf-8",
     )
 
+    counts = Counter(row["category"] for row in results)
     summary = {
         "model": str(model_path),
         "phase1": str(phase1),
@@ -171,7 +183,7 @@ def run_classification(model_path, phase1, output, batch_size=32, include_probab
     review = sorted(results, key=lambda r: (r["margin"], r["confidence"]))
     review_path = output.with_name("review-queue.jsonl")
     review_path.write_text(
-        "\n".join(json.dumps(r, ensure_ascii=False) for r in review) + "\n",
+        "\n".join(json.dumps(r, ensure_ascii=False) for r in review) + ("\n" if review else ""),
         encoding="utf-8",
     )
 
@@ -182,7 +194,6 @@ def run_classification(model_path, phase1, output, batch_size=32, include_probab
     print(f"\nClassifications: {output}")
     print(f"Summary:         {summary_path}")
     print(f"Review queue:    {review_path}")
-    return results
 
 
 if __name__ == "__main__":

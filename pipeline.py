@@ -86,7 +86,8 @@ def operation(name, command, *outputs, recursive_pdf=False):
 
 def build_stages(pdf_dir, ro_pdf_dir, workdir, export_dir, terms=None,
                  classifier_url=DEFAULT_URL, classifier_sha256=DEFAULT_SHA256,
-                 classifier_cache=Path(".cache/resolution-classifier"), without_budget=False):
+                 classifier_cache=Path(".cache/resolution-classifier"), without_budget=False,
+                 incremental_classification=False):
     """Group existing scripts under three stages; keep their storage contracts.
 
     Both export consumers read the same final resolution dataset. Building this
@@ -112,7 +113,9 @@ def build_stages(pdf_dir, ro_pdf_dir, workdir, export_dir, terms=None,
                   [sys.executable, "phase2_resolution_analysis.py", "--input", str(raw),
                    "--output", str(analyzed), "--classifier-url", classifier_url,
                    "--classifier-sha256", classifier_sha256, "--classifier-cache", str(classifier_cache),
-                   "--classification-output", str(workdir / "classifier")], (analyzed, "json_dir")),
+                   "--classification-output", str(workdir / "classifier")]
+                  + (["--incremental-classification"] if incremental_classification else []),
+                  (analyzed, "json_dir")),
         operation("Resolvování referencí a volebních období",
                   [sys.executable, "phase3_resolve_references.py", "--input", str(analyzed),
                    "--output", str(resolved)] + (["--terms", str(terms)] if terms else []),
@@ -216,6 +219,8 @@ def parse_args(argv=None):
     parser.add_argument("--classifier-url", default=DEFAULT_URL, help="URL versionovaného modelu")
     parser.add_argument("--classifier-sha256", default=DEFAULT_SHA256, help="Očekávaný SHA-256 archivu modelu")
     parser.add_argument("--classifier-cache", type=Path, default=Path(".cache/resolution-classifier"))
+    parser.add_argument("--incremental-classification", action="store_true",
+                        help="Přepočítat pouze nová nebo změněná usnesení")
     args = parser.parse_args(argv)
     if STAGES.index(args.from_stage) > STAGES.index(args.to_stage):
         parser.error("--from-stage nesmí následovat po --to-stage")
@@ -225,7 +230,8 @@ def parse_args(argv=None):
 def main(argv=None):
     args = parse_args(argv)
     stages = build_stages(args.pdf, args.ro_pdf, args.workdir, args.export, args.terms,
-                          args.classifier_url, args.classifier_sha256, args.classifier_cache, args.without_budget)
+                          args.classifier_url, args.classifier_sha256, args.classifier_cache,
+                          args.without_budget, args.incremental_classification)
     selected = stages[STAGES.index(args.from_stage):STAGES.index(args.to_stage) + 1]
     print(f"Pipeline: {args.from_stage} → {args.to_stage}", flush=True)
     started = time.monotonic()

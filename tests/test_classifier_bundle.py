@@ -102,6 +102,49 @@ class ClassifierBundleTest(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "exactly once"):
                     classify_records({"a": {"id": "a", "text_raw": "text"}}, root, root)
 
+    def test_incremental_reuses_only_matching_text_and_model(self):
+        from resolution_classification.runner import classify_records, text_hash
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            records = {"a": {"text_raw": "old"}, "b": {"text_raw": "new"}}
+            old = {"category": "sport", "source": "model", "status": "classified",
+                   "model_url": "model", "model_sha256": "checksum",
+                   "text_sha256": text_hash("old"),
+                   "prediction": {"category": "sport", "confidence": 0.8,
+                                  "second_category": "culture", "second_confidence": 0.1,
+                                  "margin": 0.7, "entropy": 0.2}}
+            predictions = [{"id": "b", "text": "new", "category": "sport", "confidence": 0.9}]
+            with patch("resolution_classification.runner.load_bundle",
+                       return_value=(root, {"id2label": {"0": "sport"}})) as load, \
+                 patch("resolution_classification.inference.run_classification",
+                       return_value=predictions) as infer:
+                result = classify_records(records, root, root, "model", "checksum", previous={"a": old})
+                self.assertEqual(result["a"], old)
+                self.assertEqual(result["b"]["text_sha256"], text_hash("new"))
+                self.assertEqual(infer.call_args.kwargs["selected_ids"], {"b"})
+                load.assert_called_once()
+
+                infer.reset_mock()
+                load.reset_mock()
+                classify_records({"a": records["a"]}, root, root, "model", "checksum", previous={"a": old})
+                infer.assert_not_called()
+                load.assert_not_called()
+                self.assertEqual((root / "classifications.jsonl").read_text(), "")
+
+    def test_changed_text_and_model_require_inference(self):
+        from resolution_classification.runner import reusable, text_hash
+        record = {"text_raw": "old"}
+        old = {"category": "sport", "source": "model", "status": "classified",
+               "model_url": "model", "model_sha256": "checksum",
+               "text_sha256": text_hash("old"),
+               "prediction": {"category": "sport", "confidence": 0.8,
+                              "second_category": "culture", "second_confidence": 0.1,
+                              "margin": 0.7, "entropy": 0.2}}
+        self.assertTrue(reusable(old, record, "model", "checksum"))
+        self.assertFalse(reusable(old, {"text_raw": "changed"}, "model", "checksum"))
+        self.assertFalse(reusable(old, record, "model", "new-checksum"))
+        self.assertFalse(reusable({**old, "prediction": {}}, record, "model", "checksum"))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -381,6 +381,8 @@ def main():
     ap.add_argument("--classifier-sha256", help="Očekávaný SHA-256 modelového balíčku.")
     ap.add_argument("--classifier-cache", type=Path, default=Path(".cache/resolution-classifier"))
     ap.add_argument("--classification-output", type=Path, help="Adresář predikcí a fronty pro kontrolu.")
+    ap.add_argument("--incremental-classification", action="store_true",
+                    help="Znovu použít platné klasifikace z existujících výstupů.")
     args = ap.parse_args()
 
     classifications = {}
@@ -389,15 +391,26 @@ def main():
         from resolution_classification.runner import classify_records
 
         records = {}
+        previous = {}
         for p in sorted(args.input.glob("*.json")):
             raw = json.loads(p.read_text(encoding="utf-8"))
             if raw["id"] in records:
                 ap.error(f"Duplicitní ID usnesení: {raw['id']}")
             records[raw["id"]] = raw
+            if args.incremental_classification:
+                old = args.output / p.name
+                if old.is_file():
+                    try:
+                        saved = json.loads(old.read_text(encoding="utf-8"))
+                        if saved.get("id") == raw["id"]:
+                            previous[raw["id"]] = saved.get("classification")
+                    except (ValueError, OSError, AttributeError):
+                        pass
         classifications = classify_records(
             records, args.input,
             args.classification_output or args.output.parent / "classifier",
             args.classifier_url, args.classifier_sha256 or DEFAULT_SHA256, args.classifier_cache,
+            **({"previous": previous} if args.incremental_classification else {}),
         )
 
     args.output.mkdir(parents=True, exist_ok=True)
