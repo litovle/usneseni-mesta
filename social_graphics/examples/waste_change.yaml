@@ -1,0 +1,9 @@
+type: waste_change
+place: LITOVEL
+title_lines:
+  - Svoz papíru
+  - 26. října
+  - přesunut na
+  - 28. října
+accent_lines: [4]
+body: Aktuální informace najdete v aplikaci Svoz odpadu Litovel nebo na svoz.litovle.cz

@@ -1,0 +1,24 @@
+# Vyžaduje export/assets/usneseni/data/2026.json v nadřazeném projektu.
+# Bez icon se použije kategorie klasifikátoru; icon ji může přepsat.
+type: council_summary
+meeting:
+  body: Rada města Litovel
+  session_label: 81. schůze
+  subtitle: Co zaujalo tentokrát
+  footer: Podrobnosti a odkazy v textu příspěvku
+items:
+  - resolution_id: RM/2554/81/2026
+    icon: construction # klasifikátor: environment; zde jde o stavební projekt
+    title: Revitalizace Novosad
+    text: Rada schválila administraci nového výběrového řízení.
+  - resolution_id: RM/2563/81/2026
+    icon: equipment # klasifikátor: administration; věcně jde o stroj
+    title: Strojní vybavení za 1,8 milionu Kč
+    text: Rada souhlasila s pořízením nového strojního vybavení.
+  - resolution_id: RM/2555/81/2026
+    icon: water # klasifikátor: infrastructure; konkrétně kanalizace a voda
+    title: Kanalizace v Savíně a Nové Vsi
+    text: Rada schválila dodatky ke smlouvám na infrastrukturní stavby.
+  - resolution_id: RM/2568/81/2026
+    title: Komunikace v Unčovicích
+    text: Rada schválila druhý dodatek ke smlouvě na rekonstrukci.

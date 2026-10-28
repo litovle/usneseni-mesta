@@ -1,0 +1,15 @@
+{
+  "type": "council_summary",
+  "meeting": {
+    "body": "Zastupitelstvo města Litovel",
+    "session_label": "22. zasedání",
+    "subtitle": "Co zaujalo tentokrát",
+    "footer": "Podrobnosti a odkazy v textu příspěvku"
+  },
+  "items": [
+    {"icon": "school", "title": "Školní projekty", "text": "Přehled schválených kroků v oblasti školství."},
+    {"icon": "bridge", "title": "Veřejná infrastruktura", "text": "Nové informace o přípravě městských staveb."},
+    {"icon": "sport", "title": "Podpora sportu", "text": "Zastupitelé projednali podporu místních klubů."}
+  ],
+  "branding": {"top_label": "Z jednání zastupitelstva"}
+}
