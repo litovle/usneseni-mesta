@@ -1,0 +1,21 @@
+type: council_summary
+meeting:
+  body: Rada města Litovel
+  session_label: 81. schůze
+  subtitle: Co zaujalo tentokrát
+  footer: Podrobnosti a odkazy v textu příspěvku
+items:
+  - icon: construction
+    title: Revitalizace Novosad
+    text: Rada schválila administraci nového výběrového řízení.
+  - icon: coins
+    title: Strojní vybavení za 1,8 milionu Kč
+    text: Rada souhlasila s pořízením nového strojního vybavení.
+  - icon: water
+    title: Kanalizace v Savíně a Nové Vsi
+    text: Rada schválila dodatky ke smlouvám na infrastrukturní stavby.
+  - icon: road
+    title: Komunikace v Unčovicích
+    text: Rada schválila druhý dodatek ke smlouvě na rekonstrukci.
+branding:
+  top_label: null
