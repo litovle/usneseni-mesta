@@ -16,6 +16,7 @@
     "status": "classified",
     "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
     "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "e6f678103b468a0434710fd41fad6ee6e0b4b928bc9195057ff5a066d6d4502a",
     "prediction": {
       "category": "property",
       "confidence": 1.0,

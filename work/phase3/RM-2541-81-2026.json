@@ -28,6 +28,7 @@
     "status": "classified",
     "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
     "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "375651d349b92259e520a55d72f994b6bf5ab38c90fd0e91efe5c58912ddc436",
     "prediction": {
       "category": "culture",
       "confidence": 0.46,

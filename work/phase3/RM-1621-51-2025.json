@@ -16,6 +16,7 @@
     "status": "classified",
     "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
     "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "36253b598341e3e88d72f6e6b5530a0ded5dad35910025cf2593e76fbb9195c1",
     "prediction": {
       "category": "sport",
       "confidence": 0.99,
