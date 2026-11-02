@@ -38118,6 +38118,92 @@
     "plain_title": "M.B. - dar na organizační zajištění nohejbalového turnaje, který se bude konat dne 3.10.2026 v Nasobůrkách",
     "affected_place": "dar na organizační zajištění nohejbalového turnaje, který se bude konat dne 3.10.2026 v Nasobůrkách"
   },
+  "179/2026/RM": {
+    "opatreni_id": "RO/18/2026",
+    "rows": [
+      {
+        "section_type": "vydaje",
+        "row_number": 1,
+        "amount": "-344 030,00",
+        "amount_value": -344030.0,
+        "description": "Chořelice - oprava kaple (RZ 179/2026/RM"
+      },
+      {
+        "section_type": "vydaje",
+        "row_number": 2,
+        "amount": "268 576,00",
+        "amount_value": 268576.0,
+        "description": "Chořelice - nový herní prvek na dětské hřiště (RZ 179/2026/RM"
+      },
+      {
+        "section_type": "vydaje",
+        "row_number": 3,
+        "amount": "75 454,00",
+        "amount_value": 75454.0,
+        "description": "Chořelice - nový herní prvek na sportoviště (RZ 179/2026/RM"
+      }
+    ],
+    "resolution_ids": [
+      "RM/2583/82/2026"
+    ],
+    "plain_title": "Chořelice - nový herní prvek na dětské hřiště",
+    "affected_place": "Chořelice"
+  },
+  "180/2026/RM": {
+    "opatreni_id": "RO/18/2026",
+    "rows": [
+      {
+        "section_type": "vydaje",
+        "row_number": 4,
+        "amount": "-17 600,00",
+        "amount_value": -17600.0,
+        "description": "Nová Ves - drobná vydání OV a opravy + DPP (RZ 180/2026/RM"
+      },
+      {
+        "section_type": "vydaje",
+        "row_number": 5,
+        "amount": "-6 465,00",
+        "amount_value": -6465.0,
+        "description": "Nová Ves - drobná vydání OV a opravy + DPP (RZ 180/2026/RM"
+      },
+      {
+        "section_type": "vydaje",
+        "row_number": 6,
+        "amount": "24 065,00",
+        "amount_value": 24065.0,
+        "description": "dětská hřiště - stroje, přístroje, zařízení (RZ 180/2026/RM"
+      }
+    ],
+    "resolution_ids": [
+      "RM/2583/82/2026"
+    ],
+    "plain_title": "dětská hřiště - stroje, přístroje, zařízení",
+    "affected_place": "dětská hřiště / stroje, přístroje, zařízení"
+  },
+  "181/2026/RM": {
+    "opatreni_id": "RO/18/2026",
+    "rows": [
+      {
+        "section_type": "vydaje",
+        "row_number": 7,
+        "amount": "-17 235,00",
+        "amount_value": -17235.0,
+        "description": "Savín - lavičky na veřejné prostranství (RZ 181/2026/RM"
+      },
+      {
+        "section_type": "vydaje",
+        "row_number": 8,
+        "amount": "17 235,00",
+        "amount_value": 17235.0,
+        "description": "Savín - KD - termostatické hlavice pro radiátorový systém a další údržba (RZ 181/2026/RM"
+      }
+    ],
+    "resolution_ids": [
+      "RM/2583/82/2026"
+    ],
+    "plain_title": "Savín - KD - termostatické hlavice pro radiátorový systém a další údržba",
+    "affected_place": "Savín"
+  },
   "1/2026/ZM": {
     "opatreni_id": "RO/1/2026",
     "rows": [

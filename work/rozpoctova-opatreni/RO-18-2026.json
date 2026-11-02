@@ -1,0 +1,140 @@
+{
+  "id": "RO/18/2026",
+  "number": 18,
+  "year": 2026,
+  "approval_date": "2026-10-22",
+  "approved_by": "Radou města Litovel",
+  "organ": "RM",
+  "meeting": {
+    "number": 82,
+    "type": "schůzi",
+    "date": "2026-10-22"
+  },
+  "source_resolutions": [
+    "RM/2583/82/2026"
+  ],
+  "budget_change_ids": [
+    "179/2026/RM",
+    "180/2026/RM",
+    "181/2026/RM"
+  ],
+  "sections": [
+    {
+      "type": "vydaje",
+      "label": "Změny ve výdajích",
+      "rows": [
+        {
+          "budget_change_id": "179/2026/RM",
+          "raw_codes": [
+            "3326",
+            "5171",
+            "307",
+            "2 030 000"
+          ],
+          "amount": "-344 030,00",
+          "amount_value": -344030.0,
+          "description": "Chořelice - oprava kaple (RZ 179/2026/RM"
+        },
+        {
+          "budget_change_id": "179/2026/RM",
+          "raw_codes": [
+            "3421",
+            "6122",
+            "307",
+            "2 033 470"
+          ],
+          "amount": "268 576,00",
+          "amount_value": 268576.0,
+          "description": "Chořelice - nový herní prvek na dětské hřiště (RZ 179/2026/RM"
+        },
+        {
+          "budget_change_id": "179/2026/RM",
+          "raw_codes": [
+            "3412",
+            "6122",
+            "307",
+            "2 033 470"
+          ],
+          "amount": "75 454,00",
+          "amount_value": 75454.0,
+          "description": "Chořelice - nový herní prvek na sportoviště (RZ 179/2026/RM"
+        },
+        {
+          "budget_change_id": "180/2026/RM",
+          "raw_codes": [
+            "3429",
+            "5169",
+            "303",
+            "2 030 000"
+          ],
+          "amount": "-17 600,00",
+          "amount_value": -17600.0,
+          "description": "Nová Ves - drobná vydání OV a opravy + DPP (RZ 180/2026/RM"
+        },
+        {
+          "budget_change_id": "180/2026/RM",
+          "raw_codes": [
+            "3429",
+            "5139",
+            "303",
+            "2 030 000"
+          ],
+          "amount": "-6 465,00",
+          "amount_value": -6465.0,
+          "description": "Nová Ves - drobná vydání OV a opravy + DPP (RZ 180/2026/RM"
+        },
+        {
+          "budget_change_id": "180/2026/RM",
+          "raw_codes": [
+            "3421",
+            "6122",
+            "3 003 470"
+          ],
+          "amount": "24 065,00",
+          "amount_value": 24065.0,
+          "description": "dětská hřiště - stroje, přístroje, zařízení (RZ 180/2026/RM"
+        },
+        {
+          "budget_change_id": "181/2026/RM",
+          "raw_codes": [
+            "3639",
+            "5137",
+            "311",
+            "2 030 000"
+          ],
+          "amount": "-17 235,00",
+          "amount_value": -17235.0,
+          "description": "Savín - lavičky na veřejné prostranství (RZ 181/2026/RM"
+        },
+        {
+          "budget_change_id": "181/2026/RM",
+          "raw_codes": [
+            "3392",
+            "5171",
+            "311",
+            "2 030 000"
+          ],
+          "amount": "17 235,00",
+          "amount_value": 17235.0,
+          "description": "Savín - KD - termostatické hlavice pro radiátorový systém a další údržba (RZ 181/2026/RM"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "title": "Rozpočtová změna č. 179/2026/RM",
+      "text": "Dne 14.10.2026 požádal odbor MH a SI o rozpočtovou změnu."
+    },
+    {
+      "title": "Rozpočtová změna č. 180/2026/RM",
+      "text": "Dne 14.10.2026 požádal odbor MH a SI o rozpočtovou změnu."
+    },
+    {
+      "title": "Rozpočtová změna č. 181/2026/RM",
+      "text": "Dne 14.10.2026 požádal odbor MH a SI o rozpočtovou změnu."
+    }
+  ],
+  "source_pdf": "resources/rozpoctova-opatreni/rozpoctove_opatreni_c._18_2026_dne_22._rijna_2026.pdf",
+  "text_raw": "Město Litovel\nNám. Př. Otakara 778/1b\n784 01 Litovel\nRozpočtové opatření č. 18/2026 schválené Radou města Litovel\ndne 22. října 2026\nRozpočtové opatření bylo schváleno na 82. schůzi Rady města Litovel dne 22. října 2026 na základě usnesení\nRM/2583/82/2026.\nZměny ve výdajích:\nODPA POL UZ PJ NÁSTROJ ORJ ORG Kč Popis\n3326 5171 307 2 030 000 -344 030,00 Chořelice - oprava kaple (RZ 179/2026/RM)\nChořelice - nový herní prvek na dětské hřiště\n3421 6122 307 2 033 470 268 576,00\n(RZ 179/2026/RM)\nChořelice - nový herní prvek na sportoviště (RZ\n3412 6122 307 2 033 470 75 454,00\n179/2026/RM)\nNová Ves - drobná vydání OV a opravy + DPP\n3429 5169 303 2 030 000 -17 600,00\n(RZ 180/2026/RM)\nNová Ves - drobná vydání OV a opravy + DPP\n3429 5139 303 2 030 000 -6 465,00\n(RZ 180/2026/RM)\ndětská hřiště - stroje, přístroje, zařízení (RZ\n3421 6122 3 003 470 24 065,00\n180/2026/RM)\nSavín - lavičky na veřejné prostranství (RZ\n3639 5137 311 2 030 000 -17 235,00\n181/2026/RM)\nSavín - KD - termostatické hlavice pro\n3392 5171 311 2 030 000 17 235,00 radiátorový systém a další údržba (RZ\n181/2026/RM)\nRozpočtová změna č. 179/2026/RM\nDne 14.10.2026 požádal odbor MH a SI o rozpočtovou změnu.\nRozpočtová změna č. 180/2026/RM\nDne 14.10.2026 požádal odbor MH a SI o rozpočtovou změnu.\nRozpočtová změna č. 181/2026/RM\nDne 14.10.2026 požádal odbor MH a SI o rozpočtovou změnu.\nVe Zveřejněném rozpočtovém opatření mohou být napraveny administrativní pochybení zjištěná při pořizování do\nIS GINIS, tyto případné provedené nápravy nemají vliv na původní charakter a finanční objem záměrů přijatých\nschvalujícím orgánem.\nMěsto Litovel ID datové schránky: 4rub4s3 e-mail: sekretariat@mestolitovel.cz\nIČO 229138 Tel.: +420 585 153 111 www.litovel.eu\nč. účtu: 3620811/0100\nMěsto Litovel\nNám. Př. Otakara 778/1b\n784 01 Litovel\nDo listinné podoby je možno nahlédnout v kanceláři vedoucího finančního odboru Městského úřadu v Litovli.\nZpracovala: Ing. Veronika Haplová\nreferentka finančního odboru\nSchválil: Ing. Jaromír Kolář\nvedoucí finančního odboru\nV Litovli 2.11.2026\nMěsto Litovel ID datové schránky: 4rub4s3 e-mail: sekretariat@mestolitovel.cz\nIČO 229138 Tel.: +420 585 153 111 www.litovel.eu\nč. účtu: 3620811/0100"
+}
