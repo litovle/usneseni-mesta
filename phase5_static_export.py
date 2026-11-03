@@ -97,6 +97,7 @@ def main() -> None:
     sitemap_urls: List[str] = []
     opatreni_by_content_year = group_opatreni_by_content_year(opatreni_list)
 
+    resolutions_by_id = {resolution["id"]: resolution for resolution in data if "id" in resolution}
     for resolution in data:
         if not all(key in resolution for key in ("id", "datum", "organ")):
             continue
@@ -136,7 +137,10 @@ def main() -> None:
     for key, entries in by_meeting.items():
         year, rest = key.split("/")
         org, meeting = rest.split("-")
-        write_meeting_index(year, org, meeting, entries, by_meeting_meta[key], args.output)
+        write_meeting_index(
+            year, org, meeting, entries, by_meeting_meta[key], args.output,
+            resolutions_by_id=resolutions_by_id,
+        )
         sitemap_urls.append(f"/usneseni/{year}/{org}-{meeting}/")
 
     if opatreni_list:

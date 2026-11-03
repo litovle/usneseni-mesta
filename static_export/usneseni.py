@@ -27,6 +27,41 @@ def resolution_count_label(count: int) -> str:
     return f"{count} usnesení"
 
 
+def truncate_preview(text: str, limit: int = 180) -> str:
+    text = re.sub(r"\s+", " ", text or "").strip()
+    if len(text) <= limit:
+        return text
+    prefix = text[:limit]
+    boundary = prefix.rfind(" ")
+    return (prefix[:boundary] if boundary > limit / 2 else prefix).rstrip() + "…"
+
+
+def render_resolution_preview(resolution: Dict) -> str:
+    """Render the same subject and first three labelled items as browser search."""
+    items = resolution.get("items") or []
+    actions = resolution.get("actions") or []
+    summary = f"{len(items)} rozhodnutí" if len(items) > 1 else ", ".join(actions)
+    parts = [f'<div class="usn-summary">{html.escape(summary)}</div>'] if summary else []
+    subject = truncate_preview(resolution.get("subject") or "")
+    if subject:
+        parts.append(f'<div class="usn-snippet">{html.escape(subject)}</div>')
+    if items:
+        previews = []
+        for item in items[:3]:
+            label = str(item.get("label") or "")
+            label_html = f'<strong class="usn-action-label">{html.escape(label)})</strong> ' if label else ""
+            text = html.escape(truncate_preview(item.get("text") or ""))
+            previews.append(f"<li>{label_html}{text}</li>")
+        parts.append('<ul class="usn-action-preview">' + "".join(previews) + "</ul>")
+        remaining = len(items) - 3
+        if remaining > 0:
+            prefix = "Další" if remaining < 5 else "Dalších"
+            parts.append(f'<div class="usn-actions-more">{prefix} {remaining} rozhodnutí</div>')
+    elif not subject and resolution.get("tail"):
+        parts.append(f'<div class="usn-snippet">{html.escape(truncate_preview(resolution["tail"]))}</div>')
+    return "\n".join(parts)
+
+
 def render_back_link(
     default_href: str = "/usneseni/",
     default_label: str = "← Zpět na vyhledávání",
@@ -341,6 +376,7 @@ def write_meeting_index(
     entries: List[Tuple[str, str, Optional[str], List[str]]],
     meta: Dict,
     output_root: Path,
+    resolutions_by_id: Optional[Dict[str, Dict]] = None,
 ) -> None:
     slug = f"{org}-{meeting}"
     target_dir = output_root / "usneseni" / year / slug
@@ -370,10 +406,8 @@ def write_meeting_index(
     ]
 
     for rid, permalink, subject, actions in sorted(entries):
-        summary = ", ".join(actions) if actions else ""
-        snippet = (subject or "").strip()
-        if len(snippet) > 180:
-            snippet = snippet[:177] + "…"
+        resolution = (resolutions_by_id or {}).get(rid, {"subject": subject, "actions": actions})
+        preview = render_resolution_preview(resolution)
 
         lines.append(f"""
 <li class="usn-result">
@@ -383,8 +417,7 @@ def write_meeting_index(
       <span class="usn-date">{html.escape(datum)}</span>
     </div>
 
-    {f'<div class="usn-summary">{html.escape(summary)}</div>' if summary else ''}
-    {f'<div class="usn-snippet">{html.escape(snippet)}</div>' if snippet else ''}
+    {preview}
   </a>
 </li>
 """)
