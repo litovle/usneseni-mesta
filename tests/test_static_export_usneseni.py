@@ -5,10 +5,69 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from static_export.usneseni import render_resolution_preview, truncate_preview, write_meeting_index, write_resolution
+from static_export.usneseni import render_resolution_content, render_resolution_preview, resolution_seo, truncate_preview, write_meeting_index, write_resolution
 
 
 class StaticExportUsneseniTest(unittest.TestCase):
+    def test_seo_uses_actual_items_when_subject_is_missing(self):
+        seo = resolution_seo({
+            "id": "RM/2589/82/2026", "datum": "2026-10-22", "organ": "Rada města Litovel",
+            "subject": None, "actions": ["bere na vědomí"], "items": [
+                {"label": "a", "text": "bere na vědomí výroční zprávu školy Jungmannova"},
+                {"label": "b", "text": "bere na vědomí výroční zprávu školy Vítězná"},
+            ],
+        })
+        self.assertIn("výroční zprávu školy Jungmannova", seo["description"])
+        self.assertIn("22. 10. 2026.", seo["description"])
+        self.assertIn("výroční zprávu školy Jungmannova", seo["seo_title"])
+        self.assertIn("RM/2589/82/2026", seo["seo_title"])
+        self.assertIn("Litovel", seo["seo_title"])
+        self.assertNotIn("None", seo["description"])
+        self.assertLessEqual(len(seo["description"]), 160)
+
+    def test_seo_preserves_negative_action_and_plain_text_punctuation(self):
+        resolution = {
+            "id": "RM/1/1/2026", "datum": "2026-01-08", "organ": "Rada města Litovel",
+            "subject": 'prodej pozemku společnosti "A & B".\nDruhá věta.',
+            "actions": ["neschvaluje"], "items": [],
+        }
+        seo = resolution_seo(resolution)
+        self.assertIn('neschvaluje prodej pozemku společnosti "A & B"', seo["description"])
+        self.assertTrue(seo["seo_title"].startswith("neschvaluje"))
+        self.assertNotIn("&amp;", seo["description"])
+        self.assertNotIn("\n", seo["description"])
+        with tempfile.TemporaryDirectory() as tmp:
+            write_resolution(resolution, Path(tmp), {}, {})
+            text = (Path(tmp) / "usneseni/2026/RM-1-1-2026/index.html").read_text()
+        values = dict(line.split(": ", 1) for line in text.split("---")[1].strip().splitlines())
+        self.assertEqual(json.loads(values["description"]), seo["description"])
+        self.assertEqual(json.loads(values["seo_title"]), seo["seo_title"])
+
+    def test_seo_tail_and_empty_document_have_safe_fallbacks(self):
+        base = {"id": "ZM/1/1/2026", "datum": "2026-01-01", "organ": "Zastupitelstvo města Litovel"}
+        self.assertIn("Dovětek", resolution_seo({**base, "tail": "Dovětek"})["seo_title"])
+        seo = resolution_seo(base)
+        self.assertNotIn("None", seo["seo_title"])
+        self.assertIn(base["id"], seo["description"])
+
+    def test_detail_anchors_preserve_original_indices_and_duplicate_labels(self):
+        text = render_resolution_content({
+            "id": "RM/1/1/2026", "subject": "Společný předmět", "tail": "Dovětek", "items": [
+                {"label": "a", "text": "První bod"},
+                {"label": "a", "text": "Druhý bod"},
+            ],
+        })
+        self.assertIn('<p id="predmet">Společný předmět</p>', text)
+        self.assertIn('<p id="bod-1"><strong>a)</strong> První bod</p>', text)
+        self.assertIn('<p id="bod-2"><strong>a)</strong> Druhý bod</p>', text)
+        self.assertIn('<p id="dovetek">Dovětek</p>', text)
+
+    def test_single_action_subject_keeps_its_anchor(self):
+        text = render_resolution_content({
+            "id": "RM/1/1/2026", "actions": ["schvaluje"], "subject": "program schůze", "items": [],
+        })
+        self.assertIn('<p id="predmet">schvaluje program schůze</p>', text)
+
     def test_preview_preserves_subject_and_single_labelled_item(self):
         text = render_resolution_preview({
             "actions": ["schvaluje"], "subject": "Změny programu", "items": [
