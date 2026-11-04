@@ -93,6 +93,7 @@ ACTION_PHRASES = [
     "souhlasí",
     "ukládá",
     "revokuje",
+    "mění",
     "vydává",
     "stanovuje",
     "doporučuje",
@@ -340,6 +341,7 @@ def process_usneseni(raw):
         actions.add(action)
 
     if subject:
+        refs.extend(extract_refs(subject))
         norm = normalize_amount_text(subject)
         amounts.update(extract_amounts(norm))
 

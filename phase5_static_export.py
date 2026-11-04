@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 from static_export import (
+    build_meeting_navigation,
     group_opatreni_by_content_year,
     load_opatreni_dir,
     meeting_from_id,
@@ -98,11 +99,15 @@ def main() -> None:
     opatreni_by_content_year = group_opatreni_by_content_year(opatreni_list)
 
     resolutions_by_id = {resolution["id"]: resolution for resolution in data if "id" in resolution}
+    navigation_by_id = build_meeting_navigation(data)
     for resolution in data:
         if not all(key in resolution for key in ("id", "datum", "organ")):
             continue
 
-        year, rid, permalink, datum = write_resolution(resolution, args.output, refs_out_map, refs_in_map)
+        year, rid, permalink, datum = write_resolution(
+            resolution, args.output, refs_out_map, refs_in_map, resolutions_by_id,
+            meeting_navigation=navigation_by_id.get(resolution["id"]),
+        )
         by_year[year].append((rid, permalink, datum))
         sitemap_urls.append(permalink)
 

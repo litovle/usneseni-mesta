@@ -6,9 +6,11 @@ import re
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-from .format import budget_change_count_label, format_date
+from .format import budget_change_count_label, format_date, format_full_date
+from .inline_refs import render_inline_refs
 from .paths import meeting_from_id, resolution_url, ro_url, rz_anchor, slug_from_id
 from .ro_summary import summarize_opatreni_plain
+from .relationships import RESOLUTION_ID, render_decision_history, render_later_revocations
 from .topics import topic_category, topic_label
 
 
@@ -34,6 +36,22 @@ def truncate_preview(text: str, limit: int = 180) -> str:
     prefix = text[:limit]
     boundary = prefix.rfind(" ")
     return (prefix[:boundary] if boundary > limit / 2 else prefix).rstrip() + "…"
+
+
+def resolution_seo(resolution: Dict) -> Dict[str, str]:
+    """Use excerpts of this resolution only, never related decisions or model labels."""
+    subject = re.sub(r"\s+", " ", resolution.get("subject") or "").strip()
+    items = [re.sub(r"\s+", " ", item.get("text") or "").strip()
+             for item in resolution.get("items") or []]
+    actions = resolution.get("actions") or []
+    if subject and len(actions) == 1 and not items:
+        subject = f"{actions[0]} {subject}"
+    paragraphs = [text for text in [subject, *items, resolution.get("tail") or ""] if text.strip()]
+    excerpt = truncate_preview(paragraphs[0], 55) if paragraphs else "Usnesení"
+    title = f"{excerpt} | {resolution['id']} | Litovel"
+    prefix = f"{resolution.get('organ') or 'Město Litovel'}, {format_full_date(resolution.get('datum') or '')}. "
+    text = " ".join(paragraphs) or f"Usnesení {resolution['id']}."
+    return {"seo_title": title, "description": truncate_preview(prefix + text, 159)}
 
 
 def render_resolution_preview(resolution: Dict) -> str:
@@ -114,26 +132,29 @@ def render_meeting_link(resolution: Dict) -> str:
 """
 
 
-def render_resolution_content(resolution: Dict) -> str:
+def render_resolution_content(resolution: Dict, resolutions_by_id: Optional[Dict[str, Dict]] = None) -> str:
     parts: List[str] = [render_back_link(), render_meeting_link(resolution)]
     actions = resolution.get("actions", [])
     subject = resolution.get("subject")
     items = resolution.get("items", [])
 
+    def render_text(text):
+        return render_inline_refs(text, resolution, resolutions_by_id)
+
     if subject and len(actions) == 1 and not items:
-        parts.append(f"<p>{html.escape(actions[0])} {html.escape(subject)}</p>")
+        parts.append(f'<p id="predmet">{html.escape(actions[0])} {render_text(subject)}</p>')
         return "\n".join(parts)
 
     if subject:
-        parts.append(f"<p>{html.escape(subject)}</p>")
+        parts.append(f'<p id="predmet">{render_text(subject)}</p>')
 
-    for item in items:
+    for index, item in enumerate(items, start=1):
         label = html.escape(item.get("label", ""))
-        text = html.escape(item.get("text", ""))
-        parts.append(f"<p><strong>{label})</strong> {text}</p>")
+        text = render_text(item.get("text", ""))
+        parts.append(f'<p id="bod-{index}"><strong>{label})</strong> {text}</p>')
 
     if resolution.get("tail"):
-        parts.append(f"<p>{html.escape(resolution['tail'])}</p>")
+        parts.append(f'<p id="dovetek">{render_text(resolution["tail"])}</p>')
 
     return "\n".join(parts)
 
@@ -217,11 +238,41 @@ def render_budget_links_section(resolution: Dict) -> str:
     return "\n".join(lines)
 
 
+def build_meeting_navigation(resolutions: List[Dict]) -> Dict[str, Dict]:
+    """Order available resolutions numerically within their organ, meeting and year."""
+    groups = {}
+    for resolution in resolutions:
+        rid = resolution.get("id")
+        date = resolution.get("datum")
+        if not isinstance(rid, str) or not RESOLUTION_ID.fullmatch(rid):
+            continue
+        organ, _number, meeting, year = rid.split("/")
+        if not isinstance(date, str) or date[:4] != year or "organ" not in resolution:
+            continue
+        groups.setdefault((organ, meeting, year), set()).add(rid)
+
+    navigation = {}
+    for group in groups.values():
+        ordered = sorted(group, key=lambda rid: int(rid.split("/")[1]))
+        for index, rid in enumerate(ordered):
+            neighbors = {}
+            if index > 0:
+                previous = ordered[index - 1]
+                neighbors["previous"] = {"id": previous, "url": resolution_url(previous)}
+            if index + 1 < len(ordered):
+                following = ordered[index + 1]
+                neighbors["next"] = {"id": following, "url": resolution_url(following)}
+            navigation[rid] = neighbors
+    return navigation
+
+
 def write_resolution(
     resolution: Dict,
     output_root: Path,
     refs_out_map: Dict[str, List[str]],
     refs_in_map: Dict[str, List[str]],
+    resolutions_by_id: Optional[Dict[str, Dict]] = None,
+    meeting_navigation: Optional[Dict] = None,
 ) -> Tuple[str, str, str, str]:
     rid = resolution["id"]
     slug = slug_from_id(rid)
@@ -230,20 +281,13 @@ def write_resolution(
     target_dir.mkdir(parents=True, exist_ok=True)
     permalink = f"/usneseni/{year}/{slug}/"
 
-    subject = resolution.get("subject")
-    if subject:
-        raw_desc = f"{resolution.get('organ', '')}, {resolution.get('datum', '')}: {subject}"
-    else:
-        raw_desc = f"{resolution.get('organ', '')}, {resolution.get('datum', '')}, usnesení {rid}"
-
-    description = raw_desc[:157] + "…" if len(raw_desc) > 160 else raw_desc
-    description = html.escape(description)
-
+    seo = resolution_seo(resolution)
     frontmatter = (
         "---\n"
         "layout: usneseni\n"
         f'title: "Usnesení {rid}"\n'
-        f'description: "{description}"\n'
+        f"seo_title: {json.dumps(seo['seo_title'], ensure_ascii=False)}\n"
+        f"description: {json.dumps(seo['description'], ensure_ascii=False)}\n"
         f'cislo: "{rid}"\n'
         f'organ: "{resolution.get("organ", "")}"\n'
         f'datum: "{resolution.get("datum", "")}"\n'
@@ -256,17 +300,29 @@ def write_resolution(
         frontmatter += f'term_id: "{resolution.get("term_id")}"\n'
     if resolution.get("term_label"):
         frontmatter += f'term_label: "{resolution.get("term_label")}"\n'
+    if meeting_navigation:
+        frontmatter += f"meeting_navigation: {json.dumps(meeting_navigation, ensure_ascii=False)}\n"
     frontmatter += (
         f"permalink: {permalink}\n"
         "---\n\n"
     )
 
-    content = render_resolution_content(resolution)
+    content = render_resolution_content(resolution, resolutions_by_id)
+    if resolutions_by_id is not None:
+        notice = render_later_revocations(resolution, refs_in_map.get(rid, []), resolutions_by_id, truncate_preview)
+        if notice:
+            content = notice + "\n" + content
     budget_links_section = render_budget_links_section(resolution)
     if budget_links_section:
         content += "\n" + budget_links_section
-    content += render_references_section("Odkazuje na", refs_out_map.get(rid, []))
-    content += render_references_section("Je odkazováno z", refs_in_map.get(rid, []))
+    if resolutions_by_id is None:
+        content += render_references_section("Odkazuje na", refs_out_map.get(rid, []))
+        content += render_references_section("Je odkazováno z", refs_in_map.get(rid, []))
+    else:
+        history = render_decision_history(resolution, refs_out_map.get(rid, []), refs_in_map.get(rid, []),
+                                          resolutions_by_id, render_resolution_preview)
+        if history:
+            content += "\n" + history
 
     (target_dir / "index.html").write_text(frontmatter + content, encoding="utf-8")
     return year, rid, permalink, resolution.get("datum", "")
@@ -311,6 +367,8 @@ def write_year_index(
         "---",
         "layout: usneseni_year",
         f"title: Usnesení {year}",
+        f"seo_title: Usnesení rady a zastupitelstva Litovel {year}",
+        f"description: Přehled usnesení rady a zastupitelstva města Litovel za rok {year}. Jednotlivé schůze, data jednání a odkazy na úplné znění usnesení.",
         f"permalink: /usneseni/{year}/",
         "---",
         "",
@@ -394,6 +452,9 @@ def write_meeting_index(
         "---",
         "layout: usneseni_meeting",
         f"title: {organ} – schůze {meeting} ({year})",
+        "description: " + json.dumps(
+            f"{organ}, {meeting}. schůze dne {format_full_date(datum)}. "
+            f"Přehled {len(entries)} usnesení s odkazy na jejich úplné znění.", ensure_ascii=False),
         *([f'term_id: "{meta.get("term_id")}"'] if meta.get("term_id") else []),
         *([f'term_label: "{term_label}"'] if term_label else []),
         f"permalink: /usneseni/{year}/{slug}/",
