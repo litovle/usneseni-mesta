@@ -25,6 +25,7 @@ from collections import defaultdict
 
 from static_export.topics import topic_catalog
 from tools.search_index_format import write_compact_index
+from tools.resolution_ids import require_resolution_id
 
 
 WORD_RE = re.compile(r"[a-z0-9]{3,}")
@@ -62,6 +63,7 @@ def build_index(usneseni: list) -> dict:
     for u in usneseni:
         uid = u["id"]
         text = normalize(extract_text(u))
+        index[normalize(uid)].add(uid)
 
         for w in WORD_RE.findall(text):
             # celý token
@@ -86,7 +88,7 @@ def main():
     meta = {}
 
     for u in all_data:
-        year = u["id"].split("/")[-1]
+        year = str(require_resolution_id(u["id"]).year)
         by_year[year].append(u)
 
     (args.output / "index").mkdir(parents=True, exist_ok=True)

@@ -28,9 +28,9 @@ from copy import deepcopy
 from pathlib import Path
 
 from static_export.ro_summary import budget_change_groups_from_opatreni
+from tools.resolution_ids import parse_resolution_id as resolution_parts
 
 
-RESOLUTION_ID_RE = re.compile(r"^(RM|ZM)/(\d+)/(\d+)/(\d{4})$")
 
 BUDGET_CHANGE_ID_RE = re.compile(
     r"\b(?:RZ\s*)?(?P<id>\d{1,4}\s*/\s*\d{4}\s*/\s*(?:RM|ZM))\b",
@@ -60,11 +60,10 @@ def is_directive_reference_context(text: str, match_start: int) -> bool:
 
 
 def parse_resolution_id(value: str):
-    match = RESOLUTION_ID_RE.match(value)
-    if not match:
+    parts = resolution_parts(value)
+    if parts is None:
         return None
-    organ, number, meeting, year = match.groups()
-    return organ, int(number), int(meeting), int(year)
+    return parts.organ, parts.number, parts.meeting, parts.year
 
 
 def load_json(path: Path):
@@ -170,12 +169,15 @@ def resolve_resolution_id(raw_id: str, by_id: dict, by_resolution_key: dict):
     if raw_id in by_id:
         return raw_id, None
 
-    parsed = parse_resolution_id(raw_id)
-    if not parsed:
+    parts = resolution_parts(raw_id)
+    if parts is None or parts.scheme == "usneseni.cz":
         return None, None
 
-    organ, number, meeting, year = parsed
-    candidates = by_resolution_key.get((organ, number, meeting), [])
+    key = (parts.organ, parts.number, parts.meeting)
+    candidates = [
+        candidate for candidate in by_resolution_key.get(key, [])
+        if (candidate_parts := resolution_parts(candidate)) and candidate_parts.scheme == parts.scheme
+    ]
     if len(candidates) != 1:
         return None, None
 
@@ -185,7 +187,7 @@ def resolve_resolution_id(raw_id: str, by_id: dict, by_resolution_key: dict):
         return None, None
 
     _, _, _, candidate_year = candidate_parsed
-    if abs(candidate_year - year) > 20:
+    if abs(candidate_year - parts.year) > 20:
         return None, None
 
     return candidate, {

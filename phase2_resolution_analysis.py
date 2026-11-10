@@ -76,12 +76,13 @@ import argparse
 from pathlib import Path
 from collections import Counter
 
+from tools.resolution_ids import USNESENI_CZ_ID_RE, parse_resolution_id
+
 
 # ============================================================
 # REGEXY
 # ============================================================
 
-ID_RE = re.compile(r"^(RM|ZM)/\d+/\d+/\d+$")
 ITEM_RE = re.compile(r"(?:^|\n)([a-z])\)\s+")
 
 ACTION_PHRASES = [
@@ -241,6 +242,10 @@ def extract_refs(text):
             "resolved": m
         })
 
+    for match in USNESENI_CZ_ID_RE.finditer(text):
+        refs.append({"raw": match.group(), "type": "explicit",
+                     "resolved": match.group()})
+
     # implicitní reference – pouze v kontextu "usnesení / usn."
     for m in re.finditer(r"(usnesení|usn\.)\s*(č\.?)?\s*(\d{1,4}/\d{1,3})", text, re.IGNORECASE):
         refs.append({
@@ -297,10 +302,11 @@ def provenance_fields(raw):
 
 def process_usneseni(raw):
     organ, body = split_header(raw["text_raw"])
+    organ = organ or raw.get("organ")
     head, items = split_head_items(body)
 
     # zjisti, zda položky nesou vlastní rozhodnutí
-    item_actions = [extract_action(it["text"]) for it in items]
+    item_actions = [extract_action_and_subject(it["text"])[0] for it in items]
     has_local_actions = any(item_actions)
 
     refs = []
@@ -423,7 +429,7 @@ def main():
     for p in sorted(args.input.glob("*.json")):
         raw = json.loads(p.read_text(encoding="utf-8"))
 
-        if not ID_RE.match(raw.get("id", "")):
+        if parse_resolution_id(raw.get("id", "")) is None:
             if args.verbose:
                 print(f"⚠️  Neplatné ID: {p.name}")
             continue

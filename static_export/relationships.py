@@ -7,9 +7,10 @@ from typing import Callable, Dict, List
 
 from .format import format_full_date
 from .paths import resolution_url
+from tools.resolution_ids import RESOLUTION_ID_RE
 
 
-RESOLUTION_ID = re.compile(r"(?:RM|ZM)/\d+/\d+/\d{4}\Z")
+RESOLUTION_ID = RESOLUTION_ID_RE
 
 
 def normalized(text: str) -> str:
@@ -37,7 +38,8 @@ def reference_parts(source: Dict, target_id: str, revocations_only: bool = False
     matches = []
     for paragraph in paragraphs:
         text = normalized(paragraph["text"])
-        if revocations_only and not (root_revocation or re.match(r"^revokuje(?:\s|[.:]|$)", text)):
+        action_text = re.sub(r"^(?:rada|zastupitelstvo) města litovel[ ,]+", "", text)
+        if revocations_only and not (root_revocation or re.match(r"^revokuje(?:\s|[.:]|$)", action_text)):
             continue
         for ref in refs:
             raw = normalized(ref["raw"])
@@ -49,7 +51,7 @@ def reference_parts(source: Dict, target_id: str, revocations_only: bool = False
             if not occurrence:
                 continue
             suffix = text[occurrence.end():]
-            suffix = re.split(r"\b(?:rm|zm)/\d+", suffix, maxsplit=1)[0][:160]
+            suffix = re.split(r"\b(?:(?:rm|zm)/\d+|u[rz]-\d+-\d+/\d+)", suffix, maxsplit=1)[0][:160]
             point = re.match(r"/([a-z])(?:\W|$)", suffix) or re.search(
                 r"\b(?:bod|bodu|bodem|odstavec|odstavce)\s+(?:ad\s+)?([a-z])(?:\)|(?=\s|[.,]|$))", suffix)
             matches.append({**paragraph, "target_label": point.group(1) if point else ""})

@@ -192,7 +192,8 @@ class IncrementalWorkflowTest(unittest.TestCase):
                 self.assertEqual(len(commands), len(selected) + 1)
                 for item, command in zip(selected, commands):
                     expected = "phase1_parse_pdf.py" if item["kind"] == "resolution" else "parse_rozpoctova_opatreni.py"
-                    self.assertEqual(command[1:3], [expected, item["path"]])
+                    arguments = [expected, "--strict", item["path"]] if item["kind"] == "resolution" else [expected, item["path"]]
+                    self.assertEqual(command[1:1 + len(arguments)], arguments)
                 command = commands[-1]
                 self.assertEqual(command[1], "pipeline.py")
                 self.assertEqual(command[command.index("--from-stage") + 1], "enrich")

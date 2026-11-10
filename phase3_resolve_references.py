@@ -6,7 +6,7 @@ Enrich: resolvování referencí a volebních období.
 
 Usnesení mohou odkazovat jedno na druhé. V této fázi se resolvují reference
   - imlicitní: Uváděné v textu rozhodnutí pouze jako ID_ROZHODNUTI/CISLO_SCHUZE, například 1853/60 je resolvováno na RM/1853/60/2025
-  - explicitní: Už hotová reference ve tvaru RM/1853/60/2025
+  - explicitní: Úplné oficiální číslo, např. RM/1853/60/2025 nebo UZ-1-1/26
 
 Resolvované reference se vloží do nového klíče references_in a odkaz je tak oboustranný.
 
@@ -29,20 +29,18 @@ from collections import defaultdict, Counter
 import re
 
 from election_terms import apply_term_metadata, load_terms
+from tools.resolution_ids import parse_resolution_id
 
 
-ID_RE = re.compile(r"^(RM|ZM)/(\d+)/(\d+)/(\d+)$")
 
 def parse_id(id_str):
     """
-    RM/1962/65/2025 -> (RM, 1962, 65, 2025)
+    Přečte orgán, číslo, schůzi a rok; samotné ID zůstává beze změny.
     """
-    m = ID_RE.match(id_str)
-    if not m:
+    parts = parse_resolution_id(id_str)
+    if parts is None:
         return None
-
-    org, num, schuze, rok = m.groups()
-    return org, int(num), int(schuze), int(rok)
+    return parts.organ, parts.number, parts.meeting, parts.year
 
 
 def resolution_sort_key(record):
@@ -86,8 +84,8 @@ def resolve_implicit_reference(raw, source, by_key):
         return None, "no_candidate"
 
     candidates = sorted(candidates, key=resolution_sort_key)
-    latest_key = resolution_sort_key(candidates[-1])
-    latest = [candidate for candidate in candidates if resolution_sort_key(candidate) == latest_key]
+    latest_date = resolution_sort_key(candidates[-1])[0]
+    latest = [candidate for candidate in candidates if resolution_sort_key(candidate)[0] == latest_date]
     if len(latest) > 1:
         return None, "ambiguous"
     return latest[0]["id"], None
@@ -128,10 +126,10 @@ def process_resolutions(usneseni, terms=None):
         for r in u.get("references_out", []):
             raw = r["raw"]
 
-            # explicitní reference už je hotová
+            # Explicitní odkaz zachovává oficiální číslo včetně jeho původního zápisu.
             if r["type"] == "explicit":
                 r["resolved"] = raw
-                refs_index[(uid, raw)] = raw
+                refs_index[(uid, raw)] = r["resolved"]
                 resolved_count += 1
                 continue
 

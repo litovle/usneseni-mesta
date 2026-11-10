@@ -22,6 +22,14 @@ def reference(raw="RM/2563/81/2026", target="RM/2563/81/2026"):
 
 
 class InlineReferencesTest(unittest.TestCase):
+    def test_native_and_slash_references_keep_their_official_spelling_and_targets(self):
+        text = "mění UZ-001-01/26 a ZM/1/1/2026."
+        refs = [reference("UZ-001-01/26", "UZ-001-01/26"), reference("ZM/1/1/2026", "ZM/1/1/2026")]
+        html = render_inline_refs(text, {"references_out": refs}, {ref["resolved"]: {} for ref in refs})
+        self.assertIn('href="/usneseni/2026/UZ-001-01-26/">UZ-001-01/26</a>', html)
+        self.assertIn('href="/usneseni/2026/ZM-1-1-2026/">ZM/1/1/2026</a>', html)
+        self.assertEqual("".join(PlainText(html).text), text)
+
     def setUp(self):
         self.records = {"RM/2563/81/2026": {}, "ZM/1/1/2025": {}, "RM/1930/63/2025": {}}
 

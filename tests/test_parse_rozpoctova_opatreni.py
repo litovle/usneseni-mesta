@@ -1,10 +1,19 @@
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from parse_rozpoctova_opatreni import clean_description, parse_opatreni
 
 
 class ParseRozpoctovaOpatreniTest(unittest.TestCase):
+    def test_approval_header_preserves_both_official_resolution_id_formats(self):
+        text = ("Rozpočtové opatření č. 1/2026 schválené Radou města Litovel\n"
+                "Rozpočtové opatření bylo schváleno na 1. schůzi Rady města Litovel "
+                "dne 2. 11. 2026 na základě usnesení UR-001-01/26 a RM/1/1/2026.\n")
+        with patch("parse_rozpoctova_opatreni.pdf_to_text", return_value=text):
+            record = parse_opatreni(Path("approval.pdf"))
+        self.assertEqual(record["source_resolutions"], ["UR-001-01/26", "RM/1/1/2026"])
+
     def test_clean_description_strips_embedded_pdf_footer_and_table_header(self):
         value = (
             ") IČO: 00299138 ID datové schránky: 4rub4s3 Email: sekretariat@mestolitovel.cz "

@@ -9,6 +9,13 @@ from crosslink_rozpoctova_opatreni import (
 
 
 class CrosslinkRozpoctovaOpatreniTest(unittest.TestCase):
+    def test_native_ids_are_linked_exactly_without_translating_them(self):
+        by_id = {"UR-1-1/26": {}, "RM/1/1/2026": {}}
+        by_key = {("RM", 1, 1): list(by_id)}
+        self.assertEqual(resolve_resolution_id("UR-1-1/26", by_id, by_key), ("UR-1-1/26", None))
+        self.assertEqual(resolve_resolution_id("UR-1-1/2026", by_id, by_key), (None, None))
+        self.assertEqual(resolve_resolution_id("RM/1/1/2025", {"UR-1-1/26": {}}, {("RM", 1, 1): ["UR-1-1/26"]}), (None, None))
+
     def test_extracts_direct_and_range_budget_change_ids(self):
         known = {
             "53/2026/RM",

@@ -46,6 +46,14 @@ jobs:
           python -m pip install 'torch>=2.2,<3' --index-url https://download.pytorch.org/whl/cpu
           python -m pip install -r requirements.txt
 
+      - name: Test resolution parsing and notice detection
+        working-directory: usneseni-mesta
+        run: |
+          python -m unittest discover -s tests -p 'test_phase1_parse_pdf.py'
+          python -m unittest discover -s tests -p 'test_usneseni_cz_pdf.py'
+          python -m unittest discover -s tests -p 'test_resolution_ids.py'
+          python -m unittest discover -s tests -p 'test_sync_litovel_notices.py'
+
       - name: Scan notice board
         id: scan
         working-directory: usneseni-mesta
@@ -108,7 +116,7 @@ jobs:
                   )
               elif item["kind"] == "resolution":
                   subprocess.run(
-                      [sys.executable, "phase1_parse_pdf.py", path, "work/phase1"],
+                      [sys.executable, "phase1_parse_pdf.py", "--strict", path, "work/phase1"],
                       check=True,
                   )
               else:

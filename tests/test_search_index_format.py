@@ -54,6 +54,7 @@ class SearchIndexFormatTest(unittest.TestCase):
             ("phase4_index_build.py", resolution_index, [
                 {"id": "RM/1/1/2026", "subject": "Oprava školy", "items": []},
                 {"id": "RM/2/1/2026", "subject": "Pronájem pozemku", "items": []},
+                {"id": "UZ-001-01/26", "subject": "Oprava školy", "items": []},
             ]),
             ("phase4_ro_index_build.py", budget_index, [
                 {"id": "RO/1/2026", "notes": [{"title": "Oprava školy"}]},
@@ -78,7 +79,11 @@ class SearchIndexFormatTest(unittest.TestCase):
                 )
                 payload = json.loads((output / "index" / "2026.json").read_text(encoding="utf-8"))
                 self.assertEqual(expand(payload), build_index(records))
-                self.assertEqual(payload["tokens"]["opra"], [0])
+                expected = [0, 2] if script == "phase4_index_build.py" else [0]
+                self.assertEqual(payload["tokens"]["opra"], expected)
+                if script == "phase4_index_build.py":
+                    self.assertEqual(payload["tokens"]["uz-001-01/26"], [2])
+                    self.assertNotIn("ZM/1/1/2026", payload["ids"])
                 self.assertEqual(json.loads((output / "data" / "2026.json").read_text()), records)
 
     def test_archive_command_runs_directly_from_another_directory(self):

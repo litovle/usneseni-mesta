@@ -261,6 +261,31 @@ Alternativně lze vyplnit `pdf_path`, pokud už je PDF v repozitáři.
 
 Parsování PDF s usneseními Rady nebo Zastupitelstva města Litovel.
 
+Formát se rozpoznává automaticky při načtení PDF:
+
+- blokové dokumenty s `Číslo: RM/.../.../...` nebo `Číslo: ZM/.../.../...`;
+- tabulkové přehledy přijatých usnesení z Usnesení.cz s čísly `UR-…` nebo `UZ-…`.
+
+Tabulkový parser odděluje text rozhodnutí od hlasování, odpovědných osob a termínů.
+Datum bere ze sloupce Datum jednání. Vícestránkové tabulky zpracuje včetně
+pokračování textu a odstraní překryté znaky používané PDF pro tučné písmo.
+Oficiální číslo ukládá beze změny do `id`, například `UZ-12-1/26` nebo
+`UR-12-1/26`. Stejné číslo používají data, hledání, zobrazení i reference mezi
+usneseními. Formát a bod programu jsou v `source_format` a `agenda_title`.
+`tools/resolution_ids.py` z čísla pouze čte orgán, pořadové číslo, jednání a rok
+pro řazení a členění exportu. Roční adresář používá celý rok, například
+`/usneseni/2026/UZ-12-1-26/`; číslo v obsahu a metadatech zůstává `UZ-12-1/26`.
+Formáty `RM/.../.../...` a `ZM/.../.../...` jsou podporované souběžně a používají
+URL jako `/usneseni/2026/RM-12-1-2026/`.
+
+Synchronizace rozpoznává i označení `UZ-…` a `UR-…` na úřední desce a číslování
+ve tvaru `Výpis usnesení č.1/2026`. Přepínač `--strict` při neúspěšném parsování
+PDF nastaví nenulový návratový kód. Automatický i ruční workflow jej používají,
+aby při chybě zastavily návazný export. Hromadný import bez tohoto přepínače
+vypíše nezpracované historické dokumenty, které může obsloužit archivní větev.
+Oba workflow před zpracováním ověřují parser regresními testy včetně skutečného
+PDF v `tests/fixtures/usneseni_cz_zm_1_2026.pdf`.
+
 Při spuštění přes `pipeline.py` se po běžném parsování PDF může doplnit také
 moderní část archivu. Dokumenty z archivu, které v extrahovaném textu obsahují
 bloky `Číslo: RM/.../.../...` nebo `Číslo: ZM/.../.../...`, se zapíší jako
@@ -268,8 +293,8 @@ běžné záznamy extrakce a projdou současnou pipeline. Starší archivní dok
 bez tohoto formátu zůstávají v samostatném archivním zpracování.
 
 Hranice mezi současnou a archivní větví je tedy formát dat, ne původní stránka:
-záznamy s kanonickým ID `RM/.../.../...` nebo `ZM/.../.../...` patří do
-současné pipeline, archivní větev zůstává fallbackem pro starší nebo nejisté
+záznamy s podporovaným oficiálním číslem `RM/.../.../...`, `ZM/.../.../...`,
+`UR-…` nebo `UZ-…` patří do současné pipeline, archivní větev zůstává fallbackem pro starší nebo nejisté
 dokumenty.
 
 Samostatné zpracování historického archivu je popsané v
