@@ -39,6 +39,8 @@ class StaticExportUsneseniTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             write_resolution(resolution, Path(tmp), {}, {})
             text = (Path(tmp) / "usneseni/2026/RM-1-1-2026/index.html").read_text()
+        self.assertIn('<script src="/usneseni/back-link.js" defer></script>', text)
+        self.assertNotIn("<script>", text)
         values = dict(line.split(": ", 1) for line in text.split("---")[1].strip().splitlines())
         self.assertEqual(json.loads(values["description"]), seo["description"])
         self.assertEqual(json.loads(values["seo_title"]), seo["seo_title"])

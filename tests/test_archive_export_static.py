@@ -60,12 +60,15 @@ class ArchiveExportStaticTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp)
             detail_count = export_records(records, output)
+            detail_html = (output / "usneseni" / "archiv" / children[0]["id"] / "index.html").read_text(encoding="utf-8")
             index_count = export_archive_indexes(groups, report, output)
             index_html = (output / "usneseni" / "archiv" / "index.html").read_text(encoding="utf-8")
             parent_html = (output / "usneseni" / "archiv" / parent["id"] / "index.html").read_text(encoding="utf-8")
 
         self.assertEqual(detail_count, 2)
         self.assertEqual(index_count, 2)
+        self.assertIn('<script src="/usneseni/back-link.js" defer></script>', detail_html)
+        self.assertNotIn("<script>", detail_html)
         self.assertIn("Archiv usnesení", index_html)
         self.assertIn("2022", index_html)
         self.assertIn("Zastupitelstvo", index_html)

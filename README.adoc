@@ -530,6 +530,12 @@ Vytváří:
 
 Negeneruje hlavní stránku `/usneseni/` (ta existuje ručně). Nepřepisuje hlavní `sitemap.xml`; sitemap index má vlastnit web nebo projekt, který statický export publikuje.
 
+Detaily usnesení, archivu a RO načítají společný `/usneseni/back-link.js`, který
+poskytuje web `litovle.cz`. Skript obnovuje návratový odkaz z parametru `back`;
+export zachovává výchozí odkaz i pro prohlížeče bez JavaScriptu. Atribut
+`data-back-prefixes` na značce skriptu určuje povolené sekce pro návrat;
+výchozí je `/usneseni`, u RO také `/rozpoctova-opatreni`.
+
 === Vstup
 
 - `usneseni.json` z resolvování referencí (režim bez RO)

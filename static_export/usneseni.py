@@ -87,35 +87,15 @@ def render_back_link(
     wrapper_class: Optional[str] = None,
 ) -> str:
     prefixes = allowed_prefixes or ("/usneseni",)
-    checks = " || ".join(
-        [f'url.pathname === "{prefix}" || url.pathname.startsWith("{prefix}/")' for prefix in prefixes]
-    )
+    prefixes_value = html.escape(" ".join(prefixes), quote=True)
+    prefixes_attr = f' data-back-prefixes="{prefixes_value}"' if prefixes != ("/usneseni",) else ""
     wrapper_attr = f' class="{wrapper_class}"' if wrapper_class else ""
     return f"""
 <p{wrapper_attr}>
   <a href="{default_href}" id="back-link">{default_label}</a>
 </p>
 
-<script>
-(function() {{
-  const a = document.getElementById("back-link");
-  if (!a) return;
-
-  const back = new URLSearchParams(location.search).get("back");
-  try {{
-    const url = new URL(back, location.origin);
-    if (
-      url.origin === location.origin &&
-      ({checks})
-    ) {{
-      a.href = url.pathname + url.search;
-      a.textContent = "← Zpět na vyhledávání";
-    }}
-  }} catch (e) {{
-    // ignoruj rozbité hodnoty
-  }}
-}})();
-</script>
+<script src="/usneseni/back-link.js" defer{prefixes_attr}></script>
 """
 
 
