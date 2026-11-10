@@ -511,6 +511,18 @@ nebo ve filtru toto omezení přepíše.
 - `data/` – jeden JSON soubor = jeden rok (usnesení)
 - `meta.json` – statistická metadata (např. počty rozhodnutí za roky)
 
+Indexy usnesení, RO a archivu zapisuje `tools/search_index_format.py` jako
+kompaktní JSON se dvěma položkami: `ids` obsahuje tabulku identifikátorů a
+`tokens` přiřazuje slovům a jejich prefixům seznamy číselných pozic v této tabulce.
+Pozice se číslují od nuly a platí pouze uvnitř daného indexového souboru;
+nezávisí na pořadí záznamů v `data/`. Prohlížeč převádí pouze odkazy pro hledaný
+výraz na identifikátory z tabulky.
+
+[source,json]
+----
+{"ids":["RM/1/1/2026","RM/2/1/2026"],"tokens":{"oprava":[0,1],"skola":[1]}}
+----
+
 === Použití
 
 [source,bash]
