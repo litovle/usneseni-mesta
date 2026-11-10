@@ -25,7 +25,13 @@
     }
   ],
   "tail": "za roční nájemné 545 Kč.\nNájem je sjednán na dobu určitou s účinností od 1. 7. 2023 do 30. 6. 2025. Pozemek parc.č. 859/19 a 859/18 jsou\nlesní pozemky, v k.ú. Litovel, lokalita Revúcká. Všichni nájemci musí předložit orgánu správy lesů (OŽP) žádost\no dočasné odnětí pronajímaných částí pozemků z plnění funkcí lesa v souladu s ust. § 16, odst. (1), zák. číslo\n289/1995Sb.",
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/269/10/2023",
+      "type": "explicit",
+      "resolved": "RM/269/10/2023"
+    }
+  ],
   "amounts": [
     "1.180 Kč",
     "545 Kč",

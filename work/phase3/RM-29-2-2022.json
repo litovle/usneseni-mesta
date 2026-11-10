@@ -8,7 +8,13 @@
   "subject": "zveřejnění záměru odprodeje části pozemku parc.č. 331/2 dle GP č. 135-132/2021\ndíl a o výměře 58 m2 v k.ú. Nová Ves. Cena se stanovuje dle usn. ZM/12/28/2021 písm. a), bod 3: cena obvyklá\nstanovena znaleckým posudkem, který doplní žadatel o pozemek před zveřejněním záměru odprodeje.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "ZM/12/28/2021",
+      "type": "explicit",
+      "resolved": "ZM/12/28/2021"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "property",

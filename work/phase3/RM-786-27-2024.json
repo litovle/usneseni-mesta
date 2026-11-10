@@ -8,7 +8,13 @@
   "subject": "příspěvek na provoz ve výši 37.522.000 Kč pro TS Litovel, p. o. – schváleno ZML\ndne 7. 12. 2023 pod číslem usnesení ZM/5/8/2023 c).",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "ZM/5/8/2023",
+      "type": "explicit",
+      "resolved": "ZM/5/8/2023"
+    }
+  ],
   "amounts": [
     "37.522.000 Kč"
   ],

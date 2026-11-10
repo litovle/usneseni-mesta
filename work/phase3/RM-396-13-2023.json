@@ -8,7 +8,13 @@
   "subject": "v souladu se zveřejněným záměrem dle ust. § 39, odst. 1, zák. č. 128/2000 Sb.\nv platném znění v souladu s přijatým usnesením č. RM/327/11/2023, písm. b), Smlouvu o nájmu částí pozemků\nparc.č. 48, ost. pl., o výměře 112 m2, parc.č. 52, zahrada, o výměře 130 m2 a parc.č. 50/4, zahrada, o výměře 179 m2,\nuzavřenou mezi městem Litovel a nájemcem M. H. z Litovle, na dobu neurčitou, za nájemné 2 Kč/m2/rok, za účelem\nvyužití na zeleninovou zahrádku, k odpočinku a relaxaci. Přípis o vyrovnání věcí (chata, pergola aj.) ponechaných\nna pozemku předchozím nájemcem, v souladu s usn. RM, je doložen.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/327/11/2023",
+      "type": "explicit",
+      "resolved": "RM/327/11/2023"
+    }
+  ],
   "amounts": [
     "2 Kč"
   ],

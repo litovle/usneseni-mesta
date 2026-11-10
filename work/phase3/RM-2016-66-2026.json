@@ -8,7 +8,13 @@
   "subject": "předloženou smlouvu o nájmu pozemku, uzavřenou mezi městem Litovel\na společností CEREALIS a.s., se sídlem Tři Dvory, v souladu se zveřejněným záměrem dle přijatého usnesení rady\nměsta č. RM/1889/62/2025, na pronájem části pozemku parc.č. 33, ostatní plocha, o výměře 123 m2, a části pozemku\nparc.č. 316, ostatní plocha, o výměře 3 m2, v k.ú. Tři Dvory u Litovle, za účelem zřízení přístupové cesty k akci\n„Cerealis a.s., Nový sklad AW2“. Smlouva je uzavřena na dobu určitou za měsíční nájemné 756 Kč, navýšené\no DPH v zákonné výši.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/1889/62/2025",
+      "type": "explicit",
+      "resolved": "RM/1889/62/2025"
+    }
+  ],
   "amounts": [
     "756 Kč"
   ],

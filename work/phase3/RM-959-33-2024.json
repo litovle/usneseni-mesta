@@ -8,7 +8,13 @@
   "subject": "usnesení č. RM/938/32/2024.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/938/32/2024",
+      "type": "explicit",
+      "resolved": "RM/938/32/2024"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "administration",

@@ -2036,7 +2036,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1917/63/2025",
+        "action": "revokuje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -2164,7 +2169,13 @@
     "subject": "usnesení č. RM/921/32/2024 schválené na 31. schůzi Rady města Litovel.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/921/32/2024",
+        "type": "explicit",
+        "resolved": "RM/921/32/2024"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "administration",
@@ -6587,7 +6598,13 @@
     "subject": "předloženou Smlouvu o nájmu pozemku parc.č. 131/2, zahrada,\nv k.ú. Myslechovice, uzavřenou v souladu se zveřejněným záměrem města dle ust. § 39, odst. 1, zákona č. 128/2000\nSb., v platném znění, jež byl schválen usnesením č. RM/866/31/2024 na dobu neurčitou, za účelem ekovýchovných\naktivit pro Český svaz ochránců přírody Litovel, který zastupuje paní K. D., předsedkyně spolku.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/866/31/2024",
+        "type": "explicit",
+        "resolved": "RM/866/31/2024"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -6699,7 +6716,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1457/47/2025",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -10256,7 +10278,13 @@
     "subject": "doplnění informace o budově č.p. 19 Myslechovice a setrvává na svém\nstanovisku z usnesení č. 965/34 ze dne 25. 4. 2024.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "965/34",
+        "type": "implicit",
+        "resolved": "RM/965/34/2024"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -18193,7 +18221,13 @@
     "subject": "poslední větu z usnesení RM/1143/37/2024, pod bodem a), která zní: „Mezi\npůvodním a novým nájemcem bude uzavřena na právním oddělení „dohoda“ o finančním vyrovnání za věci, které\npůvodní nájemce na pozemku ponechal (chata, pergola, studna a jiné).“.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1143/37/2024",
+        "type": "explicit",
+        "resolved": "RM/1143/37/2024"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -20369,7 +20403,13 @@
     "subject": "předloženou Smlouvu o nájmu pozemku, uzavřenou v souladu se zveřejněným\nzáměrem dle usnesení č. RM/1142/38/2024, bod b), mezi městem Litovel a nájemcem Mgr. K. B. z Litovle\nna pronájem části pozemku parc.č. 479/20, díl č. 5, orná půda, v k.ú. Litovel, na dobu neurčitou, k zahrádkářské\nčinnosti, s účinností od 1. 4. 2025.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1142/38/2024",
+        "type": "explicit",
+        "resolved": "RM/1142/38/2024"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -20461,7 +20501,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1617/51/2025",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -21860,6 +21905,10 @@
       },
       {
         "from": "RM/1595/50/2025",
+        "action": "revokuje"
+      },
+      {
+        "from": "RM/1651/51/2025",
         "action": "revokuje"
       }
     ],
@@ -24346,7 +24395,13 @@
     "subject": "Smlouvu o nájmu pozemku, uzavřenou mezi městem Litovel a vylosovaným\nnájemcem, v souladu s přijatým usnesením rady města č. RM/146/47/2025 ze dne 19. 2. 2025 (Ing. V. H.),\nna pronájem části pozemku parc.č. 479/20, díl č. 4, v k.ú. Litovel, lokalita Javoříčská, s účinností od 1. 4. 2025,\nna dobu neurčitou k zahrádkářské činnosti.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/146/47/2025",
+        "type": "explicit",
+        "resolved": "RM/146/47/2025"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -24421,7 +24476,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1599/50/2025",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -26871,7 +26931,13 @@
     "subject": "předloženou smlouvu o nájmu pozemku, uzavřenou mezi městem Litovel\na vylosovaným nájemcem, paní G. P., v souladu s přijatým usnesením rady města č. RM/1544/48/2025\nze dne 13. 3. 2025, na pronájem části pozemku parc.č. 479/20, díl č. 11, v k.ú. Litovel, lokalita Javoříčská,\ns účinností od 1. 5. 2025, na dobu neurčitou, k zahrádkářské činnosti.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1544/48/2025",
+        "type": "explicit",
+        "resolved": "RM/1544/48/2025"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -27703,7 +27769,13 @@
     "subject": "předloženou Smlouvu o nájmu pozemku, uzavřenou v souladu se zveřejněným\nzáměrem dle usn. č. RM/1459/47/2025, mezi městem Litovel a manželi S. a L. L. z Litovle na pronájem části\npozemku parc.č. 1638/15, ostatní plocha, o výměře 80 m2, za účelem dočasné skládky palivového dřeva\npro soukromé účely na dobu určitou do 31. 1. 2026.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1459/47/2025",
+        "type": "explicit",
+        "resolved": "RM/1459/47/2025"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -29211,7 +29283,13 @@
     "subject": "rozhodnutí Rady města Litovel ze dne 19. 2. 2025 usn. č. RM/1488/47/2025 bod a),\nresp. jeho část, v rozsahu schválení poskytnutí dotace z dotačního programu Ministerstva pro místní rozvoj\nvyhlášeného prostřednictvím Státního fondu životního prostředí ČR výzvou „Pomoc domácnostem“ žadateli: T. N.,\nLitovel, v částce 60.000 Kč z důvodu duplicitního schválení žádosti žadatele.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1488/47/2025",
+        "type": "explicit",
+        "resolved": "RM/1488/47/2025"
+      }
+    ],
     "amounts": [
       "60.000 Kč"
     ],
@@ -29661,7 +29739,24 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1919/63/2025",
+        "action": "schvaluje"
+      },
+      {
+        "from": "RM/1920/63/2025",
+        "action": "schvaluje"
+      },
+      {
+        "from": "RM/1921/63/2025",
+        "action": "schvaluje"
+      },
+      {
+        "from": "RM/1999/66/2026",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -29705,7 +29800,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1829/59/2025",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -31428,7 +31528,13 @@
     "subject": "příspěvek na provoz ve výši 33.290.000 Kč pro TS Litovel a investiční dotaci\nna zametací vůz ve výši 600.000 Kč – schváleno ZML dne 8. 12. 2022 pod číslem ZM/7/2/2022 c).",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "ZM/7/2/2022",
+        "type": "explicit",
+        "resolved": "ZM/7/2/2022"
+      }
+    ],
     "amounts": [
       "33.290.000 Kč",
       "600.000 Kč"
@@ -33884,7 +33990,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1763/56/2025",
+        "action": "revokuje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -34465,7 +34576,13 @@
     "subject": "usnesení č. RM/1753/55/2025 bod h).",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1753/55/2025",
+        "type": "explicit",
+        "resolved": "RM/1753/55/2025"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "administration",
@@ -38302,7 +38419,13 @@
     "subject": "Smlouvu o nájmu pozemku na pronájem pozemku parc.č. 812, orná půda,\nv k.ú. Litovel (zahrádka), uzavřenou v souladu se zveřejněným záměrem města dle ust. § 39, odst. 1,\nzák. č. 128/2000 Sb., dle přijatého usnesení RM/1662/52/2025.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1662/52/2025",
+        "type": "explicit",
+        "resolved": "RM/1662/52/2025"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -41101,7 +41224,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1957/65/2025",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -41135,7 +41263,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1968/65/2025",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -41205,7 +41338,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/2016/66/2026",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -42467,7 +42605,13 @@
     "subject": "usnesení č. 1043/35 ze dne 16. 5. 2024.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "1043/35",
+        "type": "implicit",
+        "resolved": "RM/1043/35/2024"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "administration",
@@ -42535,7 +42679,13 @@
     "subject": "předloženou Smlouvu o nájmu pozemku, uzavřenou v souladu se zveřejněným\nzáměrem města a v souladu s ust. § 39 odst. 1 zákona č. 128/2000 Sb., v platném znění, dle usnesení rady města\nč. RM/1661/52/2025, uzavřenou mezi městem Litovel a nájemcem, panem V. K. z Litovle, na pronájem části\npozemku parc.č. 859/18, o výměře 30 m2, lesní pozemek, v k.ú. Litovel, na dobu určitou, tj. do 30. 6. 2031, za cenu\nnájemného 30 Kč/m2/rok + DPH ve stanovené výši, za účelem dočasné skládky palivového dřeva pro vlastní\npotřebu. Nájemce předloží orgánu správy lesů, tj. odboru životního prostředí, žádost o dočasném odnětí pronajímané\nčásti pozemku z plnění funkcí lesa, v souladu s ust. § 16 odst. 1 zákona č. 289/1995 Sb., v platném znění.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1661/52/2025",
+        "type": "explicit",
+        "resolved": "RM/1661/52/2025"
+      }
+    ],
     "amounts": [
       "30 Kč"
     ],
@@ -42605,7 +42755,13 @@
     "subject": "předloženou Smlouvu o nájmu pozemku, uzavřenou v souladu se zveřejněným\nzáměrem města a v souladu s ust. § 39 odst. 1 zákona č. 128/2000 Sb., v platném znění, dle usnesení rady města\nč. RM/1661/52/2025, uzavřenou mezi městem Litovel a nájemci, manželi J. a A. P. z Litovle, na pronájem části\npozemku parc.č. 859/19, lesní pozemek, o výměře 65 m2, v k.ú. Litovel, na dobu určitou, tj. do 30. 6. 2031,\nza nájemné 30 Kč/m2/rok + DPH ve stanovené výši, za účelem dočasné skládky palivového dřeva pro vlastní\npotřebu. Nájemci předloží orgánu správy lesů, tj. odboru životního prostředí, žádost o dočasné odnětí pronajímané\nčásti pozemku z plnění funkcí lesa, v souladu s ust. § 16 odst. 1 zákona č. 289/1995 Sb., v platném znění.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1661/52/2025",
+        "type": "explicit",
+        "resolved": "RM/1661/52/2025"
+      }
+    ],
     "amounts": [
       "30 Kč"
     ],
@@ -42641,7 +42797,13 @@
     "subject": "předloženou Smlouvu o nájmu pozemku, uzavřenou v souladu se zveřejněným\nzáměrem města a v souladu s ust. § 39 odst. 1 zákona č. 128/2000 Sb., v platném znění, dle usnesení rady města\nč. RM/1661/52/2025, uzavřenou mezi městem Litovel a nájemci, L. a L. H. z Litovle, na pronájem části pozemku\nparc.č. 859/18, o výměře 30 m2, lesní pozemek, v k.ú. Litovel, na dobu určitou, tj. do 30. 6. 2031, za cenu nájemného\n30 Kč/m2/rok + DPH ve stanovené výši, za účelem dočasné skládky palivového dřeva pro vlastní potřebu. Nájemci\npředloží orgánu správy lesů, tj. odboru životního prostředí, žádost o dočasné odnětí pronajímané části pozemku\nz plnění funkcí lesa, v souladu s ust. § 16 odst. 1 zákona č. 289/1995 Sb., v platném znění.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1661/52/2025",
+        "type": "explicit",
+        "resolved": "RM/1661/52/2025"
+      }
+    ],
     "amounts": [
       "30 Kč"
     ],
@@ -43197,7 +43359,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1995/65/2025",
+        "action": "revokuje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -43299,7 +43466,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1995/65/2025",
+        "action": "revokuje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -44249,7 +44421,13 @@
     "subject": "předloženou Smlouvu o nájmu, uzavřenou v souladu se zveřejněným záměrem\nměsta a v souladu s ust. § 39 odst. 1 zákona č. 128/2000 Sb., v platném znění, dle usnesení rady města\nč. RM/1886/62/2025, uzavřenou mezi pronajímatelem městem Litovel a nájemcem společností STAVBEX s.r.o.\nPředmětem nájmu jsou nebytové prostory o výměře cca 150 m2, nacházející se v budově bez čísla popisného nebo\nevidenčního, na pozemku parc.č. st. 1052, v k.ú. Litovel. Smlouva se uzavírá na dobu neurčitou, s výpovědní lhůtou\n1 měsíc, za smluvní nájemné 5.000 Kč/měsíc, za účelem uskladnění stavebního materiálu a zařízení.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1886/62/2025",
+        "type": "explicit",
+        "resolved": "RM/1886/62/2025"
+      }
+    ],
     "amounts": [
       "5.000 Kč"
     ],
@@ -44715,7 +44893,13 @@
     "subject": "předloženou Smlouvu o výpůjčce, uzavřenou v souladu se zveřejněným záměrem\nměsta a v souladu s ust. § 39 odst. 1 zákona č. 128/2000 Sb., o obcích, v platném znění, dle usnesení rady města\nč. RM/1887/62/2025, uzavřenou mezi půjčitelem městem Litovel a vypůjčitelem Charitou Šternberk, středisko\nLitovel. Předmětem výpůjčky jsou nebytové prostory o výměře cca 9 m2, nacházející se v budově bez čísla\npopisného nebo evidenčního, na pozemku parc.č. st. 1052, v k.ú. Litovel. Smlouva se uzavírá na dobu neurčitou,\ns výpovědní lhůtou 1 měsíc, bezúplatně, za účelem uskladnění materiálu a potřeb nezbytných k výkonu činnosti\nvypůjčitele.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1887/62/2025",
+        "type": "explicit",
+        "resolved": "RM/1887/62/2025"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -45019,7 +45203,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/2005/66/2026",
+        "action": "revokuje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -46021,7 +46210,18 @@
     "subject": "usnesení č. RM/1934/63/2025 a RM/1937/63/2025 z důvodů uvedených v důvodové\nzprávě.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1934/63/2025",
+        "type": "explicit",
+        "resolved": "RM/1934/63/2025"
+      },
+      {
+        "raw": "RM/1937/63/2025",
+        "type": "explicit",
+        "resolved": "RM/1937/63/2025"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "administration",
@@ -46170,7 +46370,13 @@
     "subject": "předloženou Smlouvu o nájmu pozemku, uzavřenou v souladu se zveřejněným\nzáměrem města dle ust. § 39 odst. 1 zákona č. 128/2000 Sb., v platném znění, a dle usn. rady města\nč. RM/1661/52/2025, uzavřenou mezi městem Litovel a panem J. H. z Litovle, na pronájem části pozemku parc.č.\n859/19, o výměře 15 m2, a části pozemku parc.č. 859/18, o výměře 30 m2, v k.ú. Litovel, lesní pozemek, na dobu\nurčitou, tj. do 30. 6. 2031, za cenu nájemného 30 Kč/m2/rok + DPH ve stanovené výši, za účelem dočasné skládky\npalivového dřeva pro vlastní potřebu. Nájemce předloží orgánu správy lesů, tj. odboru životního prostředí, žádost\no dočasné odnětí pronajímané části pozemku z plnění funkcí lesa, v souladu s ust. § 16 odst. 1 zákona č. 289/1995\nSb., v platném znění.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1661/52/2025",
+        "type": "explicit",
+        "resolved": "RM/1661/52/2025"
+      }
+    ],
     "amounts": [
       "30 Kč"
     ],
@@ -46512,7 +46718,13 @@
     "subject": "své usnesení č. 1975/65 v rozsahu bodu ad a), tzn. schválení dodatku č. 22\nke smlouvě o nájmu vodohospodářské infrastruktury, a schvaluje znění dodatku č. 22 ke smlouvě o nájmu\nvodohospodářské infrastruktury v předloženém znění.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "1975/65",
+        "type": "implicit",
+        "resolved": "RM/1975/65/2025"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "infrastructure",
@@ -46977,7 +47189,13 @@
     "subject": "předloženou smlouvu o nájmu pozemku, uzavřenou mezi městem Litovel\na společností CEREALIS a.s., se sídlem Tři Dvory, v souladu se zveřejněným záměrem dle přijatého usnesení rady\nměsta č. RM/1889/62/2025, na pronájem části pozemku parc.č. 33, ostatní plocha, o výměře 123 m2, a části pozemku\nparc.č. 316, ostatní plocha, o výměře 3 m2, v k.ú. Tři Dvory u Litovle, za účelem zřízení přístupové cesty k akci\n„Cerealis a.s., Nový sklad AW2“. Smlouva je uzavřena na dobu určitou za měsíční nájemné 756 Kč, navýšené\no DPH v zákonné výši.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/1889/62/2025",
+        "type": "explicit",
+        "resolved": "RM/1889/62/2025"
+      }
+    ],
     "amounts": [
       "756 Kč"
     ],
@@ -47484,7 +47702,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/2371/74/2026",
+        "action": "revokuje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": [
       {
@@ -52799,7 +53022,13 @@
     "subject": "deklaruje ve shodě s usnesením ZML č. ZM/5/17/2025 záměr uzavření nájemní smlouvy\nmezi městem Litovel (pronajímatelem) a společností Aktivní Litovel s.r.o. (nájemcem), jejímž předmětem bude\npronájem sportovišť v majetku města Litovel této městem založené společnosti.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "ZM/5/17/2025",
+        "type": "explicit",
+        "resolved": "ZM/5/17/2025"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -55600,6 +55829,10 @@
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
     "references_in": [
+      {
+        "from": "RM/2262/72/2026",
+        "action": "schvaluje"
+      },
       {
         "from": "RM/2324/74/2026",
         "action": "revokuje"
@@ -59184,7 +59417,13 @@
     "subject": "na základě zveřejněného záměru (v souladu s přijatým usnesením rady města\nč. RM/2187/70/2026) předloženou Nájemní smlouvu na pronájem části pozemku parc.č. 367 o výměře 77 m2,\nzahrada, k.ú. Unčovice, dlážděná plocha před pohostinstvím v Březovém, za účelem provozu venkovní restaurační\nzahrádky s účinností od 1. 5. 2026. pro nájemce, pana M. D., Březové. Uzavření smlouvy je podmíněno legalizací\nvolné živnosti (výroba, obchod a služby uvedené v přílohách č. 1. a 3. živnostenského zákona, hostinskou\na koncesovanou živností a prodejem kvasného lihu a lihovin.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/2187/70/2026",
+        "type": "explicit",
+        "resolved": "RM/2187/70/2026"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -60408,7 +60647,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/318/11/2023",
+        "action": "revokuje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -64185,7 +64429,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/2438/78/2026",
+        "action": "bere na vědomí"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -64392,7 +64641,13 @@
     "subject": "svoje usnesení 2027/67 bod a z 29. ledna 2026. Nově zní usnesení takto: Rada města\nsouhlasí s poskytnutím dotace ve výši 25.000 Kč na úhradu nákladů spojených s účastí žáků ZUŠ na soutěžích\nběhem roku v různých místech republiky.\nViktor Kohout v. r. Mgr. Lubomír Broza v. r.\nstarosta města místostarosta města",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "2027/67",
+        "type": "implicit",
+        "resolved": "RM/2027/67/2026"
+      }
+    ],
     "amounts": [
       "25.000 Kč"
     ],
@@ -67407,7 +67662,13 @@
     "subject": "informace ze Seniorklubu ze dne 15. 7. 2026, nová varianta fungování\nSeniorklubu nebyla předložena. Dle usnesení RM č. RM/2366/74/2026 ze dne 4. 6. 2026 komise rady města končí\nk 30. 9. 2026, tedy i Komise Seniorklub. Dále bude o fungování Seniorklubu rozhodovat nová rada města. Do doby\nrozhodnutí o ustavení komisí novou radou města, pokud nezaloží zapsaný spolek, bude Seniorklub fungovat bez\nfinančního ohodnocení. O finančních ohodnoceních bude po svém ustanovení rozhodovat nově zvolené\nzastupitelstvo.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/2366/74/2026",
+        "type": "explicit",
+        "resolved": "RM/2366/74/2026"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "social",
@@ -73170,7 +73431,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/2592/82/2026",
+        "action": "mění"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -74337,11 +74603,19 @@
     "id": "RM/2592/82/2026",
     "datum": "2026-10-22",
     "organ": "Rada města Litovel",
-    "actions": [],
-    "subject": "mění usnesení č. RM/2563/81/2026 ze dne 1. 10. 2026 tak, že se částka „1.800.000 Kč včetně\nDPH“ nahrazuje částkou „2.000.000 Kč včetně DPH“. Ostatní části usnesení zůstávají beze změny.",
+    "actions": [
+      "mění"
+    ],
+    "subject": "usnesení č. RM/2563/81/2026 ze dne 1. 10. 2026 tak, že se částka „1.800.000 Kč včetně\nDPH“ nahrazuje částkou „2.000.000 Kč včetně DPH“. Ostatní části usnesení zůstávají beze změny.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/2563/81/2026",
+        "type": "explicit",
+        "resolved": "RM/2563/81/2026"
+      }
+    ],
     "amounts": [
       "1.800.000 Kč",
       "2.000.000 Kč"
@@ -74953,7 +75227,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/478/15/2023",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -75838,7 +76117,13 @@
     "subject": "zveřejnění záměru odprodeje části pozemku parc.č. 331/2 dle GP č. 135-132/2021\ndíl a o výměře 58 m2 v k.ú. Nová Ves. Cena se stanovuje dle usn. ZM/12/28/2021 písm. a), bod 3: cena obvyklá\nstanovena znaleckým posudkem, který doplní žadatel o pozemek před zveřejněním záměru odprodeje.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "ZM/12/28/2021",
+        "type": "explicit",
+        "resolved": "ZM/12/28/2021"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -77112,7 +77397,13 @@
     "subject": "usnesení č. RM/229/9/2023, kterým byla schválena smlouva o smlouvě budoucí\no zřízení věcného břemene a smlouvu o právu provést stavbu.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/229/9/2023",
+        "type": "explicit",
+        "resolved": "RM/229/9/2023"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -77245,7 +77536,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/393/13/2023",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -77530,7 +77826,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/396/13/2023",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -79252,7 +79553,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/362/12/2023",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -79515,7 +79821,13 @@
       }
     ],
     "tail": "označena a nebude na ní nic umístěno.",
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/356/11/2023",
+        "type": "explicit",
+        "resolved": "RM/356/11/2023"
+      }
+    ],
     "amounts": [
       "1 Kč",
       "20 Kč"
@@ -80779,7 +81091,13 @@
     "subject": "v souladu se zveřejněným záměrem města dle usnesení rady města\nč. RM/320/11/2023 odprodej nevyhovujícího herního prvku (domek se stříškou STANDART) od dodavatele\nherního prvku firmy Karim Hulín, jehož činnost před několika lety zanikla, žadatelce paní J. K. z Březové\nza nabídkovou cenu 2.501 Kč. Žadatelka vlastním nákladem herní sestavu demontuje včetně likvidace betonových\npatek a následného urovnání terénu.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/320/11/2023",
+        "type": "explicit",
+        "resolved": "RM/320/11/2023"
+      }
+    ],
     "amounts": [
       "2.501 Kč"
     ],
@@ -80899,7 +81217,13 @@
     "subject": "v souladu se zveřejněným záměrem dle ust. § 39, odst. 1, zák. č. 128/2000 Sb.\nv platném znění v souladu s přijatým usnesením č. RM/327/11/2023, písm. b), Smlouvu o nájmu částí pozemků\nparc.č. 48, ost. pl., o výměře 112 m2, parc.č. 52, zahrada, o výměře 130 m2 a parc.č. 50/4, zahrada, o výměře 179 m2,\nuzavřenou mezi městem Litovel a nájemcem M. H. z Litovle, na dobu neurčitou, za nájemné 2 Kč/m2/rok, za účelem\nvyužití na zeleninovou zahrádku, k odpočinku a relaxaci. Přípis o vyrovnání věcí (chata, pergola aj.) ponechaných\nna pozemku předchozím nájemcem, v souladu s usn. RM, je doložen.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/327/11/2023",
+        "type": "explicit",
+        "resolved": "RM/327/11/2023"
+      }
+    ],
     "amounts": [
       "2 Kč"
     ],
@@ -83457,7 +83781,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/653/24/2023",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -84938,7 +85267,13 @@
       }
     ],
     "tail": "za roční nájemné 545 Kč.\nNájem je sjednán na dobu určitou s účinností od 1. 7. 2023 do 30. 6. 2025. Pozemek parc.č. 859/19 a 859/18 jsou\nlesní pozemky, v k.ú. Litovel, lokalita Revúcká. Všichni nájemci musí předložit orgánu správy lesů (OŽP) žádost\no dočasné odnětí pronajímaných částí pozemků z plnění funkcí lesa v souladu s ust. § 16, odst. (1), zák. číslo\n289/1995Sb.",
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/269/10/2023",
+        "type": "explicit",
+        "resolved": "RM/269/10/2023"
+      }
+    ],
     "amounts": [
       "1.180 Kč",
       "545 Kč",
@@ -85982,7 +86317,13 @@
     "subject": "příspěvek na provoz ve výši 400.000 Kč pro TS Litovel, p. o. – rozpočtová změna\nč. 109/2022/ZM schválená ZML dne 15. 9. 2022 pod číslem ZM/4/34/2022.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "ZM/4/34/2022",
+        "type": "explicit",
+        "resolved": "ZM/4/34/2022"
+      }
+    ],
     "amounts": [
       "400.000 Kč"
     ],
@@ -92804,7 +93145,13 @@
     "subject": "Smlouvu o nájmu pozemku uzavřenou v souladu s ust. § 39, odst. 1, zákona\nč. 128/2000 Sb. „o obcích“, v platném znění, dle přijatého usnesení rady města č. RM/444/15/2023, na pronájem\nčásti pozemku parc.č. 331/2, ostatní plocha/ostatní komunikace, v k.ú. Nová Ves u Litovle, o výměře 64 m2,\nz celkové výměry z 1 620 m2. Smlouva je uzavřena mezi městem Litovel a Ing. M. K. z Bruntálu, na dobu neurčitou\nk pěstitelským účelům. Pronajatá část pozemku nebude ze strany nájemce oplocená a nebude sloužit k parkování.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/444/15/2023",
+        "type": "explicit",
+        "resolved": "RM/444/15/2023"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "property",
@@ -98263,7 +98610,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/807/29/2024",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -98676,7 +99028,13 @@
     "subject": "příspěvek na provoz ve výši 37.522.000 Kč pro TS Litovel, p. o. – schváleno ZML\ndne 7. 12. 2023 pod číslem usnesení ZM/5/8/2023 c).",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "ZM/5/8/2023",
+        "type": "explicit",
+        "resolved": "ZM/5/8/2023"
+      }
+    ],
     "amounts": [
       "37.522.000 Kč"
     ],
@@ -99581,7 +99939,13 @@
     "subject": "předložený Dodatek č. 5 ke Smlouvě za účelem zajištění provozu náhradního\nautobusového stanoviště v Litovli č. SAN 24-002/2020 ze dne 20. 6. 2020, uzavřený mezi městem Litovel a ČSAD\nOstrava a.s. na prodloužení pronájmu částí pozemků parc.č. 1832, 1831/1 a 128/16, lokalita ul. Příčná v Litovli\nv souladu se zveřejněným záměrem dle usn. číslo RM/775/27/2024. V souladu s čl. III Dodatku č. 5 smluvní strany\nujednávají, že pronajímatel souhlasí s bezesmluvním užíváním předmětu nájmu od 1. 1. 2024 do účinnosti Dodatku\nč. 5. Nájemce se městu dále zavazuje uhradit bezdůvodné obohacení za období bezesmluvního užívání pronajímateli\nve výši nájemného, sjednaného v Dodatku č. 4 tj. 60.000 Kč za každý i započatý měsíc s připočtením daně z přidané\nhodnoty ve výši sazby daně platné ke dni uskutečnitelného zdanitelného období.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/775/27/2024",
+        "type": "explicit",
+        "resolved": "RM/775/27/2024"
+      }
+    ],
     "amounts": [
       "60.000 Kč"
     ],
@@ -102956,7 +103320,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1140/38/2024",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -104680,7 +105049,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/979/34/2024",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -105417,7 +105791,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1047/36/2024",
+        "action": "revokuje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -106178,7 +106557,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/959/33/2024",
+        "action": "revokuje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -106995,7 +107379,13 @@
     "subject": "usnesení č. RM/938/32/2024.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/938/32/2024",
+        "type": "explicit",
+        "resolved": "RM/938/32/2024"
+      }
+    ],
     "amounts": [],
     "classification": {
       "category": "administration",
@@ -107483,7 +107873,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/1221/40/2024",
+        "action": "bere na vědomí"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -108075,7 +108470,13 @@
     "subject": "předloženou Smlouvu pro umístění solárního Parcel Boxu GLS, uzavřenou\nv souladu se zveřejněným záměrem města dle usn. RM číslo RM/903/31/2024 na pronájem části pozemku\nparc.č. 425/3, ost. plocha/ost. komunikace, v k.ú. Litovel, uzavřenou mezi městem Litovel a firmou General\nLogistics Systems Czech Republic s.r.o. z Jihlavy, za účelem umístění Parcel Boxu GLS, na dobu neurčitou,\nza měsíční nájemné ve výši 1.500 Kč s připočtením daně z přidané hodnoty.",
     "items": [],
     "tail": null,
-    "references_out": [],
+    "references_out": [
+      {
+        "raw": "RM/903/31/2024",
+        "type": "explicit",
+        "resolved": "RM/903/31/2024"
+      }
+    ],
     "amounts": [
       "1.500 Kč"
     ],
@@ -108918,6 +109319,515 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-1-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "aktualizovaný návrh programu jednání.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Schválení programu jednání",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "f822fc231303cd52d445e64e589a28f954a0fb086d026ae71a7f51462bb2a1f8",
+      "prediction": {
+        "category": "administration",
+        "confidence": 0.94,
+        "second_category": "social",
+        "second_confidence": 0.04,
+        "margin": 0.9,
+        "entropy": 0.25
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-10-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "volí"
+    ],
+    "subject": "Mgr. Mirko Spurníka předsedou Kontrolního\nvýboru.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Volba předsedy Kontrolní výboru",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "8c9e0a413860648fff00888a79c014dfa08dea6140a1888d1b92f3ca59e22559",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "social",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-11-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "stanovení výše odměn pro členy\nZastupitelstva města Litovel, členy Rady města Litovel a předsedy výborů\nZML s účinností od 2. 11. 2026 dle předloženého návrhu a stanoví paušální\nnáhradu ušlého výdělku ve výši 288 Kč/hod, max. 2.880 Kč/den. Členovi ZML\nvzniká nárok na funkční odměnu až po složení slibu člena ZML.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "2.880 Kč",
+      "288 Kč"
+    ],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Rozhodnutí o odměnách za výkon funkcí neuvolněných členů zastupitelstva (§ 72 zákona č. 128/2000 Sb. a § 71 odst. 3, paušálních náhrad pro členy ZM OSVČ)",
+    "classification": {
+      "category": "finance",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "b2c79d4d056f46d9ca5fd6a10618e4446dae0d11ef815f8f6a07bafab0505a90",
+      "prediction": {
+        "category": "finance",
+        "confidence": 0.93,
+        "second_category": "administration",
+        "second_confidence": 0.05,
+        "margin": 0.88,
+        "entropy": 0.32
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-12-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "deleguje",
+      "navrhuje",
+      "nominuje",
+      "pověřuje"
+    ],
+    "subject": null,
+    "items": [
+      {
+        "label": "a",
+        "text": "Zastupitelstvo města Litovel deleguje starostu města Viktora Kohouta jako\nzástupce města na valnou hromadu Vodohospodářské společnosti ČERLINKA,\ns.r.o., na funkční období 2026–2030 a jako náhradníka deleguje Bc. Zdeňka\nJančího. Dále navrhuje do funkce člena dozorčí rady místostarostu města."
+      },
+      {
+        "label": "b",
+        "text": "Zastupitelstvo města Litovel deleguje starostu města Viktora Kohouta jako\nzástupce města na valnou hromadu společnosti FCC Litovel, s.r.o., na funkční\nobdobí 2026–2030, a jako náhradníka deleguje místostarostu města Mgr.\nLubomíra Brozu."
+      },
+      {
+        "label": "c",
+        "text": "Zastupitelstvo města Litovel navrhuje místostarostu města Mgr. Lubomíra\nBrozu a Bc. Zdeňka Jančího do funkce členů dozorčí rady společnosti FCC\nLitovel, s.r.o. na funkční období 2026–2030."
+      },
+      {
+        "label": "d",
+        "text": "Zastupitelstvo města Litovel deleguje pana Viktora Kohouta jako zástupce\nměsta Litovel na všechny valné hromady společnosti Servisní společnost\nodpady Olomouckého kraje, a. s., IČO 07686501, se sídlem Olomouc, a jako\nnáhradníka pana Mgr. Lubomíra Brozu pro volební období 2026-2030."
+      },
+      {
+        "label": "e",
+        "text": "Zastupitelstvo města Litovel deleguje starostu města Viktora Kohouta jako\nzástupce města na Valnou hromadu Městské teplárenské společnosti a.s.\nLitovel na funkční období 2026–2030 a jako náhradníka deleguje\nmístostarostu města Mgr. Lubomíra Brozu."
+      },
+      {
+        "label": "f",
+        "text": "Zastupitelstvo města Litovel navrhuje Ing. Zdeňka Potužáka do funkce člena\npředstavenstva Městské teplárenské společnosti a.s. Litovel na funkční období\n2026–2030 a do funkce člena dozorčí rady deleguje Ing. Jaromíra Koláře."
+      },
+      {
+        "label": "g",
+        "text": "Zastupitelstvo města Litovel pověřuje starostu města Viktora Kohouta k\nzastupování města Litovel v orgánech DSO Region Moravská cesta."
+      },
+      {
+        "label": "h",
+        "text": "Zastupitelstvo města Litovel deleguje Ing. Zdeňka Potužáka jako zástupce\nměsta na Valnou hromadu Vodohospodářské společnosti Olomouc, a.s., na\nfunkční období 2026-2030 a jako náhradníka deleguje starostu města Viktora\nKohouta."
+      },
+      {
+        "label": "i",
+        "text": "Zastupitelstvo města Litovel deleguje člena zastupitelstva města, pana Jiřího\nKohouta DiS., jako zástupce města na členskou schůzi Litovelského bytového\ndružstva na funkční období 2026-2030 a jako náhradníka deleguje\nmístostarostu města Mgr. Lubomíra Brozu."
+      },
+      {
+        "label": "j",
+        "text": "Zastupitelstvo města Litovel deleguje starostu města Viktora Kohouta jako\nzástupce města na Valnou hromadu občanského sdružení MAS Moravská\ncesta, z.s. na funkční období 2026-2030 a jako náhradníka deleguje\nmístostarostu města Mgr. Lubomíra Brozu."
+      },
+      {
+        "label": "k",
+        "text": "Zastupitelstvo města Litovel deleguje starostu města Viktora Kohouta jako\nzástupce města na Valnou hromadu Mikroregionu Litovelsko na funkční\nobdobí 2026-2030."
+      },
+      {
+        "label": "l",
+        "text": "Zastupitelstvo města Litovel nominuje Ing. Ludmilu Zavadilovou, členku\nRady města Litovel a ředitelku Charity Šternberk, do Rady pro kontrolu\nhospodaření Odborného léčebného ústavu Paseka, p.o."
+      }
+    ],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Delegování zástupců města do orgánů společností",
+    "classification": {
+      "category": "infrastructure",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "b4e95a3a0fccf375b02b3577d5bd646cb947b2a91d13fcee986526b0f836d09a",
+      "prediction": {
+        "category": "infrastructure",
+        "confidence": 0.99,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.04
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-2-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "návrhovou a volební komisi.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Schválení návrhové a volební komise",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "3ac0d1d070f84e1547daa423343d439163e62b5d1d246ad16ff9a77114dba2ee",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "culture",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-3-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "určuje"
+    ],
+    "subject": null,
+    "items": [
+      {
+        "label": "a",
+        "text": "Zastupitelstvo města Litovel určuje, že v souladu s § 84 odst. 2 písm. k)\nzákona č. 128/2000 Sb., budou členové zastupitelstva pro funkce starosty a\nmístostarosty města dlouhodobě uvolnění."
+      },
+      {
+        "label": "b",
+        "text": "Zastupitelstvo města Litovel určuje, že místostarosta města dle § 104\nzákona č. 128/2000 Sb., zastupuje starostu v době jeho nepřítomnosti."
+      },
+      {
+        "label": "c",
+        "text": "Zastupitelstvo města Litovel určuje, že v souladu s § 84 odst. 2 písm. m)\nzákona č. 128/2000 Sb., bude Rada města Litovel sedmičlenná."
+      }
+    ],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Určení, které funkce budou členové zastupitelstva vykonávat jako dlouhodobě uvolnění (§ 71 zákona č. 128/2000 Sb.)",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "67c8dd2bad65e4fe72c080b90116d037fce11e0e08022422466a47cc4ec1f583",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "social",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-4-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": null,
+    "items": [
+      {
+        "label": "a",
+        "text": "Zastupitelstvo města Litovel schvaluje tajnou volbu při hlasování o volbě\nstarosty, místostarosty a členů Rady města dle volebního řádu."
+      },
+      {
+        "label": "b",
+        "text": "Zastupitelstvo města Litovel schvaluje volební řád."
+      }
+    ],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Určení způsobu volby starosty, místostarosty a členů rady",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "a2304618fbfa9a28b1885769dbe3b6f01abf0ffba05367c1d60bb16c003d6114",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "social",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-5-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "volí"
+    ],
+    "subject": "Viktora Kohouta starostou města Litovel.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Volba starosty",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "ca7efe2498bad5df85aa2cb2ca853877c1b3c29a94031c4337a2757c59dec394",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "social",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-6-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "volí"
+    ],
+    "subject": "Mgr. Lubomíra Brozu místostarostou města\nLitovel.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Volba místostarosty",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "66b68629eb465b0f298753d6b0a9f3bc7247c5fab1d57468154f61d2c960f5c8",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "social",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-7-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "volí"
+    ],
+    "subject": "Ing. Martina Benešla, Mgr. Tomáše Dědka,\nMgr. Kateřinu Faksu, Ing. Ludmilu Zavadilovou a Ing. Hanu Zlámalovou\nKrumniklovou členy Rady města Litovel.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Volba členů rady",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "e7af108d6b2af43be7cb5a8ab41f35996c0b60cef8a75de8bebfa36d93370da1",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "sport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-8-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "zřizuje"
+    ],
+    "subject": "Finanční a Kontrolní výbor, který bude\npracovat v počtu pěti členů.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Určení počtu členů Finančního a Kontrolního výboru",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "a9e9f7d0594b75c356de404be8bf731efc898ab5a1291dfd5d269eb3d284c28a",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "social",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.03
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-9-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "volí"
+    ],
+    "subject": "Ing. Martina Pavlíka předsedou Finančního\nvýboru.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "usneseni.cz",
+    "agenda_title": "Volba předsedy Finančního výboru",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "e90028a73fe3429c934ca604341a3f3d6dee16cb612e069f7183c83790e99ba9",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "social",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
     "budget_opatreni_approved": []
@@ -125247,7 +126157,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/2126/68/2026",
+        "action": null
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -126731,7 +127646,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/786/27/2024",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },
@@ -129130,7 +130050,12 @@
     },
     "term_id": "2022-2026",
     "term_label": "Volební období 2022-2026",
-    "references_in": [],
+    "references_in": [
+      {
+        "from": "RM/170/7/2023",
+        "action": "schvaluje"
+      }
+    ],
     "budget_change_links": [],
     "budget_opatreni_approved": []
   },

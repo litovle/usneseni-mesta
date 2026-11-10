@@ -21,7 +21,13 @@
     }
   ],
   "tail": "označena a nebude na ní nic umístěno.",
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/356/11/2023",
+      "type": "explicit",
+      "resolved": "RM/356/11/2023"
+    }
+  ],
   "amounts": [
     "1 Kč",
     "20 Kč"

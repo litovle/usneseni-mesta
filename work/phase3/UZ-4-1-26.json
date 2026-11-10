@@ -1,0 +1,40 @@
+{
+  "id": "UZ-4-1/26",
+  "datum": "2026-11-02",
+  "organ": "Zastupitelstvo města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": null,
+  "items": [
+    {
+      "label": "a",
+      "text": "Zastupitelstvo města Litovel schvaluje tajnou volbu při hlasování o volbě\nstarosty, místostarosty a členů Rady města dle volebního řádu."
+    },
+    {
+      "label": "b",
+      "text": "Zastupitelstvo města Litovel schvaluje volební řád."
+    }
+  ],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "usneseni.cz",
+  "agenda_title": "Určení způsobu volby starosty, místostarosty a členů rady",
+  "classification": {
+    "category": "administration",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "a2304618fbfa9a28b1885769dbe3b6f01abf0ffba05367c1d60bb16c003d6114",
+    "prediction": {
+      "category": "administration",
+      "confidence": 1.0,
+      "second_category": "social",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.02
+    }
+  }
+}

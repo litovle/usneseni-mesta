@@ -1,0 +1,83 @@
+{
+  "id": "UZ-12-1/26",
+  "datum": "2026-11-02",
+  "organ": "Zastupitelstvo města Litovel",
+  "actions": [
+    "deleguje",
+    "navrhuje",
+    "nominuje",
+    "pověřuje"
+  ],
+  "subject": null,
+  "items": [
+    {
+      "label": "a",
+      "text": "Zastupitelstvo města Litovel deleguje starostu města Viktora Kohouta jako\nzástupce města na valnou hromadu Vodohospodářské společnosti ČERLINKA,\ns.r.o., na funkční období 2026–2030 a jako náhradníka deleguje Bc. Zdeňka\nJančího. Dále navrhuje do funkce člena dozorčí rady místostarostu města."
+    },
+    {
+      "label": "b",
+      "text": "Zastupitelstvo města Litovel deleguje starostu města Viktora Kohouta jako\nzástupce města na valnou hromadu společnosti FCC Litovel, s.r.o., na funkční\nobdobí 2026–2030, a jako náhradníka deleguje místostarostu města Mgr.\nLubomíra Brozu."
+    },
+    {
+      "label": "c",
+      "text": "Zastupitelstvo města Litovel navrhuje místostarostu města Mgr. Lubomíra\nBrozu a Bc. Zdeňka Jančího do funkce členů dozorčí rady společnosti FCC\nLitovel, s.r.o. na funkční období 2026–2030."
+    },
+    {
+      "label": "d",
+      "text": "Zastupitelstvo města Litovel deleguje pana Viktora Kohouta jako zástupce\nměsta Litovel na všechny valné hromady společnosti Servisní společnost\nodpady Olomouckého kraje, a. s., IČO 07686501, se sídlem Olomouc, a jako\nnáhradníka pana Mgr. Lubomíra Brozu pro volební období 2026-2030."
+    },
+    {
+      "label": "e",
+      "text": "Zastupitelstvo města Litovel deleguje starostu města Viktora Kohouta jako\nzástupce města na Valnou hromadu Městské teplárenské společnosti a.s.\nLitovel na funkční období 2026–2030 a jako náhradníka deleguje\nmístostarostu města Mgr. Lubomíra Brozu."
+    },
+    {
+      "label": "f",
+      "text": "Zastupitelstvo města Litovel navrhuje Ing. Zdeňka Potužáka do funkce člena\npředstavenstva Městské teplárenské společnosti a.s. Litovel na funkční období\n2026–2030 a do funkce člena dozorčí rady deleguje Ing. Jaromíra Koláře."
+    },
+    {
+      "label": "g",
+      "text": "Zastupitelstvo města Litovel pověřuje starostu města Viktora Kohouta k\nzastupování města Litovel v orgánech DSO Region Moravská cesta."
+    },
+    {
+      "label": "h",
+      "text": "Zastupitelstvo města Litovel deleguje Ing. Zdeňka Potužáka jako zástupce\nměsta na Valnou hromadu Vodohospodářské společnosti Olomouc, a.s., na\nfunkční období 2026-2030 a jako náhradníka deleguje starostu města Viktora\nKohouta."
+    },
+    {
+      "label": "i",
+      "text": "Zastupitelstvo města Litovel deleguje člena zastupitelstva města, pana Jiřího\nKohouta DiS., jako zástupce města na členskou schůzi Litovelského bytového\ndružstva na funkční období 2026-2030 a jako náhradníka deleguje\nmístostarostu města Mgr. Lubomíra Brozu."
+    },
+    {
+      "label": "j",
+      "text": "Zastupitelstvo města Litovel deleguje starostu města Viktora Kohouta jako\nzástupce města na Valnou hromadu občanského sdružení MAS Moravská\ncesta, z.s. na funkční období 2026-2030 a jako náhradníka deleguje\nmístostarostu města Mgr. Lubomíra Brozu."
+    },
+    {
+      "label": "k",
+      "text": "Zastupitelstvo města Litovel deleguje starostu města Viktora Kohouta jako\nzástupce města na Valnou hromadu Mikroregionu Litovelsko na funkční\nobdobí 2026-2030."
+    },
+    {
+      "label": "l",
+      "text": "Zastupitelstvo města Litovel nominuje Ing. Ludmilu Zavadilovou, členku\nRady města Litovel a ředitelku Charity Šternberk, do Rady pro kontrolu\nhospodaření Odborného léčebného ústavu Paseka, p.o."
+    }
+  ],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "usneseni.cz",
+  "agenda_title": "Delegování zástupců města do orgánů společností",
+  "classification": {
+    "category": "infrastructure",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "b4e95a3a0fccf375b02b3577d5bd646cb947b2a91d13fcee986526b0f836d09a",
+    "prediction": {
+      "category": "infrastructure",
+      "confidence": 0.99,
+      "second_category": "transport",
+      "second_confidence": 0.0,
+      "margin": 0.99,
+      "entropy": 0.04
+    }
+  }
+}

@@ -8,7 +8,13 @@
   "subject": "svoje usnesení 2027/67 bod a z 29. ledna 2026. Nově zní usnesení takto: Rada města\nsouhlasí s poskytnutím dotace ve výši 25.000 Kč na úhradu nákladů spojených s účastí žáků ZUŠ na soutěžích\nběhem roku v různých místech republiky.\nViktor Kohout v. r. Mgr. Lubomír Broza v. r.\nstarosta města místostarosta města",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "2027/67",
+      "type": "implicit",
+      "resolved": null
+    }
+  ],
   "amounts": [
     "25.000 Kč"
   ],

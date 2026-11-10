@@ -8,7 +8,13 @@
   "subject": "předloženou Smlouvu pro umístění solárního Parcel Boxu GLS, uzavřenou\nv souladu se zveřejněným záměrem města dle usn. RM číslo RM/903/31/2024 na pronájem části pozemku\nparc.č. 425/3, ost. plocha/ost. komunikace, v k.ú. Litovel, uzavřenou mezi městem Litovel a firmou General\nLogistics Systems Czech Republic s.r.o. z Jihlavy, za účelem umístění Parcel Boxu GLS, na dobu neurčitou,\nza měsíční nájemné ve výši 1.500 Kč s připočtením daně z přidané hodnoty.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/903/31/2024",
+      "type": "explicit",
+      "resolved": "RM/903/31/2024"
+    }
+  ],
   "amounts": [
     "1.500 Kč"
   ],

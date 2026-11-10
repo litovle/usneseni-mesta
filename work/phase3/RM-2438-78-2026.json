@@ -8,7 +8,13 @@
   "subject": "informace ze Seniorklubu ze dne 15. 7. 2026, nová varianta fungování\nSeniorklubu nebyla předložena. Dle usnesení RM č. RM/2366/74/2026 ze dne 4. 6. 2026 komise rady města končí\nk 30. 9. 2026, tedy i Komise Seniorklub. Dále bude o fungování Seniorklubu rozhodovat nová rada města. Do doby\nrozhodnutí o ustavení komisí novou radou města, pokud nezaloží zapsaný spolek, bude Seniorklub fungovat bez\nfinančního ohodnocení. O finančních ohodnoceních bude po svém ustanovení rozhodovat nově zvolené\nzastupitelstvo.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/2366/74/2026",
+      "type": "explicit",
+      "resolved": "RM/2366/74/2026"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "social",

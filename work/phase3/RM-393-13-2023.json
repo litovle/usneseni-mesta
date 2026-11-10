@@ -8,7 +8,13 @@
   "subject": "v souladu se zveřejněným záměrem města dle usnesení rady města\nč. RM/320/11/2023 odprodej nevyhovujícího herního prvku (domek se stříškou STANDART) od dodavatele\nherního prvku firmy Karim Hulín, jehož činnost před několika lety zanikla, žadatelce paní J. K. z Březové\nza nabídkovou cenu 2.501 Kč. Žadatelka vlastním nákladem herní sestavu demontuje včetně likvidace betonových\npatek a následného urovnání terénu.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/320/11/2023",
+      "type": "explicit",
+      "resolved": "RM/320/11/2023"
+    }
+  ],
   "amounts": [
     "2.501 Kč"
   ],

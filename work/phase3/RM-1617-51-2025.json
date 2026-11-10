@@ -8,7 +8,13 @@
   "subject": "předloženou Smlouvu o nájmu pozemku, uzavřenou v souladu se zveřejněným\nzáměrem dle usn. č. RM/1459/47/2025, mezi městem Litovel a manželi S. a L. L. z Litovle na pronájem části\npozemku parc.č. 1638/15, ostatní plocha, o výměře 80 m2, za účelem dočasné skládky palivového dřeva\npro soukromé účely na dobu určitou do 31. 1. 2026.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/1459/47/2025",
+      "type": "explicit",
+      "resolved": "RM/1459/47/2025"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "property",
