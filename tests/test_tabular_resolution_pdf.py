@@ -11,12 +11,12 @@ from unittest.mock import patch
 from phase1_parse_pdf import main, parse_pdf
 from phase2_resolution_analysis import process_usneseni
 from phase3_resolve_references import process_resolutions
-from tools.usneseni_cz_pdf import is_usneseni_cz, parse_pages, parse_tables
+from tools.tabular_resolution_pdf import is_tabular_resolution_pdf, parse_pages, parse_tables
 from tools.sync_litovel_notices import existing_resolution_keys, sync_notices
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "tests/fixtures/usneseni_cz_zm_1_2026.pdf"
+PDF = ROOT / "tests/fixtures/tabular_zm_1_2026.pdf"
 HEADER = ["Číslo\nusnesení", "Text usnesení", "Datum\njednání", "Zodpovídá", "Termín", "Hlasování", "Ukonč."]
 
 
@@ -25,7 +25,7 @@ def row(label="UZ-1-1/26", body="Zastupitelstvo města Litovel schvaluje opravu 
             datum, "Odpovědná osoba", "16. 11. 2026", "pro: 20 proti: 0 zdržel se: 0", "9. 11. 2026"]
 
 
-class UsneseniCzPdfTest(unittest.TestCase):
+class TabularResolutionPdfTest(unittest.TestCase):
     def test_actual_pdf_detects_and_parses_all_twelve_resolutions(self):
         records, error = parse_pdf(PDF)
         self.assertIsNone(error)
@@ -33,7 +33,7 @@ class UsneseniCzPdfTest(unittest.TestCase):
         self.assertTrue(all("source_id" not in r for r in records))
         self.assertEqual({r["datum"] for r in records}, {"2026-11-02"})
         self.assertEqual({r["organ"] for r in records}, {"Zastupitelstvo města Litovel"})
-        self.assertEqual({r["source_format"] for r in records}, {"usneseni.cz"})
+        self.assertEqual({r["source_format"] for r in records}, {"tabular"})
         self.assertEqual(records[0]["text_raw"], "Zastupitelstvo města Litovel schvaluje aktualizovaný návrh programu jednání.")
         self.assertEqual(records[0]["agenda_title"], "Schválení programu jednání")
         self.assertIn("c) Zastupitelstvo", records[2]["text_raw"])
@@ -43,9 +43,9 @@ class UsneseniCzPdfTest(unittest.TestCase):
             self.assertNotIn("pro:", record["text_raw"])
             self.assertNotIn("Bc. Monika", record["text_raw"])
 
-    def test_detection_requires_the_table_headers_not_just_a_vendor_mention(self):
-        self.assertTrue(is_usneseni_cz("Text usnesení Datum jednání Hlasování UR-12-2/26"))
-        self.assertFalse(is_usneseni_cz("Číslo: RM/1/1/2026\nRada schvaluje Usnesení.cz, viz UR-1-1/26."))
+    def test_detection_requires_table_headers_and_resolution_numbers(self):
+        self.assertTrue(is_tabular_resolution_pdf("Text usnesení Datum jednání Hlasování UR-12-2/26"))
+        self.assertFalse(is_tabular_resolution_pdf("Číslo: RM/1/1/2026\nRada schvaluje tabulkový přehled, viz UR-1-1/26."))
 
     def test_council_ids_dates_and_provenance_are_preserved(self):
         records = parse_tables([[HEADER, row("UR-12-2/2026", "Rada města Litovel schvaluje opravu školy.")]], {"source_pdf": "source.pdf"})

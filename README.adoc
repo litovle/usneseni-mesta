@@ -271,7 +271,8 @@ Datum bere ze sloupce Datum jednání. Vícestránkové tabulky zpracuje včetn�
 pokračování textu a odstraní překryté znaky používané PDF pro tučné písmo.
 Oficiální číslo ukládá beze změny do `id`, například `UZ-12-1/26` nebo
 `UR-12-1/26`. Stejné číslo používají data, hledání, zobrazení i reference mezi
-usneseními. Formát a bod programu jsou v `source_format` a `agenda_title`.
+usneseními. Tabulkový formát označuje `source_format: "tabular"`;
+bod programu je v `agenda_title`.
 `tools/resolution_ids.py` z čísla pouze čte orgán, pořadové číslo, jednání a rok
 pro řazení a členění exportu. Roční adresář používá celý rok, například
 `/usneseni/2026/UZ-12-1-26/`; číslo v obsahu a metadatech zůstává `UZ-12-1/26`.
@@ -284,7 +285,7 @@ PDF nastaví nenulový návratový kód. Automatický i ruční workflow jej pou
 aby při chybě zastavily návazný export. Hromadný import bez tohoto přepínače
 vypíše nezpracované historické dokumenty, které může obsloužit archivní větev.
 Oba workflow před zpracováním ověřují parser regresními testy včetně skutečného
-PDF v `tests/fixtures/usneseni_cz_zm_1_2026.pdf`.
+PDF v `tests/fixtures/tabular_zm_1_2026.pdf`.
 
 Při spuštění přes `pipeline.py` se po běžném parsování PDF může doplnit také
 moderní část archivu. Dokumenty z archivu, které v extrahovaném textu obsahují

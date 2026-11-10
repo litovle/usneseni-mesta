@@ -170,7 +170,7 @@ def resolve_resolution_id(raw_id: str, by_id: dict, by_resolution_key: dict):
         return raw_id, None
 
     parts = resolution_parts(raw_id)
-    if parts is None or parts.scheme == "usneseni.cz":
+    if parts is None or parts.scheme == "prefixed":
         return None, None
 
     key = (parts.organ, parts.number, parts.meeting)
