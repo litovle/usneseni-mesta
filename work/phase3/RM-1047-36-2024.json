@@ -8,7 +8,13 @@
   "subject": "usnesení č. RM/921/32/2024 schválené na 31. schůzi Rady města Litovel.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/921/32/2024",
+      "type": "explicit",
+      "resolved": "RM/921/32/2024"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "administration",

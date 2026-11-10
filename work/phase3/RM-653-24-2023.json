@@ -8,7 +8,13 @@
   "subject": "Smlouvu o nájmu pozemku uzavřenou v souladu s ust. § 39, odst. 1, zákona\nč. 128/2000 Sb. „o obcích“, v platném znění, dle přijatého usnesení rady města č. RM/444/15/2023, na pronájem\nčásti pozemku parc.č. 331/2, ostatní plocha/ostatní komunikace, v k.ú. Nová Ves u Litovle, o výměře 64 m2,\nz celkové výměry z 1 620 m2. Smlouva je uzavřena mezi městem Litovel a Ing. M. K. z Bruntálu, na dobu neurčitou\nk pěstitelským účelům. Pronajatá část pozemku nebude ze strany nájemce oplocená a nebude sloužit k parkování.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/444/15/2023",
+      "type": "explicit",
+      "resolved": "RM/444/15/2023"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "property",

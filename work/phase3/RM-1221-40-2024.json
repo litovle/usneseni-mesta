@@ -8,7 +8,13 @@
   "subject": "doplnění informace o budově č.p. 19 Myslechovice a setrvává na svém\nstanovisku z usnesení č. 965/34 ze dne 25. 4. 2024.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "965/34",
+      "type": "implicit",
+      "resolved": null
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "property",

@@ -8,7 +8,13 @@
   "subject": "Smlouvu o nájmu pozemku na pronájem pozemku parc.č. 812, orná půda,\nv k.ú. Litovel (zahrádka), uzavřenou v souladu se zveřejněným záměrem města dle ust. § 39, odst. 1,\nzák. č. 128/2000 Sb., dle přijatého usnesení RM/1662/52/2025.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/1662/52/2025",
+      "type": "explicit",
+      "resolved": "RM/1662/52/2025"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "property",

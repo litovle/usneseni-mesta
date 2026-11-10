@@ -8,7 +8,13 @@
   "subject": "poslední větu z usnesení RM/1143/37/2024, pod bodem a), která zní: „Mezi\npůvodním a novým nájemcem bude uzavřena na právním oddělení „dohoda“ o finančním vyrovnání za věci, které\npůvodní nájemce na pozemku ponechal (chata, pergola, studna a jiné).“.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/1143/37/2024",
+      "type": "explicit",
+      "resolved": "RM/1143/37/2024"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "property",

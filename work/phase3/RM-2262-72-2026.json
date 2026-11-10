@@ -8,7 +8,13 @@
   "subject": "na základě zveřejněného záměru (v souladu s přijatým usnesením rady města\nč. RM/2187/70/2026) předloženou Nájemní smlouvu na pronájem části pozemku parc.č. 367 o výměře 77 m2,\nzahrada, k.ú. Unčovice, dlážděná plocha před pohostinstvím v Březovém, za účelem provozu venkovní restaurační\nzahrádky s účinností od 1. 5. 2026. pro nájemce, pana M. D., Březové. Uzavření smlouvy je podmíněno legalizací\nvolné živnosti (výroba, obchod a služby uvedené v přílohách č. 1. a 3. živnostenského zákona, hostinskou\na koncesovanou živností a prodejem kvasného lihu a lihovin.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/2187/70/2026",
+      "type": "explicit",
+      "resolved": "RM/2187/70/2026"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "property",

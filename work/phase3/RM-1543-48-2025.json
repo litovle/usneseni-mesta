@@ -8,7 +8,13 @@
   "subject": "Smlouvu o nájmu pozemku, uzavřenou mezi městem Litovel a vylosovaným\nnájemcem, v souladu s přijatým usnesením rady města č. RM/146/47/2025 ze dne 19. 2. 2025 (Ing. V. H.),\nna pronájem části pozemku parc.č. 479/20, díl č. 4, v k.ú. Litovel, lokalita Javoříčská, s účinností od 1. 4. 2025,\nna dobu neurčitou k zahrádkářské činnosti.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/146/47/2025",
+      "type": "explicit",
+      "resolved": "RM/146/47/2025"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "property",

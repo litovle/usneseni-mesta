@@ -8,7 +8,13 @@
   "subject": "předloženou Smlouvu o nájmu pozemku, uzavřenou v souladu se zveřejněným\nzáměrem města a v souladu s ust. § 39 odst. 1 zákona č. 128/2000 Sb., v platném znění, dle usnesení rady města\nč. RM/1661/52/2025, uzavřenou mezi městem Litovel a nájemcem, panem V. K. z Litovle, na pronájem části\npozemku parc.č. 859/18, o výměře 30 m2, lesní pozemek, v k.ú. Litovel, na dobu určitou, tj. do 30. 6. 2031, za cenu\nnájemného 30 Kč/m2/rok + DPH ve stanovené výši, za účelem dočasné skládky palivového dřeva pro vlastní\npotřebu. Nájemce předloží orgánu správy lesů, tj. odboru životního prostředí, žádost o dočasném odnětí pronajímané\nčásti pozemku z plnění funkcí lesa, v souladu s ust. § 16 odst. 1 zákona č. 289/1995 Sb., v platném znění.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/1661/52/2025",
+      "type": "explicit",
+      "resolved": "RM/1661/52/2025"
+    }
+  ],
   "amounts": [
     "30 Kč"
   ],

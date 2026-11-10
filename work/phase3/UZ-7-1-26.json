@@ -1,0 +1,31 @@
+{
+  "id": "UZ-7-1/26",
+  "datum": "2026-11-02",
+  "organ": "Zastupitelstvo města Litovel",
+  "actions": [
+    "volí"
+  ],
+  "subject": "Ing. Martina Benešla, Mgr. Tomáše Dědka,\nMgr. Kateřinu Faksu, Ing. Ludmilu Zavadilovou a Ing. Hanu Zlámalovou\nKrumniklovou členy Rady města Litovel.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "usneseni.cz",
+  "agenda_title": "Volba členů rady",
+  "classification": {
+    "category": "administration",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "e7af108d6b2af43be7cb5a8ab41f35996c0b60cef8a75de8bebfa36d93370da1",
+    "prediction": {
+      "category": "administration",
+      "confidence": 1.0,
+      "second_category": "sport",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.02
+    }
+  }
+}

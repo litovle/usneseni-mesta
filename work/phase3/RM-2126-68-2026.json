@@ -6,7 +6,13 @@
   "subject": "deklaruje ve shodě s usnesením ZML č. ZM/5/17/2025 záměr uzavření nájemní smlouvy\nmezi městem Litovel (pronajímatelem) a společností Aktivní Litovel s.r.o. (nájemcem), jejímž předmětem bude\npronájem sportovišť v majetku města Litovel této městem založené společnosti.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "ZM/5/17/2025",
+      "type": "explicit",
+      "resolved": "ZM/5/17/2025"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "property",

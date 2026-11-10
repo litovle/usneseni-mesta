@@ -8,7 +8,13 @@
   "subject": "příspěvek na provoz ve výši 33.290.000 Kč pro TS Litovel a investiční dotaci\nna zametací vůz ve výši 600.000 Kč – schváleno ZML dne 8. 12. 2022 pod číslem ZM/7/2/2022 c).",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "ZM/7/2/2022",
+      "type": "explicit",
+      "resolved": "ZM/7/2/2022"
+    }
+  ],
   "amounts": [
     "33.290.000 Kč",
     "600.000 Kč"

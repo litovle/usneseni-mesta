@@ -8,7 +8,13 @@
   "subject": "předložený Dodatek č. 5 ke Smlouvě za účelem zajištění provozu náhradního\nautobusového stanoviště v Litovli č. SAN 24-002/2020 ze dne 20. 6. 2020, uzavřený mezi městem Litovel a ČSAD\nOstrava a.s. na prodloužení pronájmu částí pozemků parc.č. 1832, 1831/1 a 128/16, lokalita ul. Příčná v Litovli\nv souladu se zveřejněným záměrem dle usn. číslo RM/775/27/2024. V souladu s čl. III Dodatku č. 5 smluvní strany\nujednávají, že pronajímatel souhlasí s bezesmluvním užíváním předmětu nájmu od 1. 1. 2024 do účinnosti Dodatku\nč. 5. Nájemce se městu dále zavazuje uhradit bezdůvodné obohacení za období bezesmluvního užívání pronajímateli\nve výši nájemného, sjednaného v Dodatku č. 4 tj. 60.000 Kč za každý i započatý měsíc s připočtením daně z přidané\nhodnoty ve výši sazby daně platné ke dni uskutečnitelného zdanitelného období.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/775/27/2024",
+      "type": "explicit",
+      "resolved": "RM/775/27/2024"
+    }
+  ],
   "amounts": [
     "60.000 Kč"
   ],

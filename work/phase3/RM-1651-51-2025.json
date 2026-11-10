@@ -8,7 +8,13 @@
   "subject": "rozhodnutí Rady města Litovel ze dne 19. 2. 2025 usn. č. RM/1488/47/2025 bod a),\nresp. jeho část, v rozsahu schválení poskytnutí dotace z dotačního programu Ministerstva pro místní rozvoj\nvyhlášeného prostřednictvím Státního fondu životního prostředí ČR výzvou „Pomoc domácnostem“ žadateli: T. N.,\nLitovel, v částce 60.000 Kč z důvodu duplicitního schválení žádosti žadatele.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/1488/47/2025",
+      "type": "explicit",
+      "resolved": "RM/1488/47/2025"
+    }
+  ],
   "amounts": [
     "60.000 Kč"
   ],

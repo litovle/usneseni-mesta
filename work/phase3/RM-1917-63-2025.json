@@ -8,7 +8,13 @@
   "subject": "usnesení č. 1043/35 ze dne 16. 5. 2024.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "1043/35",
+      "type": "implicit",
+      "resolved": null
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "administration",

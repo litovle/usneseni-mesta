@@ -2,11 +2,19 @@
   "id": "RM/2592/82/2026",
   "datum": "2026-10-22",
   "organ": "Rada města Litovel",
-  "actions": [],
-  "subject": "mění usnesení č. RM/2563/81/2026 ze dne 1. 10. 2026 tak, že se částka „1.800.000 Kč včetně\nDPH“ nahrazuje částkou „2.000.000 Kč včetně DPH“. Ostatní části usnesení zůstávají beze změny.",
+  "actions": [
+    "mění"
+  ],
+  "subject": "usnesení č. RM/2563/81/2026 ze dne 1. 10. 2026 tak, že se částka „1.800.000 Kč včetně\nDPH“ nahrazuje částkou „2.000.000 Kč včetně DPH“. Ostatní části usnesení zůstávají beze změny.",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/2563/81/2026",
+      "type": "explicit",
+      "resolved": "RM/2563/81/2026"
+    }
+  ],
   "amounts": [
     "1.800.000 Kč",
     "2.000.000 Kč"

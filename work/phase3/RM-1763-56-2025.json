@@ -8,7 +8,13 @@
   "subject": "usnesení č. RM/1753/55/2025 bod h).",
   "items": [],
   "tail": null,
-  "references_out": [],
+  "references_out": [
+    {
+      "raw": "RM/1753/55/2025",
+      "type": "explicit",
+      "resolved": "RM/1753/55/2025"
+    }
+  ],
   "amounts": [],
   "classification": {
     "category": "administration",
