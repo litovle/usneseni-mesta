@@ -17,6 +17,11 @@ from urllib.parse import urljoin, urlparse
 import requests
 from bs4 import BeautifulSoup
 
+try:
+    from resolution_ids import USNESENI_CZ_ID_RE, parse_resolution_id
+except ImportError:
+    from tools.resolution_ids import USNESENI_CZ_ID_RE, parse_resolution_id
+
 
 BASE_URL = "https://www.litovel.eu"
 NOTICE_BOARD_URL = f"{BASE_URL}/cs/urad/uredni-deska/aktualni-oznameni.html"
@@ -82,7 +87,12 @@ def parse_budget_key(value: str) -> str | None:
 
 
 def parse_resolution_key(value: str) -> str | None:
-    folded = fold_ascii(value).lower()
+    folded = fold_ascii(value).lower().replace("_", " ")
+
+    source_id = USNESENI_CZ_ID_RE.search(value)
+    if source_id:
+        parts = parse_resolution_id(source_id.group())
+        return f"{parts.organ}/{parts.meeting}/{parts.year}"
 
     id_match = re.search(r"\b(rm|zm)\s*/\s*\d+\s*/\s*(\d+)\s*/\s*(20\d{2}|19\d{2})\b", folded)
     if id_match:
@@ -93,8 +103,18 @@ def parse_resolution_key(value: str) -> str | None:
         year = normalize_year(short_rm.group(2))
         return f"RM/{int(short_rm.group(1))}/{year}"
 
-    if not ("usneseni" in folded and ("vypis" in folded or "zasedani" in folded or "schuze" in folded)):
+    if not ("usneseni" in folded and any(word in folded for word in ("vypis", "zasedani", "schuze", "jednani"))):
         return None
+
+    numbered = re.search(r"(?:usneseni|jednani)\s+(?:c(?:islo)?\.?\s*)?(\d+)\s*[/ ]\s*(20\d{2}|19\d{2}|\d{2})(?!\d)", folded)
+    if numbered:
+        if "zastupitel" in folded or "zml" in folded:
+            organ = "ZM"
+        elif "rady" in folded or "rm" in folded:
+            organ = "RM"
+        else:
+            return None
+        return f"{organ}/{int(numbered.group(1))}/{normalize_year(numbered.group(2))}"
 
     meeting = re.search(r"(?:ze?|z)\s+(\d+)\.\s+(?:schuze|zasedani)", folded)
     year_match = re.search(r"\b(20\d{2}|19\d{2})\b", folded)
@@ -121,7 +141,7 @@ def notice_kind(title: str, notice_type: str) -> str | None:
         return "budget_change"
     if "vypis" in folded_title and "usneseni" in folded_title:
         return "resolution"
-    if "usneseni" in folded_title and ("zasedani" in folded_title or "schuze" in folded_title):
+    if "usneseni" in folded_title and any(word in folded_title for word in ("zasedani", "schuze", "jednani")):
         return "resolution"
     if "vypis z usneseni" in folded_type and "usneseni" in folded_title:
         return "resolution"
@@ -269,14 +289,9 @@ def existing_resolution_keys(workdir: Path, resources_dir: Path) -> set[str]:
         resolution_id = data.get("id")
         if not isinstance(resolution_id, str):
             continue
-        parts = resolution_id.split("/")
-        if len(parts) != 4 or parts[0] not in {"RM", "ZM"}:
-            continue
-        try:
-            meeting = int(parts[2])
-        except ValueError:
-            continue
-        keys.add(f"{parts[0]}/{meeting}/{parts[3]}")
+        parts = parse_resolution_id(resolution_id)
+        if parts is not None:
+            keys.add(f"{parts.organ}/{parts.meeting}/{parts.year}")
 
     for folder in (resources_dir / "rm", resources_dir / "zastupitelstvo"):
         if not folder.exists():

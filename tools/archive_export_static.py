@@ -202,9 +202,7 @@ def render_page(record: dict) -> str:
     lines = [
         front_matter(record),
         '<p><a href="/usneseni/" id="back-link">← Zpět na vyhledávání</a></p>',
-        "<script>",
-        "(function(){const a=document.getElementById('back-link');if(!a)return;const back=new URLSearchParams(location.search).get('back');try{const url=new URL(back,location.origin);if(url.origin===location.origin&&(url.pathname==='/usneseni'||url.pathname.startsWith('/usneseni/'))){a.href=url.pathname+url.search;}}catch(e){}})();",
-        "</script>",
+        '<script src="/usneseni/back-link.js" defer></script>',
         f"<h1>{html.escape(record.get('title') or record.get('id') or kind_label)}</h1>",
         f'<p class="usn-info">{html.escape(kind_label)}</p>',
         f'<p class="usn-meta-detail">{html.escape(" · ".join(str(item) for item in metadata if item))}</p>',

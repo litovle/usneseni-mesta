@@ -23,6 +23,8 @@ import unicodedata
 from collections import defaultdict
 from pathlib import Path
 
+from tools.search_index_format import write_compact_index
+
 
 WORD_RE = re.compile(r"[a-z0-9]{3,}")
 
@@ -135,10 +137,7 @@ def main() -> None:
     for year, items in sorted(by_year.items()):
         index = build_index(items)
 
-        (args.output / "index" / f"{year}.json").write_text(
-            json.dumps(index, ensure_ascii=False),
-            encoding="utf-8",
-        )
+        write_compact_index(args.output / "index" / f"{year}.json", index)
 
         (args.output / "data" / f"{year}.json").write_text(
             json.dumps(items, ensure_ascii=False),

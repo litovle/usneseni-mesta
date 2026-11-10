@@ -13,8 +13,10 @@ from pathlib import Path
 
 try:
     from archive_zm_common import read_json, write_json
+    from search_index_format import write_compact_index
 except ImportError:
     from tools.archive_zm_common import read_json, write_json
+    from tools.search_index_format import write_compact_index
 
 
 WORD_RE = re.compile(r"[a-z0-9]{3,}")
@@ -263,7 +265,7 @@ def write_search_index(by_year: dict[str, list[dict]], output: Path) -> dict:
     (output / "data").mkdir(parents=True, exist_ok=True)
 
     for year, items in by_year.items():
-        write_json(output / "index" / f"{year}.json", build_index(items))
+        write_compact_index(output / "index" / f"{year}.json", build_index(items))
         write_json(output / "data" / f"{year}.json", items)
         meta[year] = {"count": len(items)}
 

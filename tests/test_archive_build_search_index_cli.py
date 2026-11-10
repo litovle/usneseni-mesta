@@ -66,11 +66,13 @@ class ArchiveBuildSearchIndexCliTest(unittest.TestCase):
 
             report = json.loads((archive_root / "search_index_report.json").read_text(encoding="utf-8"))
             data = json.loads((archive_root / "search_index" / "data" / "2022.json").read_text(encoding="utf-8"))
+            index = json.loads((archive_root / "search_index" / "index" / "2022.json").read_text(encoding="utf-8"))
 
         self.assertEqual(report["indexed_archive_resolutions"], 1)
         self.assertEqual(report["fallback_archive_documents"], 0)
         self.assertEqual(report["skipped_split_parents"], 1)
         self.assertEqual([record["id"] for record in data], [child["id"]])
+        self.assertEqual([index["ids"][position] for position in index["tokens"]["chodnik"]], [child["id"]])
 
 
 if __name__ == "__main__":

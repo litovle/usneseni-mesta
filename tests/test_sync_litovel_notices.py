@@ -11,6 +11,7 @@ from tools.sync_litovel_notices import (
     fetch_text,
     parse_attachments,
     parse_notice_board,
+    parse_resolution_key,
     target_filename,
 )
 
@@ -73,6 +74,21 @@ DETAIL_HTML = """
 
 
 class SyncLitovelNoticesTest(unittest.TestCase):
+    def test_usneseni_cz_numbers_and_numbered_notice_titles_identify_the_meeting(self):
+        cases = {
+            "UZ-1-1/26": "ZM/1/2026",
+            "UR-12-2/2026": "RM/2/2026",
+            "Výpis usnesení č.1/2026 ze Zastupitelstva města Litovel": "ZM/1/2026",
+            "Schválená usnesení z jednání č.2/2026 Rady města Litovel": "RM/2/2026",
+            "vypis_usneseni_c.1_2026_ze_zastupitelstva_mesta_litovel.pdf": "ZM/1/2026",
+        }
+        for label, expected in cases.items():
+            with self.subTest(label=label):
+                self.assertEqual(parse_resolution_key(label), expected)
+
+    def test_generic_numbered_attachment_does_not_guess_the_organ(self):
+        self.assertIsNone(parse_resolution_key("Schválená usnesení z jednání č.1/2026"))
+
     def test_fetch_text_defaults_charsetless_html_to_utf8(self):
         class FakeResponse:
             headers = {"Content-Type": "text/html"}

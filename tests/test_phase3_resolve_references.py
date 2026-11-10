@@ -16,6 +16,34 @@ def resolution(resolution_id, datum, refs=None, organ="Rada města Litovel"):
 
 
 class Phase3ResolveReferencesTest(unittest.TestCase):
+    def test_references_connect_existing_and_native_records_in_both_directions(self):
+        older = resolution("RM/1/82/2026", "2026-10-22")
+        native = resolution("UR-001-01/26", "2026-11-02", extract_refs("mění RM/1/82/2026"))
+        later = resolution("RM/2/83/2026", "2026-11-03", extract_refs("mění UR-001-01/26"))
+        records, refs, stats = process_resolutions([older, native, later], terms=[])
+        self.assertEqual(records[0]["references_in"][0]["from"], "UR-001-01/26")
+        self.assertEqual(records[1]["references_in"][0]["from"], "RM/2/83/2026")
+        self.assertEqual(refs[(native["id"], older["id"])], older["id"])
+        self.assertEqual(refs[(later["id"], native["id"])], native["id"])
+
+    def test_explicit_native_ids_are_not_aliases_of_other_records(self):
+        source = resolution("UZ-2-1/26", "2026-11-02", [{"raw": "UZ-1-1/26", "type": "explicit", "resolved": None}])
+        records, refs, stats = process_resolutions([
+            resolution("ZM/1/1/2026", "2026-11-02"), resolution("UZ-1-1/26", "2026-11-02"), source
+        ], terms=[])
+        self.assertEqual(len({record["id"] for record in records}), 3)
+        self.assertEqual(refs[(source["id"], "UZ-1-1/26")], "UZ-1-1/26")
+        self.assertEqual(records[0]["references_in"], [])
+        self.assertEqual(records[1]["references_in"][0]["from"], "UZ-2-1/26")
+
+    def test_ambiguous_shorthand_does_not_choose_between_distinct_official_ids(self):
+        source = resolution("UZ-2-1/26", "2026-11-03", [{"raw": "1/1", "type": "implicit", "resolved": None}], organ="Zastupitelstvo města Litovel")
+        records, refs, stats = process_resolutions([
+            resolution("ZM/1/1/2026", "2026-11-02"), resolution("UZ-1-1/26", "2026-11-02"), source
+        ], terms=[])
+        self.assertIsNone(records[2]["references_out"][0]["resolved"])
+        self.assertEqual(stats["refs_ambiguous"], 1)
+
     def test_implicit_reference_ignores_future_reset_candidate(self):
         records = [
             resolution("RM/1/1/2022", "2022-10-27"),

@@ -23,6 +23,8 @@ from pathlib import Path
 
 import pdfplumber
 
+from tools.resolution_ids import RESOLUTION_ID_RE
+
 
 HEADER_RE = re.compile(
     r"Rozpočtové opatření č\.\s*(?P<number>\d+)\s*/\s*(?P<year>\d{4})\s+"
@@ -49,7 +51,7 @@ BUDGET_CHANGE_RE = re.compile(
     re.IGNORECASE,
 )
 
-RESOLUTION_RE = re.compile(r"\b(?:RM|ZM)/\d+/\d+/\d{4}\b")
+RESOLUTION_RE = re.compile(rf"\b{RESOLUTION_ID_RE.pattern}\b", re.IGNORECASE)
 
 AMOUNT_RE = re.compile(r"(?<!\d)-?\d{1,3}(?:\s\d{3})*,\d{2}(?!\d)")
 AMOUNT_CELL_RE = re.compile(r"^-?\d{1,3}(?:\s\d{3})*,\d{2}$")

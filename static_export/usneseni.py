@@ -9,6 +9,7 @@ from typing import Dict, List, Optional, Tuple
 from .format import budget_change_count_label, format_date, format_full_date
 from .inline_refs import render_inline_refs
 from .paths import meeting_from_id, resolution_url, ro_url, rz_anchor, slug_from_id
+from tools.resolution_ids import require_resolution_id
 from .ro_summary import summarize_opatreni_plain
 from .relationships import RESOLUTION_ID, render_decision_history, render_later_revocations
 from .topics import topic_category, topic_label
@@ -87,35 +88,15 @@ def render_back_link(
     wrapper_class: Optional[str] = None,
 ) -> str:
     prefixes = allowed_prefixes or ("/usneseni",)
-    checks = " || ".join(
-        [f'url.pathname === "{prefix}" || url.pathname.startsWith("{prefix}/")' for prefix in prefixes]
-    )
+    prefixes_value = html.escape(" ".join(prefixes), quote=True)
+    prefixes_attr = f' data-back-prefixes="{prefixes_value}"' if prefixes != ("/usneseni",) else ""
     wrapper_attr = f' class="{wrapper_class}"' if wrapper_class else ""
     return f"""
 <p{wrapper_attr}>
   <a href="{default_href}" id="back-link">{default_label}</a>
 </p>
 
-<script>
-(function() {{
-  const a = document.getElementById("back-link");
-  if (!a) return;
-
-  const back = new URLSearchParams(location.search).get("back");
-  try {{
-    const url = new URL(back, location.origin);
-    if (
-      url.origin === location.origin &&
-      ({checks})
-    ) {{
-      a.href = url.pathname + url.search;
-      a.textContent = "← Zpět na vyhledávání";
-    }}
-  }} catch (e) {{
-    // ignoruj rozbité hodnoty
-  }}
-}})();
-</script>
+<script src="/usneseni/back-link.js" defer{prefixes_attr}></script>
 """
 
 
@@ -246,14 +227,14 @@ def build_meeting_navigation(resolutions: List[Dict]) -> Dict[str, Dict]:
         date = resolution.get("datum")
         if not isinstance(rid, str) or not RESOLUTION_ID.fullmatch(rid):
             continue
-        organ, _number, meeting, year = rid.split("/")
-        if not isinstance(date, str) or date[:4] != year or "organ" not in resolution:
+        parts = require_resolution_id(rid)
+        if not isinstance(date, str) or date[:4] != str(parts.year) or "organ" not in resolution:
             continue
-        groups.setdefault((organ, meeting, year), set()).add(rid)
+        groups.setdefault((parts.organ, parts.meeting, parts.year), set()).add(rid)
 
     navigation = {}
     for group in groups.values():
-        ordered = sorted(group, key=lambda rid: int(rid.split("/")[1]))
+        ordered = sorted(group, key=lambda rid: (require_resolution_id(rid).number, rid))
         for index, rid in enumerate(ordered):
             neighbors = {}
             if index > 0:
@@ -352,13 +333,13 @@ def write_year_index(
     def sort_resolutions(items):
         def key(item):
             rid, _, date = item
-            org, number, meeting, rid_year = rid.split("/")
+            parts = require_resolution_id(rid)
             return (
                 date or "",
-                rid_year,
-                int(meeting),
-                org,
-                int(number),
+                parts.year,
+                parts.meeting,
+                parts.organ,
+                parts.number,
             )
 
         return sorted(items, key=key, reverse=True)

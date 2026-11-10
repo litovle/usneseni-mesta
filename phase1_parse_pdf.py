@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Parsování PDF s usneseními Rady nebo Zatupitelstva města Litovel.
+Parsování PDF s usneseními Rady nebo Zastupitelstva města Litovel.
 
 Vstup:
   - jeden PDF soubor
@@ -17,11 +17,14 @@ Použití:
 """
 
 import pdfplumber
+import argparse
 import re
 import json
 import sys
 import unicodedata
 from pathlib import Path
+
+from tools.usneseni_cz_pdf import is_usneseni_cz, parse_pages
 
 
 # ---------- REGEXY ----------
@@ -203,8 +206,7 @@ def parse_text(text: str, extra: dict | None = None) -> tuple[list[dict], str | 
 def process_pdf(pdf_path: Path, out_dir: Path, failures: list):
     print(f"📄 {pdf_path}")
 
-    raw_text = pdf_to_text(pdf_path)
-    usneseni, error = parse_text(raw_text)
+    usneseni, error = parse_pdf(pdf_path)
     if error:
         if error == "chybí datum":
             print("   ❌ nenalezeno datum")
@@ -219,17 +221,27 @@ def process_pdf(pdf_path: Path, out_dir: Path, failures: list):
     print(f"   → {len(usneseni)} usnesení ({usneseni[0]['datum']})")
     return len(usneseni)
 
+
+def parse_pdf(path: Path, extra: dict | None = None) -> tuple[list[dict], str | None]:
+    with pdfplumber.open(path) as pdf:
+        text = "\n".join(page.extract_text() or "" for page in pdf.pages)
+        if is_usneseni_cz(text):
+            try:
+                return parse_pages(pdf.pages, extra), None
+            except ValueError as error:
+                return [], f"Usnesení.cz: {error}"
+        return parse_text(text, extra)
+
 # ---------- MAIN ----------
 
 def main():
-    if len(sys.argv) != 3:
-        print("Použití:")
-        print("  python parse_rm_pdf.py input.pdf output_dir/")
-        print("  python parse_rm_pdf.py pdf_dir/ output_dir/")
-        sys.exit(1)
-
-    input_path = Path(sys.argv[1])
-    out_dir = Path(sys.argv[2])
+    parser = argparse.ArgumentParser(description="Parsování PDF usnesení města Litovel")
+    parser.add_argument("input", type=Path, help="PDF soubor nebo adresář s PDF")
+    parser.add_argument("output", type=Path, help="Adresář pro JSON usnesení")
+    parser.add_argument("--strict", action="store_true", help="Skončit chybou, pokud se některé PDF nepodaří zpracovat")
+    args = parser.parse_args()
+    input_path = args.input
+    out_dir = args.output
     out_dir.mkdir(parents=True, exist_ok=True)
 
     failures = []
@@ -258,6 +270,8 @@ def main():
         print("\n⚠️  SOUBORY, KTERÉ SE NEPODAŘILO ZPRACOVAT:")
         for path, reason in failures:
             print(f" - {path} ({reason})")
+        if args.strict:
+            sys.exit(1)
     else:
         print("\n🎉 Všechny PDF soubory zpracovány úspěšně")
 

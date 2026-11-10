@@ -7,6 +7,7 @@ from typing import Dict, Optional
 
 from .paths import resolution_url
 from .relationships import RESOLUTION_ID
+from tools.resolution_ids import parse_resolution_id, require_resolution_id
 
 
 def render_inline_refs(text: str, resolution: Dict, records: Optional[Dict[str, Dict]]) -> str:
@@ -20,7 +21,7 @@ def render_inline_refs(text: str, resolution: Dict, records: Optional[Dict[str, 
         if not isinstance(raw, str) or not isinstance(target, str) or not RESOLUTION_ID.fullmatch(target):
             continue
         key = re.sub(r"\s+", "", raw).upper()
-        if not re.fullmatch(r"(?:(?:RM|ZM)/)?\d+/\d+(?:/\d{4})?", key):
+        if parse_resolution_id(key) is None and not re.fullmatch(r"\d+/\d+(?:/\d{4})?", key):
             continue
         targets.setdefault(key, set()).add(target)
 
@@ -35,7 +36,7 @@ def render_inline_refs(text: str, resolution: Dict, records: Optional[Dict[str, 
         pattern = r"\s*/\s*".join(re.escape(part) for part in raw.split("/"))
         shorthand = bool(re.fullmatch(r"\d+/\d+", raw))
         if shorthand:
-            pattern += r"(?:\s*/\s*" + re.escape(target.split("/")[-1]) + r")?"
+            pattern += r"(?:\s*/\s*" + str(require_resolution_id(target).year) + r")?"
         ending = r"(?:(?![\w/])|(?=/[a-z](?:\W|$))"
         if shorthand:
             ending += r"|(?=[a-z]{1,2}(?:\W|$))"

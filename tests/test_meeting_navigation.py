@@ -13,6 +13,13 @@ def resolution(rid, date="2026-10-22"):
 
 
 class MeetingNavigationTest(unittest.TestCase):
+    def test_both_official_id_schemes_keep_distinct_navigation_targets(self):
+        ids = ["UZ-003-01/26", "ZM/1/1/2026", "UZ-002-01/26"]
+        nav = build_meeting_navigation([resolution(rid) for rid in ids])
+        self.assertEqual(nav[ids[1]]["next"], {"id": ids[2], "url": "/usneseni/2026/UZ-002-01-26/"})
+        self.assertEqual(nav[ids[2]]["previous"], {"id": ids[1], "url": "/usneseni/2026/ZM-1-1-2026/"})
+        self.assertEqual(nav[ids[2]]["next"]["id"], ids[0])
+
     def test_numeric_order_gaps_and_meeting_boundaries(self):
         ids = ["RM/12/82/2026", "RM/2/82/2026", "RM/9/82/2026"]
         nav = build_meeting_navigation([resolution(rid) for rid in ids])

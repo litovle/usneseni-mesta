@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import Tuple
 
+from tools.resolution_ids import require_resolution_id
+
 
 def slug_from_id(resolution_id: str) -> str:
     return resolution_id.replace("/", "-")
@@ -21,10 +23,10 @@ def rz_anchor(budget_change_id: str) -> str:
 
 def resolution_url(resolution_id: str) -> str:
     slug = slug_from_id(resolution_id)
-    year = resolution_id.split("/")[-1]
+    year = require_resolution_id(resolution_id).year
     return f"/usneseni/{year}/{slug}/"
 
 
 def meeting_from_id(rid: str) -> Tuple[str, str, str]:
-    org, _, meeting, year = rid.split("/")
-    return org, meeting, year
+    parts = require_resolution_id(rid)
+    return parts.organ, str(parts.meeting), str(parts.year)
