@@ -4,5 +4,20 @@
   "organ": "Zastupitelstvo města Litovel",
   "text_raw": "Zastupitelstvo města Litovel volí Viktora Kohouta starostou města Litovel.",
   "source_format": "tabular",
-  "agenda_title": "Volba starosty"
+  "agenda_title": "Volba starosty",
+  "voting": {
+    "for": {
+      "count": 17,
+      "voters": null
+    },
+    "against": {
+      "count": 0,
+      "voters": []
+    },
+    "abstained": {
+      "count": 0,
+      "voters": []
+    },
+    "raw": "pro: 17 proti: 0 zdržel se: 0"
+  }
 }

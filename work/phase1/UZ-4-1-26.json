@@ -4,5 +4,41 @@
   "organ": "Zastupitelstvo města Litovel",
   "text_raw": "a) Zastupitelstvo města Litovel schvaluje tajnou volbu při hlasování o volbě\nstarosty, místostarosty a členů Rady města dle volebního řádu.\nb) Zastupitelstvo města Litovel schvaluje volební řád.",
   "source_format": "tabular",
-  "agenda_title": "Určení způsobu volby starosty, místostarosty a členů rady"
+  "agenda_title": "Určení způsobu volby starosty, místostarosty a členů rady",
+  "voting": {
+    "for": {
+      "count": 20,
+      "voters": [
+        "Ing. Martin Benešl",
+        "Mgr. Lubomír Broza",
+        "Mgr. Kateřina Faksa",
+        "Mgr. Tomáš Dědek",
+        "MUDr. Dajána Dvorská",
+        "Mgr. Eva Hrachovcová",
+        "Aleš Hubáček",
+        "Bc. Zdeněk Jančí",
+        "Jiří Kohout, DiS.",
+        "Viktor Kohout",
+        "Ing. Martin Pavlík",
+        "Ing. Zdeněk Potužák",
+        "Michaela Spannbauer",
+        "Mgr. Mirko Spurník",
+        "Ludmila Zavadilová",
+        "Karel Zmund",
+        "Alena Albrechtová",
+        "Mgr. Michal Rakowski, MBA",
+        "Lenka Zabloudilová",
+        "Ing. Hana Zlámalová Krumniklová"
+      ]
+    },
+    "against": {
+      "count": 0,
+      "voters": []
+    },
+    "abstained": {
+      "count": 0,
+      "voters": []
+    },
+    "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
+  }
 }

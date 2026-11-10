@@ -279,6 +279,31 @@ pro řazení a členění exportu. Roční adresář používá celý rok, např
 Formáty `RM/.../.../...` a `ZM/.../.../...` jsou podporované souběžně a používají
 URL jako `/usneseni/2026/RM-12-1-2026/`.
 
+Sloupec Hlasování se ukládá samostatně do `voting`. Skupiny `for`, `against`
+a `abstained` obsahují počet `count` a seznam `voters` s uvedenými jmény včetně
+titulů. `voters: null` znamená, že PDF uvádí pouze kladný počet hlasů bez jmen;
+prázdný seznam odpovídá uvedenému nulovému počtu. Pole `raw` zachovává původní
+text buňky včetně zalomení řádků. U chybějícího nebo prázdného sloupce se
+`voting` nevyplňuje.
+
+[source,json]
+----
+{
+  "voting": {
+    "for": {"count": 17, "voters": null},
+    "against": {"count": 0, "voters": []},
+    "abstained": {"count": 0, "voters": []},
+    "raw": "pro: 17 proti: 0 zdržel se: 0"
+  }
+}
+----
+
+Parser spojuje pokračování hlasování přes více stránek a kontroluje úplnost
+počtů i shodu počtu jmen s počtem hlasů. Neúplné nebo rozporné hlasování
+zastaví zpracování daného PDF. Metadata projdou analýzou a resolvováním
+referencí do ročních JSON dat webu, takže je lze použít pro přehledy hlasování.
+Jmenná data zahrnují pouze osoby výslovně uvedené v podkladu.
+
 Synchronizace rozpoznává i označení `UZ-…` a `UR-…` na úřední desce a číslování
 ve tvaru `Výpis usnesení č.1/2026`. Přepínač `--strict` při neúspěšném parsování
 PDF nastaví nenulový návratový kód. Automatický i ruční workflow jej používají,
