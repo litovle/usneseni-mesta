@@ -264,7 +264,7 @@ Parsování PDF s usneseními Rady nebo Zastupitelstva města Litovel.
 Formát se rozpoznává automaticky při načtení PDF:
 
 - blokové dokumenty s `Číslo: RM/.../.../...` nebo `Číslo: ZM/.../.../...`;
-- tabulkové přehledy přijatých usnesení z Usnesení.cz s čísly `UR-…` nebo `UZ-…`.
+- tabulkové přehledy přijatých usnesení s čísly `UR-…` nebo `UZ-…`.
 
 Tabulkový parser odděluje text rozhodnutí od hlasování, odpovědných osob a termínů.
 Datum bere ze sloupce Datum jednání. Vícestránkové tabulky zpracuje včetně
