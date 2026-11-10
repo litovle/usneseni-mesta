@@ -11,7 +11,7 @@ from unittest.mock import patch
 from phase1_parse_pdf import main, parse_pdf
 from phase2_resolution_analysis import process_usneseni
 from phase3_resolve_references import process_resolutions
-from tools.tabular_resolution_pdf import is_tabular_resolution_pdf, parse_pages, parse_tables
+from tools.tabular_resolution_pdf import is_tabular_resolution_pdf, parse_pages, parse_tables, parse_voting
 from tools.sync_litovel_notices import existing_resolution_keys, sync_notices
 
 
@@ -20,9 +20,57 @@ PDF = ROOT / "tests/fixtures/tabular_zm_1_2026.pdf"
 HEADER = ["Číslo\nusnesení", "Text usnesení", "Datum\njednání", "Zodpovídá", "Termín", "Hlasování", "Ukonč."]
 
 
-def row(label="UZ-1-1/26", body="Zastupitelstvo města Litovel schvaluje opravu školy.", datum="2. 11. 2026"):
+def row(label="UZ-1-1/26", body="Zastupitelstvo města Litovel schvaluje opravu školy.", datum="2. 11. 2026",
+        voting="pro: 20 proti: 0 zdržel se: 0"):
     return [label, "Bod programu: Oprava školy\nText přijatého usnesení:\n" + body,
-            datum, "Odpovědná osoba", "16. 11. 2026", "pro: 20 proti: 0 zdržel se: 0", "9. 11. 2026"]
+            datum, "Odpovědná osoba", "16. 11. 2026", voting, "9. 11. 2026"]
+
+
+class VotingTest(unittest.TestCase):
+    def test_counts_without_names_preserve_unknown_voters_and_original_text(self):
+        text = "PRO: 17 PROTI: 0 ZDRŽEL\nSE: 0"
+        voting = parse_voting(text)
+        self.assertEqual(voting["for"], {"count": 17, "voters": None})
+        self.assertEqual(voting["against"], {"count": 0, "voters": []})
+        self.assertEqual(voting["abstained"], {"count": 0, "voters": []})
+        self.assertEqual(voting["raw"], text)
+
+    def test_named_votes_preserve_accents_qualifications_and_all_three_groups(self):
+        text = ("pro: (2) Jiří Kohout, DiS.,\nMgr. Michal Rakowski, MBA "
+                "proti: (1) Bc. Jana Nováková zdržel se: (1) Ing. Eva Dvořáková")
+        voting = parse_voting(text)
+        self.assertEqual(voting["for"], {"count": 2, "voters": ["Jiří Kohout, DiS.", "Mgr. Michal Rakowski, MBA"]})
+        self.assertEqual(voting["against"], {"count": 1, "voters": ["Bc. Jana Nováková"]})
+        self.assertEqual(voting["abstained"], {"count": 1, "voters": ["Ing. Eva Dvořáková"]})
+        self.assertEqual(voting["raw"], text)
+
+    def test_group_order_does_not_change_the_meaning(self):
+        voting = parse_voting("proti: 0; zdrzel se: 1 Jana Nováková; pro: 2")
+        self.assertEqual(voting["for"], {"count": 2, "voters": None})
+        self.assertEqual(voting["abstained"], {"count": 1, "voters": ["Jana Nováková"]})
+
+    def test_missing_voting_is_not_reported_as_zero_votes(self):
+        for value in (None, "", " \n\t"):
+            with self.subTest(value=value):
+                self.assertIsNone(parse_voting(value))
+
+    def test_incomplete_contradictory_and_invalid_voting_is_rejected(self):
+        cases = [
+            "pro: 1 proti: 0",
+            "pro: 1 pro: 1 proti: 0 zdržel se: 0",
+            "pro: -1 proti: 0 zdržel se: 0",
+            "pro: 1.5 proti: 0 zdržel se: 0",
+            "pro: (1 proti: 0 zdržel se: 0",
+            "pro: jeden proti: 0 zdržel se: 0",
+            "pro: 2 Jana Nováková proti: 0 zdržel se: 0",
+            "pro: 0 Jana Nováková proti: 0 zdržel se: 0",
+            "pro: 1 MBA proti: 0 zdržel se: 0",
+            "pro: 1 ??? proti: 0 zdržel se: 0",
+            "neznámý text pro: 1 proti: 0 zdržel se: 0",
+        ]
+        for text in cases:
+            with self.subTest(text=text), self.assertRaises(ValueError):
+                parse_voting(text)
 
 
 class TabularResolutionPdfTest(unittest.TestCase):
@@ -38,13 +86,24 @@ class TabularResolutionPdfTest(unittest.TestCase):
         self.assertEqual(records[0]["agenda_title"], "Schválení programu jednání")
         self.assertIn("c) Zastupitelstvo", records[2]["text_raw"])
         self.assertIn("l) Zastupitelstvo", records[-1]["text_raw"])
+        self.assertEqual([r["voting"]["for"]["count"] for r in records], [20, 20, 20, 20, 17, 16, 18, 20, 20, 20, 20, 20])
+        named = [record for record in records if record["voting"]["for"]["voters"] is not None]
+        self.assertEqual(len(named), 9)
+        self.assertTrue(all(len(record["voting"]["for"]["voters"]) == 20 for record in named))
+        voters = records[0]["voting"]["for"]["voters"]
+        self.assertEqual(voters[0], "Ing. Martin Benešl")
+        self.assertIn("Jiří Kohout, DiS.", voters)
+        self.assertIn("Mgr. Michal Rakowski, MBA", voters)
+        self.assertEqual(voters[-1], "Ing. Hana Zlámalová Krumniklová")
         for record in records:
+            self.assertEqual(record["voting"]["against"], {"count": 0, "voters": []})
+            self.assertEqual(record["voting"]["abstained"], {"count": 0, "voters": []})
             self.assertNotIn("Text přijatého usnesení", record["text_raw"])
             self.assertNotIn("pro:", record["text_raw"])
             self.assertNotIn("Bc. Monika", record["text_raw"])
 
     def test_detection_requires_table_headers_and_resolution_numbers(self):
-        self.assertTrue(is_tabular_resolution_pdf("Text usnesení Datum jednání Hlasování UR-12-2/26"))
+        self.assertTrue(is_tabular_resolution_pdf("Číslo usnesení Text usnesení Datum jednání Hlasování UR-12-2/26"))
         self.assertFalse(is_tabular_resolution_pdf("Číslo: RM/1/1/2026\nRada schvaluje tabulkový přehled, viz UR-1-1/26."))
 
     def test_council_ids_dates_and_provenance_are_preserved(self):
@@ -61,6 +120,49 @@ class TabularResolutionPdfTest(unittest.TestCase):
         self.assertEqual(len(records), 2)
         self.assertIn("schvaluje\nopravu školy.", records[0]["text_raw"])
         self.assertIn("b) Zastupitelstvo", records[0]["text_raw"])
+
+    def test_voting_can_continue_on_the_next_page_without_decision_text(self):
+        first = row(voting="pro: (2) Jana Nováková,")
+        continuation = [None, None, None, None, None,
+                        "Jiří Kohout, DiS.\nproti: (0) zdržel se: (0)", None]
+        record = parse_tables([[HEADER, first], [HEADER, continuation]])[0]
+        self.assertEqual(record["voting"]["for"], {"count": 2, "voters": ["Jana Nováková", "Jiří Kohout, DiS."]})
+        self.assertIn("\nJiří Kohout", record["voting"]["raw"])
+        self.assertEqual(record["text_raw"], "Zastupitelstvo města Litovel schvaluje opravu školy.")
+
+    def test_voting_columns_are_optional_and_located_by_their_header(self):
+        self.assertNotIn("voting", parse_tables([[HEADER, row(voting=None)]])[0])
+        original = row()
+        columns = [2, 0, 1]
+        self.assertNotIn("voting", parse_tables([[[HEADER[i] for i in columns], [original[i] for i in columns]]])[0])
+        columns = [5, 2, 0, 1]
+        record = parse_tables([[[HEADER[i] for i in columns], [original[i] for i in columns]]])[0]
+        self.assertEqual(record["voting"]["for"], {"count": 20, "voters": None})
+
+    def test_pdf_detection_and_parsing_allow_a_missing_voting_column(self):
+        class Page:
+            def extract_text(self):
+                return "Číslo usnesení Text usnesení Datum jednání\nUZ-1-1/26 Bod programu: Oprava školy"
+
+            def dedupe_chars(self):
+                return self
+
+            def extract_tables(self):
+                original = row()
+                columns = [0, 1, 2]
+                return [[[HEADER[i] for i in columns], [original[i] for i in columns]]]
+
+        with patch("phase1_parse_pdf.pdfplumber.open") as open_pdf:
+            open_pdf.return_value.__enter__.return_value.pages = [Page()]
+            records, error = parse_pdf(Path("table-without-voting.pdf"))
+        self.assertIsNone(error)
+        self.assertEqual(records[0]["id"], "UZ-1-1/26")
+        self.assertNotIn("voting", records[0])
+
+    def test_orphaned_voting_continuation_is_not_silently_discarded(self):
+        continuation = [None, None, None, None, None, "pro: 1 proti: 0 zdržel se: 0", None]
+        with self.assertRaisesRegex(ValueError, "Pokračování"):
+            parse_tables([[HEADER, continuation]])
 
     def test_invalid_rows_fail_instead_of_publishing_a_partial_document(self):
         cases = [
@@ -97,11 +199,13 @@ class TabularResolutionPdfTest(unittest.TestCase):
         self.assertEqual(parsed["actions"], ["neschvaluje", "revokuje"])
         self.assertTrue(parsed["items"][0]["text"].startswith("Zastupitelstvo města Litovel"))
         self.assertEqual(parsed["id"], "UZ-1-1/26")
+        self.assertEqual(parsed["voting"], raw["voting"])
         target = process_usneseni(parse_tables([[HEADER, row("UZ-2-1/26")]])[0])
         records, references, stats = process_resolutions([parsed, target], terms=[])
         self.assertEqual(records[0]["references_out"][0], {"raw": "UZ-2-1/26", "type": "explicit", "resolved": "UZ-2-1/26"})
         self.assertEqual(references[(parsed["id"], "UZ-2-1/26")], "UZ-2-1/26")
         self.assertEqual(records[1]["references_in"][0]["from"], "UZ-1-1/26")
+        self.assertEqual(records[0]["voting"], raw["voting"])
 
     def test_cli_writes_the_actual_pdf_as_normal_phase1_records(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -110,6 +214,7 @@ class TabularResolutionPdfTest(unittest.TestCase):
             self.assertEqual(len(paths), 12)
             record = json.loads((Path(tmp) / "UZ-1-1-26.json").read_text())
             self.assertEqual(record["id"], "UZ-1-1/26")
+            self.assertEqual(record["voting"]["for"]["count"], 20)
 
     def test_real_pdf_and_existing_records_survive_the_export_pipeline_together(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -135,6 +240,12 @@ class TabularResolutionPdfTest(unittest.TestCase):
             index = json.loads((root / "export/assets/usneseni/index/2026.json").read_text())
             self.assertEqual({record["id"] for record in records}, expected_ids)
             self.assertEqual(set(index["ids"]), expected_ids)
+            original = {record["id"]: record for record in parse_pdf(PDF)[0]}
+            for record in records:
+                if record["id"] == legacy_id:
+                    self.assertNotIn("voting", record)
+                else:
+                    self.assertEqual(record["voting"], original[record["id"]]["voting"])
             self.assertFalse((root / "export/assets/usneseni/data/26.json").exists())
             sitemap = (root / "export/sitemap-usneseni.xml").read_text()
             for rid in expected_ids:
@@ -146,6 +257,18 @@ class TabularResolutionPdfTest(unittest.TestCase):
                     self.assertIn(f'cislo: "{rid}"', page)
                     self.assertIn(f"https://litovle.cz/{path}", sitemap)
             self.assertFalse((root / "export/usneseni/2026/ZM-1-1-2026").exists())
+
+    def test_invalid_voting_stops_strict_import_without_writing_partial_records(self):
+        with tempfile.TemporaryDirectory() as tmp, \
+                patch("sys.argv", ["phase1_parse_pdf.py", "--strict", str(PDF), tmp]), \
+                patch("tools.tabular_resolution_pdf.parse_voting", side_effect=[
+                    parse_voting("pro: 20 proti: 0 zdržel se: 0"), ValueError("Chybí počet hlasů")]), \
+                contextlib.redirect_stdout(io.StringIO()) as output:
+            with self.assertRaises(SystemExit) as error:
+                main()
+            self.assertEqual(error.exception.code, 1)
+            self.assertEqual(list(Path(tmp).glob("*.json")), [])
+            self.assertIn("UZ-2-1/26", output.getvalue())
 
     def test_failed_pdf_returns_a_nonzero_exit_code_for_actions(self):
         with tempfile.TemporaryDirectory() as tmp, \

@@ -4,5 +4,20 @@
   "organ": "Zastupitelstvo města Litovel",
   "text_raw": "Zastupitelstvo města Litovel volí Mgr. Lubomíra Brozu místostarostou města\nLitovel.",
   "source_format": "tabular",
-  "agenda_title": "Volba místostarosty"
+  "agenda_title": "Volba místostarosty",
+  "voting": {
+    "for": {
+      "count": 16,
+      "voters": null
+    },
+    "against": {
+      "count": 0,
+      "voters": []
+    },
+    "abstained": {
+      "count": 0,
+      "voters": []
+    },
+    "raw": "pro: 16 proti: 0 zdržel se: 0"
+  }
 }
