@@ -74,7 +74,7 @@ DETAIL_HTML = """
 
 
 class SyncLitovelNoticesTest(unittest.TestCase):
-    def test_usneseni_cz_numbers_and_numbered_notice_titles_identify_the_meeting(self):
+    def test_prefixed_numbers_and_numbered_notice_titles_identify_the_meeting(self):
         cases = {
             "UZ-1-1/26": "ZM/1/2026",
             "UR-12-2/2026": "RM/2/2026",

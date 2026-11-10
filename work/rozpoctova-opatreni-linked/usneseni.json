@@ -109335,7 +109335,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Schválení programu jednání",
     "classification": {
       "category": "administration",
@@ -109371,7 +109371,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Volba předsedy Kontrolní výboru",
     "classification": {
       "category": "administration",
@@ -109410,7 +109410,7 @@
       "2.880 Kč",
       "288 Kč"
     ],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Rozhodnutí o odměnách za výkon funkcí neuvolněných členů zastupitelstva (§ 72 zákona č. 128/2000 Sb. a § 71 odst. 3, paušálních náhrad pro členy ZM OSVČ)",
     "classification": {
       "category": "finance",
@@ -109498,7 +109498,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Delegování zástupců města do orgánů společností",
     "classification": {
       "category": "infrastructure",
@@ -109534,7 +109534,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Schválení návrhové a volební komise",
     "classification": {
       "category": "administration",
@@ -109583,7 +109583,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Určení, které funkce budou členové zastupitelstva vykonávat jako dlouhodobě uvolnění (§ 71 zákona č. 128/2000 Sb.)",
     "classification": {
       "category": "administration",
@@ -109628,7 +109628,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Určení způsobu volby starosty, místostarosty a členů rady",
     "classification": {
       "category": "administration",
@@ -109664,7 +109664,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Volba starosty",
     "classification": {
       "category": "administration",
@@ -109700,7 +109700,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Volba místostarosty",
     "classification": {
       "category": "administration",
@@ -109736,7 +109736,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Volba členů rady",
     "classification": {
       "category": "administration",
@@ -109772,7 +109772,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Určení počtu členů Finančního a Kontrolního výboru",
     "classification": {
       "category": "administration",
@@ -109808,7 +109808,7 @@
     "tail": null,
     "references_out": [],
     "amounts": [],
-    "source_format": "usneseni.cz",
+    "source_format": "tabular",
     "agenda_title": "Volba předsedy Finančního výboru",
     "classification": {
       "category": "administration",

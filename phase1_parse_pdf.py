@@ -24,7 +24,7 @@ import sys
 import unicodedata
 from pathlib import Path
 
-from tools.usneseni_cz_pdf import is_usneseni_cz, parse_pages
+from tools.tabular_resolution_pdf import is_tabular_resolution_pdf, parse_pages
 
 
 # ---------- REGEXY ----------
@@ -225,11 +225,11 @@ def process_pdf(pdf_path: Path, out_dir: Path, failures: list):
 def parse_pdf(path: Path, extra: dict | None = None) -> tuple[list[dict], str | None]:
     with pdfplumber.open(path) as pdf:
         text = "\n".join(page.extract_text() or "" for page in pdf.pages)
-        if is_usneseni_cz(text):
+        if is_tabular_resolution_pdf(text):
             try:
                 return parse_pages(pdf.pages, extra), None
             except ValueError as error:
-                return [], f"Usnesení.cz: {error}"
+                return [], f"Tabulkové PDF: {error}"
         return parse_text(text, extra)
 
 # ---------- MAIN ----------

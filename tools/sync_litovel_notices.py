@@ -18,9 +18,9 @@ import requests
 from bs4 import BeautifulSoup
 
 try:
-    from resolution_ids import USNESENI_CZ_ID_RE, parse_resolution_id
+    from resolution_ids import PREFIXED_ID_RE, parse_resolution_id
 except ImportError:
-    from tools.resolution_ids import USNESENI_CZ_ID_RE, parse_resolution_id
+    from tools.resolution_ids import PREFIXED_ID_RE, parse_resolution_id
 
 
 BASE_URL = "https://www.litovel.eu"
@@ -89,7 +89,7 @@ def parse_budget_key(value: str) -> str | None:
 def parse_resolution_key(value: str) -> str | None:
     folded = fold_ascii(value).lower().replace("_", " ")
 
-    source_id = USNESENI_CZ_ID_RE.search(value)
+    source_id = PREFIXED_ID_RE.search(value)
     if source_id:
         parts = parse_resolution_id(source_id.group())
         return f"{parts.organ}/{parts.meeting}/{parts.year}"

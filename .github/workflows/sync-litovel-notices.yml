@@ -50,7 +50,7 @@ jobs:
         working-directory: usneseni-mesta
         run: |
           python -m unittest discover -s tests -p 'test_phase1_parse_pdf.py'
-          python -m unittest discover -s tests -p 'test_usneseni_cz_pdf.py'
+          python -m unittest discover -s tests -p 'test_tabular_resolution_pdf.py'
           python -m unittest discover -s tests -p 'test_resolution_ids.py'
           python -m unittest discover -s tests -p 'test_sync_litovel_notices.py'
 

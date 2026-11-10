@@ -1,4 +1,4 @@
-The fixture `usneseni_cz_zm_1_2026.pdf` is the public, unmodified PDF from
+The fixture `tabular_zm_1_2026.pdf` is the public, unmodified PDF from
 https://www.litovel.eu/filemanager/files/file.php?file=5228013.
 
 It contains 12 adopted resolutions from Litovel's council meeting on

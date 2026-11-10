@@ -76,7 +76,7 @@ import argparse
 from pathlib import Path
 from collections import Counter
 
-from tools.resolution_ids import USNESENI_CZ_ID_RE, parse_resolution_id
+from tools.resolution_ids import PREFIXED_ID_RE, parse_resolution_id
 
 
 # ============================================================
@@ -242,7 +242,7 @@ def extract_refs(text):
             "resolved": m
         })
 
-    for match in USNESENI_CZ_ID_RE.finditer(text):
+    for match in PREFIXED_ID_RE.finditer(text):
         refs.append({"raw": match.group(), "type": "explicit",
                      "resolved": match.group()})
 

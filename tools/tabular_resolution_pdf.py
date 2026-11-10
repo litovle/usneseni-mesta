@@ -1,23 +1,23 @@
-"""Read the adopted-resolution tables exported by Usneseni.cz."""
+"""Read adopted resolutions from a tabular PDF export."""
 
 import re
 import unicodedata
 from datetime import date
 
 try:
-    from resolution_ids import USNESENI_CZ_ID_RE as SOURCE_ID_RE, require_resolution_id
+    from resolution_ids import PREFIXED_ID_RE, require_resolution_id
 except ImportError:
-    from tools.resolution_ids import USNESENI_CZ_ID_RE as SOURCE_ID_RE, require_resolution_id
+    from tools.resolution_ids import PREFIXED_ID_RE, require_resolution_id
 
 ORGANS = {"R": "Rada města Litovel", "Z": "Zastupitelstvo města Litovel"}
 HEADERS = {"číslo usnesení": "id", "text usnesení": "text", "datum jednání": "date"}
 BODY_RE = re.compile(r"Text\s+přijatého\s+usnesení\s*:\s*", re.IGNORECASE)
 
 
-def is_usneseni_cz(text: str) -> bool:
+def is_tabular_resolution_pdf(text: str) -> bool:
     folded = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode().lower()
     folded = " ".join(folded.split())
-    return bool(SOURCE_ID_RE.search(text)) and all(
+    return bool(PREFIXED_ID_RE.search(text)) and all(
         label in folded for label in ("text usneseni", "datum", "hlasovani")
     )
 
@@ -45,7 +45,7 @@ def parse_tables(tables, extra: dict | None = None) -> list[dict]:
                    for position, label in enumerate(table[0])
                    if cell_text(label).lower() in HEADERS}
         if set(columns) != {"id", "text", "date"}:
-            if any(SOURCE_ID_RE.search(cell_text(cell)) for row in table for cell in row):
+            if any(PREFIXED_ID_RE.search(cell_text(cell)) for row in table for cell in row):
                 raise ValueError("Chybí hlavička tabulky usnesení")
             continue
         for row in table[1:]:
@@ -65,7 +65,7 @@ def parse_tables(tables, extra: dict | None = None) -> list[dict]:
                 previous[1] += "\n" + text
                 previous[2] = previous[2] or meeting_date
                 continue
-            if not SOURCE_ID_RE.fullmatch(label):
+            if not PREFIXED_ID_RE.fullmatch(label):
                 raise ValueError(f"Neplatné číslo usnesení: {label}")
             if label in seen:
                 raise ValueError(f"Duplicitní usnesení: {label}")
@@ -85,9 +85,9 @@ def parse_tables(tables, extra: dict | None = None) -> list[dict]:
         record = {
             "id": source_id,
             "datum": datum,
-            "organ": ORGANS[SOURCE_ID_RE.fullmatch(source_id).group(1).upper()],
+            "organ": ORGANS[PREFIXED_ID_RE.fullmatch(source_id).group(1).upper()],
             "text_raw": parts[1].strip(),
-            "source_format": "usneseni.cz",
+            "source_format": "tabular",
             "agenda_title": cell_text(title),
         }
         if extra:
@@ -106,7 +106,7 @@ def parse_pages(pages, extra: dict | None = None) -> list[dict]:
     expected = set()
     for page in clean_pages:
         for line in (page.extract_text() or "").splitlines():
-            match = SOURCE_ID_RE.match(line.strip())
+            match = PREFIXED_ID_RE.match(line.strip())
             if match and re.match(r"\s+Bod\s+programu\s*:", line.strip()[match.end():], re.IGNORECASE):
                 expected.add(match.group())
     if expected - {record["id"] for record in records}:
