@@ -1,0 +1,33 @@
+{
+  "id": "UR-9-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": "předložený záměr pronájmu části pozemku parc.č. 515/1, díl č. 5, o výměře 224 m2, k.ú. Litovel, za účelem\nzahrádkářské činnosti, za cenu 2 Kč/m2/rok.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [
+    "2 Kč"
+  ],
+  "source_format": "tabular",
+  "agenda_title": "Zveřejnění záměrů pronájmu dvou zahrádek v Litovli",
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "757bfa2c18b03fcff4134fb70ac302b1af265e1a0636a94e17ba6caec71a0b9b",
+    "prediction": {
+      "category": "property",
+      "confidence": 1.0,
+      "second_category": "transport",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.01
+    }
+  }
+}

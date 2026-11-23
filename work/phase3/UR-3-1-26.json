@@ -1,0 +1,46 @@
+{
+  "id": "UR-3-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "doporučuje"
+  ],
+  "subject": "Zastupitelstvu města Litovel",
+  "items": [
+    {
+      "label": "a",
+      "text": "schválit předložená Pravidla prodeje pozemku města Litovel, Unčovice – stavební pozemek parc.č. 93/3."
+    },
+    {
+      "label": "b",
+      "text": "schválit předložený záměr prodeje pozemku parc.č. 93/3, o výměře cca 1 410 m2, k.ú. Unčovice, za cenu stanovenou znaleckým\nposudkem a to min. za cenu 2.996,48 Kč/m2 vč. DPH."
+    },
+    {
+      "label": "c",
+      "text": "jmenovat komisi pro otevírání a hodnocení nabídek týkající se prodeje stavebního pozemku parc.č. 93/3 v Unčovicích ve složení: Mgr.\nLubomír Broza, Mgr. Ivana Nevěčná a Mgr. Eliška Člupná. Jako náhradníka jmenuje Viktora Kohouta, Mgr. Ivetu Seidlovou a Bc. Ivanu\nDuchovný."
+    }
+  ],
+  "tail": null,
+  "references_out": [],
+  "amounts": [
+    "48 Kč"
+  ],
+  "source_format": "tabular",
+  "agenda_title": "Záměr prodeje stavebního pozemku parc.č. 93/3, 1493 m2, k.ú. Unčovice a pravidla prodeje",
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "f20cff3a4e4a924b46cba481c9a31e492542cae856f650a448cdbfea1864c2ab",
+    "prediction": {
+      "category": "property",
+      "confidence": 1.0,
+      "second_category": "transport",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.01
+    }
+  }
+}

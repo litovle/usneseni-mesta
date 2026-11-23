@@ -12,6 +12,21 @@
   "amounts": [],
   "source_format": "tabular",
   "agenda_title": "Volba starosty",
+  "voting": {
+    "for": {
+      "count": 17,
+      "voters": null
+    },
+    "against": {
+      "count": 0,
+      "voters": []
+    },
+    "abstained": {
+      "count": 0,
+      "voters": []
+    },
+    "raw": "pro: 17 proti: 0 zdržel se: 0"
+  },
   "classification": {
     "category": "administration",
     "source": "model",
@@ -27,20 +42,5 @@
       "margin": 1.0,
       "entropy": 0.02
     }
-  },
-  "voting": {
-    "for": {
-      "count": 17,
-      "voters": null
-    },
-    "against": {
-      "count": 0,
-      "voters": []
-    },
-    "abstained": {
-      "count": 0,
-      "voters": []
-    },
-    "raw": "pro: 17 proti: 0 zdržel se: 0"
   }
 }

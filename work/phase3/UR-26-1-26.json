@@ -1,0 +1,31 @@
+{
+  "id": "UR-26-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [],
+  "subject": "Rada města souhlasí s podáním žádosti Mateřské školy G. Frištenského, příspěvkové organizace o podporu v rámci Operačního programu\nJan Amos Komenský (OP JAK). Rada města souhlasí se spoluúčastí v maximální výši 150.000 Kč.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [
+    "150.000 Kč"
+  ],
+  "source_format": "tabular",
+  "agenda_title": "Mateřské školy - souhlas zřizovatele se zapojení do OP JAK",
+  "classification": {
+    "category": "education",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "6942cb072dc4595b542e810f7d29b04bd25699308bcdfe441748afafecf74114",
+    "prediction": {
+      "category": "education",
+      "confidence": 0.99,
+      "second_category": "culture",
+      "second_confidence": 0.0,
+      "margin": 0.99,
+      "entropy": 0.04
+    }
+  }
+}

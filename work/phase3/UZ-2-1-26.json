@@ -12,22 +12,6 @@
   "amounts": [],
   "source_format": "tabular",
   "agenda_title": "Schválení návrhové a volební komise",
-  "classification": {
-    "category": "administration",
-    "source": "model",
-    "status": "classified",
-    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
-    "text_sha256": "3ac0d1d070f84e1547daa423343d439163e62b5d1d246ad16ff9a77114dba2ee",
-    "prediction": {
-      "category": "administration",
-      "confidence": 1.0,
-      "second_category": "culture",
-      "second_confidence": 0.0,
-      "margin": 1.0,
-      "entropy": 0.02
-    }
-  },
   "voting": {
     "for": {
       "count": 20,
@@ -63,5 +47,21 @@
       "voters": []
     },
     "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
+  },
+  "classification": {
+    "category": "administration",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "3ac0d1d070f84e1547daa423343d439163e62b5d1d246ad16ff9a77114dba2ee",
+    "prediction": {
+      "category": "administration",
+      "confidence": 1.0,
+      "second_category": "culture",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.02
+    }
   }
 }

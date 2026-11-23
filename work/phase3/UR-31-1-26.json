@@ -1,0 +1,31 @@
+{
+  "id": "UR-31-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "stanovuje"
+  ],
+  "subject": " že závěsný odznak může užívat při významných příležitostech a občanských obřadech místostarosta pan Mgr.\nLubomír Broza, členové rady města Ing. Martin Benešl, Mgr. Tomáš Dědek, Mgr. Kateřina Faksa a členové zastupitelstva města MUDr.\nDajána Dvorská, Mgr. Eva Hrachovcová a Bc. Zdeněk Jančí.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "tabular",
+  "agenda_title": "Právo užívat závěsný odznak",
+  "classification": {
+    "category": "administration",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "8fdedd409741a2b490f4e5d31ea9a490e363cd19e962f81f013a57072a39e492",
+    "prediction": {
+      "category": "administration",
+      "confidence": 1.0,
+      "second_category": "culture",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.02
+    }
+  }
+}

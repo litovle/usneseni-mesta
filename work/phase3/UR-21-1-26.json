@@ -1,0 +1,31 @@
+{
+  "id": "UR-21-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": "uzavření předloženého Dodatku č. 2 k Pachtovní smlouvě uzavřené mezi městem Litovel a Zemědělským\ndružstvem Haňovice dne 14. 1. 2020.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "tabular",
+  "agenda_title": "Dodatek č. 2 k Pachtovní smlouvě se ZD Haňovice",
+  "classification": {
+    "category": "environment",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "debdd6efa9e137780688a4ef81ab297bf064885dd769a04c2e35d2f5bb0b715e",
+    "prediction": {
+      "category": "environment",
+      "confidence": 0.99,
+      "second_category": "transport",
+      "second_confidence": 0.01,
+      "margin": 0.98,
+      "entropy": 0.07
+    }
+  }
+}

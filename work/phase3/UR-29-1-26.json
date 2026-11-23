@@ -1,0 +1,48 @@
+{
+  "id": "UR-29-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": null,
+  "items": [
+    {
+      "label": "a",
+      "text": "schvaluje s účinností od 1. 1. 2027 zvýšení měsíčního nájemného u nově uzavíraných nájemních smluv na byty ve vlastnictví města\nLitovel takto:\n• byty standardního typu („standard“) ve výši 80 Kč/m² podlahové plochy,\n• byty se sníženou kvalitou („substandard“) ve výši 72 Kč/m² podlahové plochy."
+    },
+    {
+      "label": "b",
+      "text": "schvaluje s účinností od 1. 1. 2027 zvýšení měsíčního nájemného u nájemních smluv uzavřených na dobu určitou, u nichž dochází\nk prodloužení nájemního vztahu, a to takto:\n• byty standardního typu („standard“) ve výši 80 Kč/m² podlahové plochy,\n• byty se sníženou kvalitou („substandard“) ve výši 72 Kč/m² podlahové plochy."
+    },
+    {
+      "label": "c",
+      "text": "schvaluje, že zvýšení měsíčního nájemného podle bodů a) až b) tohoto usnesení se nevztahuje na obytné místnosti U Stadionu 1087 a dále\nna byty zrekonstruované na náklady města Litovel, které byly pronajaty na základě zveřejněného záměru a u nichž sjednané nájemné\npřesahuje částku 100 Kč/m² podlahové plochy."
+    }
+  ],
+  "tail": null,
+  "references_out": [],
+  "amounts": [
+    "100 Kč",
+    "72 Kč",
+    "80 Kč"
+  ],
+  "source_format": "tabular",
+  "agenda_title": "Zvýšení nájemného v obecních bytech v majetku města Litovel",
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "f6c85919feb938f190eb9f000ea7e342a9b9286e931e3b5d2d23de3d0d4a2b5e",
+    "prediction": {
+      "category": "property",
+      "confidence": 1.0,
+      "second_category": "education",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.01
+    }
+  }
+}

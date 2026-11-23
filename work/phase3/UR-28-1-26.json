@@ -1,0 +1,29 @@
+{
+  "id": "UR-28-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [],
+  "subject": "Rada města jakožto zřizovatel Základní školy a mateřské školy Nasobůrky odpovídá na jednotlivé body dotazu takto:\n1. novela školského zákona nařizuje obcím, které zřizují dvě a více škol jejich sloučení, pokud mají méně než 180 žáků. Nejzazší\ntermín je stanoven na 31. prosinec 2028. Město Litovel uvažuje o sloučení v dřívějším termínu. V tomto případě by základní škola\nv Nasobůrkách byla zrušena, mateřská škola by pokračovala, ovšem ne jako samostatný právnický subjekt - pokud nebude jiná\nalternativa řešení.\n2. město Litovel by nemělo námitky ke zřízení samostatné soukromé školy.\n3. město Litovel by bylo ochotno pronajmout část budovy nebo budovu celou soukromému subjektu. O podmínkách pronájmu by se\nmuselo jednat.\n4. pro další postup by město vyžadovalo koncepci, resp. vizi soukromého subjektu na chod soukromé školy a jeho požadavky vůči\nměstu.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "tabular",
+  "agenda_title": "Dotaz ředitelky ZŠ Nasobůrky na budoucnost školy",
+  "classification": {
+    "category": "education",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "bb14333c7f34051bc28071a067417053575a58c82a10e2afb39883e0bf05da83",
+    "prediction": {
+      "category": "education",
+      "confidence": 0.99,
+      "second_category": "waste",
+      "second_confidence": 0.0,
+      "margin": 0.99,
+      "entropy": 0.04
+    }
+  }
+}

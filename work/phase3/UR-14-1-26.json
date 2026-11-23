@@ -1,0 +1,31 @@
+{
+  "id": "UR-14-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": "uzavření Smlouvy o smlouvě budoucí o zřízení věcného břemene a dohodu o umístění stavby č. IP-12-\n8036460 mezi městem Litovel a spol. ČEZ Distribuce, a.s., k tíži pozemků parc.č. 1602/12 a 1602/9 k.ú. Litovel, v předloženém znění.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "tabular",
+  "agenda_title": "Smlouva o budoucí smlouvě o zřízení věcného břemene a dohodu o umístění stavby č. IP-12-8036460",
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "f31afdbbff40506930910cb5f77ffe155dd615fa963761abd977f74af32689fb",
+    "prediction": {
+      "category": "property",
+      "confidence": 1.0,
+      "second_category": "transport",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.01
+    }
+  }
+}
