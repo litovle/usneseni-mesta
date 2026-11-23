@@ -227,7 +227,10 @@ def parse_pdf(path: Path, extra: dict | None = None) -> tuple[list[dict], str | 
         text = "\n".join(page.extract_text() or "" for page in pdf.pages)
         if is_tabular_resolution_pdf(text):
             try:
-                return parse_pages(pdf.pages, extra), None
+                # Some public exports omit the date column. The synchronizer names
+                # PDFs after the notice title, which contains the meeting date.
+                meeting_date = parse_cz_date(path.stem.replace("_", " "))
+                return parse_pages(pdf.pages, extra, meeting_date=meeting_date), None
             except ValueError as error:
                 return [], f"Tabulkové PDF: {error}"
         return parse_text(text, extra)
