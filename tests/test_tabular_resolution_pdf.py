@@ -287,6 +287,8 @@ class TabularResolutionPdfTest(unittest.TestCase):
                     self.assertEqual(record.get("voting"), original[record["id"]].get("voting"))
             self.assertFalse((root / "export/assets/usneseni/data/26.json").exists())
             sitemap = (root / "export/sitemap-usneseni.xml").read_text()
+            from bs4 import BeautifulSoup
+            year_page = BeautifulSoup((root / "export/usneseni/2026/index.html").read_text(), "html.parser")
             for rid in expected_ids:
                 with self.subTest(rid=rid):
                     hits = [index["ids"][position] for position in index["tokens"][rid.lower()]]
@@ -295,6 +297,9 @@ class TabularResolutionPdfTest(unittest.TestCase):
                     page = (root / "export" / path / "index.html").read_text()
                     self.assertIn(f'cislo: "{rid}"', page)
                     self.assertIn(f"https://litovle.cz/{path}", sitemap)
+                    year_link = year_page.select_one(f'a[href="/{path}"]')
+                    expected_label = rid if rid == legacy_id else f"{rid} — {original[rid]['agenda_title']}"
+                    self.assertEqual(year_link.get_text(), expected_label)
             self.assertFalse((root / "export/usneseni/2026/ZM-1-1-2026").exists())
 
     def test_invalid_voting_stops_strict_import_without_writing_partial_records(self):

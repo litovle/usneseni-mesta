@@ -136,6 +136,7 @@ def main() -> None:
             meetings_by_year.get(year, []),
             args.output,
             opatreni_by_content_year.get(year, []),
+            resolutions_by_id=resolutions_by_id,
         )
         sitemap_urls.append(f"/usneseni/{year}/")
 
