@@ -13,6 +13,7 @@ from tools.resolution_ids import require_resolution_id
 from .ro_summary import summarize_opatreni_plain
 from .relationships import RESOLUTION_ID, render_decision_history, render_later_revocations
 from .topics import topic_category, topic_label
+from .text_blocks import render_text_blocks
 
 
 def organ_label(code: str) -> str:
@@ -129,7 +130,7 @@ def render_resolution_content(resolution: Dict, resolutions_by_id: Optional[Dict
     items = resolution.get("items", [])
 
     def render_text(text):
-        return render_inline_refs(text, resolution, resolutions_by_id)
+        return render_text_blocks(text, lambda part: render_inline_refs(part, resolution, resolutions_by_id))
 
     if subject:
         action = f"{html.escape(actions[0])} " if len(actions) == 1 else ""
