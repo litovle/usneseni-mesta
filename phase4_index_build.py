@@ -41,6 +41,9 @@ def normalize(text: str) -> str:
 def extract_text(u: dict) -> str:
     parts = []
 
+    if u.get("agenda_title"):
+        parts.append(u["agenda_title"])
+
     if u.get("subject"):
         parts.append(u["subject"])
 

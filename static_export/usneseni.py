@@ -45,10 +45,11 @@ def resolution_seo(resolution: Dict) -> Dict[str, str]:
     items = [re.sub(r"\s+", " ", item.get("text") or "").strip()
              for item in resolution.get("items") or []]
     actions = resolution.get("actions") or []
-    if subject and len(actions) == 1 and not items:
+    if subject and len(actions) == 1:
         subject = f"{actions[0]} {subject}"
     paragraphs = [text for text in [subject, *items, resolution.get("tail") or ""] if text.strip()]
-    excerpt = truncate_preview(paragraphs[0], 55) if paragraphs else "Usnesení"
+    agenda_title = (resolution.get("agenda_title") or "").strip()
+    excerpt = truncate_preview(agenda_title or (paragraphs[0] if paragraphs else "Usnesení"), 55)
     title = f"{excerpt} | {resolution['id']} | Litovel"
     prefix = f"{resolution.get('organ') or 'Město Litovel'}, {format_full_date(resolution.get('datum') or '')}. "
     text = " ".join(paragraphs) or f"Usnesení {resolution['id']}."
@@ -56,13 +57,18 @@ def resolution_seo(resolution: Dict) -> Dict[str, str]:
 
 
 def render_resolution_preview(resolution: Dict) -> str:
-    """Render the same subject and first three labelled items as browser search."""
+    """Render the agenda title, subject and first three labelled items as browser search."""
     items = resolution.get("items") or []
     actions = resolution.get("actions") or []
     summary = f"{len(items)} rozhodnutí" if len(items) > 1 else ", ".join(actions)
     parts = [f'<div class="usn-summary">{html.escape(summary)}</div>'] if summary else []
+    agenda_title = (resolution.get("agenda_title") or "").strip()
+    if agenda_title:
+        parts.insert(0, f'<div class="usn-agenda-title"><strong>{html.escape(agenda_title)}</strong></div>')
     subject = truncate_preview(resolution.get("subject") or "")
     if subject:
+        if items and len(actions) == 1:
+            subject = f"{actions[0]} {subject}"
         parts.append(f'<div class="usn-snippet">{html.escape(subject)}</div>')
     if items:
         previews = []
@@ -115,6 +121,9 @@ def render_meeting_link(resolution: Dict) -> str:
 
 def render_resolution_content(resolution: Dict, resolutions_by_id: Optional[Dict[str, Dict]] = None) -> str:
     parts: List[str] = [render_back_link(), render_meeting_link(resolution)]
+    agenda_title = (resolution.get("agenda_title") or "").strip()
+    if agenda_title:
+        parts.append(f'<h2 id="bod-programu">{html.escape(agenda_title)}</h2>')
     actions = resolution.get("actions", [])
     subject = resolution.get("subject")
     items = resolution.get("items", [])
@@ -122,12 +131,9 @@ def render_resolution_content(resolution: Dict, resolutions_by_id: Optional[Dict
     def render_text(text):
         return render_inline_refs(text, resolution, resolutions_by_id)
 
-    if subject and len(actions) == 1 and not items:
-        parts.append(f'<p id="predmet">{html.escape(actions[0])} {render_text(subject)}</p>')
-        return "\n".join(parts)
-
     if subject:
-        parts.append(f'<p id="predmet">{render_text(subject)}</p>')
+        action = f"{html.escape(actions[0])} " if len(actions) == 1 else ""
+        parts.append(f'<p id="predmet">{action}{render_text(subject)}</p>')
 
     for index, item in enumerate(items, start=1):
         label = html.escape(item.get("label", ""))
