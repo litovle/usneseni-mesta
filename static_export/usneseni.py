@@ -322,6 +322,7 @@ def write_year_index(
     meetings: List[Tuple[str, str, str]],
     output_root: Path,
     opatreni_entries: Optional[List[Dict]] = None,
+    resolutions_by_id: Optional[Dict[str, Dict]] = None,
 ) -> None:
     target_dir = output_root / "usneseni" / year
     target_dir.mkdir(parents=True, exist_ok=True)
@@ -385,7 +386,10 @@ def write_year_index(
             "<ul>",
         ]
         for rid, permalink, _ in meeting_entries:
-            lines.append(f'<li><a href="{permalink}">{html.escape(rid)}</a></li>')
+            resolution = (resolutions_by_id or {}).get(rid, {})
+            agenda_title = (resolution.get("agenda_title") or "").strip()
+            label = f"{rid} — {agenda_title}" if agenda_title else rid
+            lines.append(f'<li><a href="{permalink}">{html.escape(label)}</a></li>')
         lines += ["</ul>", "</details>"]
     lines.append("</div>")
 
