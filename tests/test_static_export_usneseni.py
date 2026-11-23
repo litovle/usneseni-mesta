@@ -9,6 +9,56 @@ from static_export.usneseni import render_resolution_content, render_resolution_
 
 
 class StaticExportUsneseniTest(unittest.TestCase):
+    def test_numbered_answers_in_subject_keep_their_list_structure(self):
+        from bs4 import BeautifulSoup
+
+        record = {"id": "UR-28-1/26", "subject": "Rada odpovídá:\n1. První odpověď\npokračuje zde.\n2. Druhá odpověď.", "items": []}
+        soup = BeautifulSoup(render_resolution_content(record), "html.parser")
+        subject = soup.select_one("#predmet")
+        self.assertEqual(subject.get_text(), record["subject"])
+        self.assertEqual(len(subject.select("br")), 4)
+        self.assertIn("<br/><br/>1. První", str(subject))
+        self.assertIn("<br/><br/>2. Druhá", str(subject))
+
+    def test_real_nasoburky_answer_keeps_every_character_and_all_four_numbers(self):
+        from bs4 import BeautifulSoup
+        from phase1_parse_pdf import parse_pdf
+        from phase2_resolution_analysis import process_usneseni
+
+        pdf = Path(__file__).parent / "fixtures/schvalena_usneseni_z_1.schuze_rady_mesta_litovel_konane_dne_12._listopadu_2026.pdf"
+        records, error = parse_pdf(pdf)
+        self.assertIsNone(error)
+        raw = next(record for record in records if record["id"] == "UR-28-1/26")
+        soup = BeautifulSoup(render_resolution_content(process_usneseni(raw)), "html.parser")
+        subject = soup.select_one("#predmet")
+        self.assertEqual(subject.get_text(), raw["text_raw"])
+        self.assertEqual(len(subject.select("br")), 8)
+        for number in range(1, 5):
+            self.assertIn(f"<br/><br/>{number}. ", str(subject))
+
+    def test_list_breaks_preserve_inline_links_escaping_and_bullet_labels(self):
+        from bs4 import BeautifulSoup
+
+        rid = "RM/1/1/2026"
+        text = 'Podmínky:\n• mění RM/1/1/2026.\n• <img src=x> & "citace".'
+        record = {"id": "UR-3-1/26", "items": [{"label": "b", "text": text}],
+                  "references_out": [{"raw": rid, "resolved": rid}]}
+        soup = BeautifulSoup(render_resolution_content(record, {rid: {}}), "html.parser")
+        item = soup.select_one("#bod-1")
+        self.assertEqual(item.get_text(), "b) " + text)
+        self.assertEqual(item.select_one("a")["href"], "/usneseni/2026/RM-1-1-2026/")
+        self.assertEqual(len(item.select("br")), 4)
+        self.assertIsNone(item.select_one("img"))
+
+    def test_ambiguous_numbering_and_ordinary_pdf_wrapping_keep_existing_format(self):
+        for text in ("První řádek\npokračování textu.", "1. Jediný bod.",
+                     "Podmínky:\n1. První bod.\n3. Třetí bod.",
+                     "Termíny:\n12. listopadu 2026\n20. listopadu 2026"):
+            with self.subTest(text=text):
+                content = render_resolution_content({"id": "UR-3-1/26", "subject": text})
+                self.assertNotIn("<br>", content)
+                self.assertIn(text, content)
+
     def test_recommendation_before_a_list_keeps_its_governing_action(self):
         from phase2_resolution_analysis import process_usneseni
 
