@@ -20,6 +20,14 @@ def expand(payload):
 
 
 class SearchIndexFormatTest(unittest.TestCase):
+    def test_agenda_title_is_searchable_without_replacing_decision_text(self):
+        records = [{"id": "UR-28-1/26", "agenda_title": "Budoucnost ZŠ Nasobůrky",
+                    "subject": "soukromou školu", "actions": ["projednává"], "items": []}]
+        index = resolution_index(records)
+        self.assertEqual(index["nasoburky"], ["UR-28-1/26"])
+        self.assertEqual(index["budoucnost"], ["UR-28-1/26"])
+        self.assertEqual(index["soukromou"], ["UR-28-1/26"])
+
     def test_round_trip_preserves_postings_and_reserved_terms(self):
         index = {
             "skol": ["ZM/archive/2", "RM/archive/1"],

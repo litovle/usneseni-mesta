@@ -9,6 +9,47 @@ from static_export.usneseni import render_resolution_content, render_resolution_
 
 
 class StaticExportUsneseniTest(unittest.TestCase):
+    def test_recommendation_before_a_list_keeps_its_governing_action(self):
+        from phase2_resolution_analysis import process_usneseni
+
+        record = process_usneseni({
+            "id": "UR-3-1/26", "datum": "2026-11-12", "organ": "Rada města Litovel",
+            "text_raw": "Rada města Litovel doporučuje Zastupitelstvu města Litovel:\na) schválit záměr prodeje pozemku.\nb) jmenovat komisi.",
+        })
+        self.assertIn("doporučuje Zastupitelstvu města Litovel", render_resolution_content(record))
+        self.assertIn("doporučuje", render_resolution_preview(record))
+        self.assertIn("doporučuje Zastupitelstvu města Litovel", resolution_seo(record)["description"])
+        self.assertIn('id="bod-2"', render_resolution_content(record))
+
+    def test_agenda_title_is_an_escaped_heading_separate_from_the_decision(self):
+        record = {"id": "UR-28-1/26", "datum": "2026-11-12", "organ": "Rada města Litovel",
+                  "agenda_title": 'Budoucnost školy <Nasobůrky> & "dotaz"',
+                  "actions": ["projednává"], "subject": "soukromou školu", "items": []}
+        content = render_resolution_content(record)
+        self.assertIn('<h2 id="bod-programu">Budoucnost školy &lt;Nasobůrky&gt; &amp; &quot;dotaz&quot;</h2>', content)
+        self.assertIn('<p id="predmet">projednává soukromou školu</p>', content)
+        preview = render_resolution_preview(record)
+        self.assertIn('class="usn-agenda-title"><strong>Budoucnost školy &lt;Nasobůrky&gt;', preview)
+        self.assertIn('class="usn-snippet">soukromou školu</div>', preview)
+        self.assertTrue(resolution_seo(record)["seo_title"].startswith(record["agenda_title"]))
+        self.assertIn("projednává soukromou školu", resolution_seo(record)["description"])
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_resolution(record, root, {}, {})
+            write_meeting_index("2026", "RM", "1", [(record["id"], "/detail/", record["subject"], record["actions"])],
+                                {"organ": record["organ"], "datum": record["datum"]}, root, {record["id"]: record})
+            detail = (root / "usneseni/2026/UR-28-1-26/index.html").read_text()
+            meeting = (root / "usneseni/2026/RM-1/index.html").read_text()
+        self.assertIn('<h2 id="bod-programu">', detail)
+        self.assertIn('class="usn-agenda-title"', meeting)
+        self.assertIn("&lt;Nasobůrky&gt;", meeting)
+
+    def test_missing_or_empty_agenda_title_does_not_add_a_heading(self):
+        for title in (None, "", "  "):
+            record = {"id": "RM/1/1/2026", "agenda_title": title, "subject": "program schůze"}
+            self.assertNotIn('id="bod-programu"', render_resolution_content(record))
+            self.assertNotIn('class="usn-agenda-title"', render_resolution_preview(record))
+
     def test_seo_uses_actual_items_when_subject_is_missing(self):
         seo = resolution_seo({
             "id": "RM/2589/82/2026", "datum": "2026-10-22", "organ": "Rada města Litovel",
@@ -77,7 +118,7 @@ class StaticExportUsneseniTest(unittest.TestCase):
             ],
         })
         self.assertIn('class="usn-summary">schvaluje</div>', text)
-        self.assertIn('class="usn-snippet">Změny programu</div>', text)
+        self.assertIn('class="usn-snippet">schvaluje Změny programu</div>', text)
         self.assertIn('class="usn-action-label">a)</strong> schvaluje doplnění programu', text)
 
     def test_preview_preserves_three_item_order_and_labels(self):
