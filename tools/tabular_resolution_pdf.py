@@ -22,9 +22,9 @@ NAME_SUFFIX_RE = re.compile(r"(?:[a-z]+\.)+|MBA|MPA|BBA|LLM|MSc", re.IGNORECASE)
 def is_tabular_resolution_pdf(text: str) -> bool:
     folded = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode().lower()
     folded = " ".join(folded.split())
-    # Wrapped column headings can interleave in extracted text; voting is optional.
+    # Wrapped headings can interleave; date and voting columns may be absent.
     return bool(PREFIXED_ID_RE.search(text)) and all(
-        label in folded for label in ("cislo", "text usneseni", "datum", "jednani")
+        label in folded for label in ("cislo", "text usneseni")
     )
 
 
@@ -87,8 +87,8 @@ def parse_voting(text: str | None) -> dict | None:
     return {key: result[key] for key in ("for", "against", "abstained")} | {"raw": raw}
 
 
-def parse_tables(tables, extra: dict | None = None) -> list[dict]:
-    """Keep decision text separate from the other columns, including page continuations."""
+def parse_tables(tables, extra: dict | None = None, *, meeting_date: str | None = None) -> list[dict]:
+    """Read table rows; an ISO meeting_date is required if the date column is absent."""
     rows = []
     seen = set()
     for table in tables:
@@ -97,16 +97,18 @@ def parse_tables(tables, extra: dict | None = None) -> list[dict]:
         columns = {HEADERS[cell_text(label).lower()]: position
                    for position, label in enumerate(table[0])
                    if cell_text(label).lower() in HEADERS}
-        if not {"id", "text", "date"}.issubset(columns):
+        if not {"id", "text"}.issubset(columns):
             if any(PREFIXED_ID_RE.search(cell_text(cell)) for row in table for cell in row):
                 raise ValueError("Chybí hlavička tabulky usnesení")
             continue
+        if "date" not in columns and not meeting_date:
+            raise ValueError("Chybí datum jednání v tabulce i názvu souboru")
         for row in table[1:]:
             if len(row) != len(table[0]):
                 raise ValueError("Nesouhlasí počet sloupců tabulky usnesení")
             label = cell_text(row[columns["id"]])
             text = (row[columns["text"]] or "").strip()
-            meeting_date = cell_text(row[columns["date"]])
+            row_date = cell_text(row[columns["date"]]) if "date" in columns else ""
             voting = (row[columns["voting"]] or "").strip() if "voting" in columns else ""
             if not label:
                 if not text and not voting:
@@ -114,19 +116,20 @@ def parse_tables(tables, extra: dict | None = None) -> list[dict]:
                 if not rows:
                     raise ValueError("Pokračování textu bez čísla usnesení")
                 previous = rows[-1]
-                if meeting_date and previous["date"] and parse_meeting_date(meeting_date) != parse_meeting_date(previous["date"]):
+                if row_date and previous["date"] and parse_meeting_date(row_date) != parse_meeting_date(previous["date"]):
                     raise ValueError("Pokračování usnesení obsahuje jiné datum jednání")
                 for key, value in (("text", text), ("voting", voting)):
                     if value:
                         previous[key] = (previous[key] + "\n" + value).strip()
-                previous["date"] = previous["date"] or meeting_date
+                previous["date"] = previous["date"] or row_date
                 continue
             if not PREFIXED_ID_RE.fullmatch(label):
                 raise ValueError(f"Neplatné číslo usnesení: {label}")
             if label in seen:
                 raise ValueError(f"Duplicitní usnesení: {label}")
             seen.add(label)
-            rows.append({"id": label, "text": text, "date": meeting_date, "voting": voting})
+            rows.append({"id": label, "text": text, "date": row_date, "voting": voting,
+                         "date_from_filename": "date" not in columns})
 
     records = []
     for row in rows:
@@ -136,7 +139,8 @@ def parse_tables(tables, extra: dict | None = None) -> list[dict]:
             raise ValueError(f"Chybí text přijatého usnesení: {source_id}")
         title = re.sub(r"^\s*Bod\s+programu\s*:\s*", "", parts[0], flags=re.IGNORECASE)
         parts_id = require_resolution_id(source_id)
-        datum = parse_meeting_date(row["date"])
+        datum = (date.fromisoformat(meeting_date).isoformat() if row["date_from_filename"]
+                 else parse_meeting_date(row["date"]))
         if int(datum[:4]) != parts_id.year:
             raise ValueError(f"Rok čísla usnesení nesouhlasí s datem jednání: {source_id}")
         record = {
@@ -161,10 +165,10 @@ def parse_tables(tables, extra: dict | None = None) -> list[dict]:
     return records
 
 
-def parse_pages(pages, extra: dict | None = None) -> list[dict]:
+def parse_pages(pages, extra: dict | None = None, *, meeting_date: str | None = None) -> list[dict]:
     clean_pages = [page.dedupe_chars() for page in pages]
     tables = (table for page in clean_pages for table in page.extract_tables())
-    records = parse_tables(tables, extra)
+    records = parse_tables(tables, extra, meeting_date=meeting_date)
     # Row headings in the text also catch tables or pages missed by table extraction.
     expected = set()
     for page in clean_pages:

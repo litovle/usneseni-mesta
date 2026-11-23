@@ -312,6 +312,13 @@ vypíše nezpracované historické dokumenty, které může obsloužit archivní
 Oba workflow před zpracováním ověřují parser regresními testy včetně skutečného
 PDF v `tests/fixtures/tabular_zm_1_2026.pdf`.
 
+Tabulkový export rady může obsahovat jen číslo a text usnesení. Pokud chybí
+sloupec s datem jednání, parser použije datum za `dne` v názvu PDF, který
+synchronizace odvozuje z názvu oznámení. Stejný název je třeba zachovat při
+ručním importu. Datum vytvoření PDF ani data uvnitř rozhodnutí se nepoužívají;
+bez data jednání se import zastaví. Tuto variantu ověřuje skutečné PDF rady
+z 12. listopadu 2026 v `tests/fixtures/`.
+
 Při spuštění přes `pipeline.py` se po běžném parsování PDF může doplnit také
 moderní část archivu. Dokumenty z archivu, které v extrahovaném textu obsahují
 bloky `Číslo: RM/.../.../...` nebo `Číslo: ZM/.../.../...`, se zapíší jako

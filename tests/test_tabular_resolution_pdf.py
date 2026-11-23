@@ -17,6 +17,7 @@ from tools.sync_litovel_notices import existing_resolution_keys, sync_notices
 
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "tests/fixtures/tabular_zm_1_2026.pdf"
+COUNCIL_PDF = ROOT / "tests/fixtures/schvalena_usneseni_z_1.schuze_rady_mesta_litovel_konane_dne_12._listopadu_2026.pdf"
 HEADER = ["Číslo\nusnesení", "Text usnesení", "Datum\njednání", "Zodpovídá", "Termín", "Hlasování", "Ukonč."]
 
 
@@ -74,6 +75,42 @@ class VotingTest(unittest.TestCase):
 
 
 class TabularResolutionPdfTest(unittest.TestCase):
+    def test_actual_two_column_council_pdf_uses_meeting_date_from_notice_filename(self):
+        records, error = parse_pdf(COUNCIL_PDF)
+        self.assertIsNone(error)
+        self.assertEqual([r["id"] for r in records], [f"UR-{n}-1/26" for n in range(1, 33)])
+        self.assertEqual({r["datum"] for r in records}, {"2026-11-12"})
+        self.assertEqual({r["organ"] for r in records}, {"Rada města Litovel"})
+        self.assertEqual(records[0]["agenda_title"], "Schválení programu jednání")
+        self.assertTrue(records[0]["text_raw"].startswith("Rada města Litovel schvaluje návrh programu jednání"))
+        self.assertIn("224/2", records[3]["text_raw"])
+        self.assertIn("b)", records[28]["text_raw"])
+        self.assertTrue(records[-1]["text_raw"].endswith("Unčovice - rekonstrukce komunikace západ."))
+        for record in records:
+            self.assertNotIn("voting", record)
+            self.assertNotIn("vygeneroval", record["text_raw"])
+            self.assertNotIn("Text přijatého usnesení", record["text_raw"])
+
+    def test_two_column_pdf_without_meeting_date_does_not_use_footer_or_decision_dates(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "undated.pdf"
+            path.write_bytes(COUNCIL_PDF.read_bytes())
+            records, error = parse_pdf(path)
+        self.assertEqual(records, [])
+        self.assertIn("datum jednání", error)
+
+    def test_two_column_tables_validate_filename_date_and_resolution_year(self):
+        table = [["Číslo usnesení", "Text usnesení"], row("UR-1-1/26")[:2]]
+        for meeting_date in (None, "2026-02-31", "2025-11-12"):
+            with self.subTest(meeting_date=meeting_date), self.assertRaises(ValueError):
+                parse_tables([table], meeting_date=meeting_date)
+
+    def test_date_column_takes_precedence_over_filename_date(self):
+        records = parse_tables([[HEADER, row()]], meeting_date="2026-11-20")
+        self.assertEqual(records[0]["datum"], "2026-11-02")
+        with self.assertRaises(ValueError):
+            parse_tables([[HEADER, row(datum="")]], meeting_date="2026-11-20")
+
     def test_actual_pdf_detects_and_parses_all_twelve_resolutions(self):
         records, error = parse_pdf(PDF)
         self.assertIsNone(error)
@@ -225,6 +262,7 @@ class TabularResolutionPdfTest(unittest.TestCase):
                                cwd=ROOT, check=True, capture_output=True, text=True)
 
             run("phase1_parse_pdf.py", "--strict", PDF, root / "phase1")
+            run("phase1_parse_pdf.py", "--strict", COUNCIL_PDF, root / "phase1")
             legacy_id = "ZM/1/28/2026"
             (root / "phase1/ZM-1-28-2026.json").write_text(json.dumps({
                 "id": legacy_id, "datum": "2026-09-14", "organ": "Zastupitelstvo města Litovel",
@@ -235,17 +273,18 @@ class TabularResolutionPdfTest(unittest.TestCase):
             run("phase4_index_build.py", "--input", root / "phase3/usneseni.json", "--output", root / "export/assets/usneseni")
             run("phase5_static_export.py", "--input", root / "phase3/usneseni.json", "--output", root / "export", "--without-budget")
 
-            expected_ids = {f"UZ-{n}-1/26" for n in range(1, 13)} | {legacy_id}
+            expected_ids = ({f"UZ-{n}-1/26" for n in range(1, 13)}
+                            | {f"UR-{n}-1/26" for n in range(1, 33)} | {legacy_id})
             records = json.loads((root / "export/assets/usneseni/data/2026.json").read_text())
             index = json.loads((root / "export/assets/usneseni/index/2026.json").read_text())
             self.assertEqual({record["id"] for record in records}, expected_ids)
             self.assertEqual(set(index["ids"]), expected_ids)
-            original = {record["id"]: record for record in parse_pdf(PDF)[0]}
+            original = {record["id"]: record for pdf in (PDF, COUNCIL_PDF) for record in parse_pdf(pdf)[0]}
             for record in records:
                 if record["id"] == legacy_id:
                     self.assertNotIn("voting", record)
                 else:
-                    self.assertEqual(record["voting"], original[record["id"]]["voting"])
+                    self.assertEqual(record.get("voting"), original[record["id"]].get("voting"))
             self.assertFalse((root / "export/assets/usneseni/data/26.json").exists())
             sitemap = (root / "export/sitemap-usneseni.xml").read_text()
             for rid in expected_ids:
