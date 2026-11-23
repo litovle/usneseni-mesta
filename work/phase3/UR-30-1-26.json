@@ -1,0 +1,35 @@
+{
+  "id": "UR-30-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": "s účinností od 1. 4. 2027 zvýšení měsíčního nájemného u nájemních smluv uzavřených na dobu neurčitou v\nsouladu s § 2249 zákona č. 89/2012 Sb., občanský zákoník, takto:\nu bytů se smluvním nájemným:\n• byty standardního typu („standard“) ve výši 67 Kč/m² podlahové plochy,\n• byty se sníženou kvalitou („substandard“) ve výši 60 Kč/m² podlahové plochy,\nu bytů s věcně usměrňovaným nájemným ve výši 37 Kč/m² podlahové plochy.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [
+    "37 Kč",
+    "60 Kč",
+    "67 Kč"
+  ],
+  "source_format": "tabular",
+  "agenda_title": "Zvýšení nájemného v obecních bytech v majetku města Litovel",
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "9eb0eb38c072489b9731eb5aad4cf5bc2fc895face50dce3d0559dad1ab57ad9",
+    "prediction": {
+      "category": "property",
+      "confidence": 1.0,
+      "second_category": "education",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.01
+    }
+  }
+}

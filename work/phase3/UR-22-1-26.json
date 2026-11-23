@@ -1,0 +1,31 @@
+{
+  "id": "UR-22-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": "uzavření Dodatku č. 3 ke Smlouvě o dílo k akci „Část 1 – Odkanalizování a likvidace OV v místní části Savín\na zásobování místní části Savín pitnou vodou“ mezi městem Litovel a Kanalizace a vodovod Litovel, správce společnosti STRABAG, a.s.,\ndruhý společník QUANTUM a.s., v předloženém znění",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "tabular",
+  "agenda_title": "Dodatek č. 3 - „Část 1 – Odkanalizování a likvidace OV v místní části Savín a zásobování místní části Savín pitnou vodou“",
+  "classification": {
+    "category": "infrastructure",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "0de6a994dc4e63872d4478429b45569d76b14f55ffeee1ca3cbaa9e339c26f54",
+    "prediction": {
+      "category": "infrastructure",
+      "confidence": 1.0,
+      "second_category": "transport",
+      "second_confidence": 0.0,
+      "margin": 0.99,
+      "entropy": 0.04
+    }
+  }
+}

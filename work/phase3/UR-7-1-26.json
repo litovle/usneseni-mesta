@@ -1,0 +1,29 @@
+{
+  "id": "UR-7-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [],
+  "subject": "Rada schvaluje uzavření Smlouvy o nájmu prostoru sloužícího k podnikání mezi městem Litovel a společností Pediatrie Litovel s.r.o.,\nzastoupenou jednatelkou MUDr. ████████████████, MBA, v předloženém znění.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "tabular",
+  "agenda_title": "Smlouva o nájmu prostoru sloužícího k podnikání - Pediatrie Litovel s.r.o.",
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "1a258ddb5a3d5c8213900741d33335a6efbf294a1dc38efcfae5f00bb3e93208",
+    "prediction": {
+      "category": "property",
+      "confidence": 1.0,
+      "second_category": "transport",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.01
+    }
+  }
+}

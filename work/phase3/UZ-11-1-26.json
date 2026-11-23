@@ -15,22 +15,6 @@
   ],
   "source_format": "tabular",
   "agenda_title": "Rozhodnutí o odměnách za výkon funkcí neuvolněných členů zastupitelstva (§ 72 zákona č. 128/2000 Sb. a § 71 odst. 3, paušálních náhrad pro členy ZM OSVČ)",
-  "classification": {
-    "category": "finance",
-    "source": "model",
-    "status": "classified",
-    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
-    "text_sha256": "b2c79d4d056f46d9ca5fd6a10618e4446dae0d11ef815f8f6a07bafab0505a90",
-    "prediction": {
-      "category": "finance",
-      "confidence": 0.93,
-      "second_category": "administration",
-      "second_confidence": 0.05,
-      "margin": 0.88,
-      "entropy": 0.32
-    }
-  },
   "voting": {
     "for": {
       "count": 20,
@@ -66,5 +50,21 @@
       "voters": []
     },
     "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
+  },
+  "classification": {
+    "category": "finance",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "b2c79d4d056f46d9ca5fd6a10618e4446dae0d11ef815f8f6a07bafab0505a90",
+    "prediction": {
+      "category": "finance",
+      "confidence": 0.93,
+      "second_category": "administration",
+      "second_confidence": 0.05,
+      "margin": 0.88,
+      "entropy": 0.32
+    }
   }
 }

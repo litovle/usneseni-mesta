@@ -1,0 +1,31 @@
+{
+  "id": "UR-18-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "doporučuje"
+  ],
+  "subject": "Zastupitelstvu města Litovel schválit předloženou Darovací smlouvu mezi Olomouckým krajem, jako\ndárcem, a městem Litovel, jako obdarovaným, jejímž předmětem je darování nově vytvořených pozemků parc.č. 334/3, 334/4, 334/5, 334/6,\n334/7 a 335/6, celkem 3 793 m2, vše k.ú. Myslechovice.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "tabular",
+  "agenda_title": "Darovací smlouva - Olomoucký kraj - po dokončení stavby \"Prodloužení a oprava chodníku v Myslechovicích podél sil. III/3732\"",
+  "classification": {
+    "category": "property",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "387abb584528a1d2cb2db3c8595b3ecd0b832a6f2176811c47b3d48ce17bceb5",
+    "prediction": {
+      "category": "property",
+      "confidence": 1.0,
+      "second_category": "culture",
+      "second_confidence": 0.0,
+      "margin": 1.0,
+      "entropy": 0.01
+    }
+  }
+}

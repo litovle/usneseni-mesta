@@ -1,0 +1,31 @@
+{
+  "id": "UR-32-1/26",
+  "datum": "2026-11-12",
+  "organ": "Rada města Litovel",
+  "actions": [
+    "schvaluje"
+  ],
+  "subject": "předložený Dodatek č. 1 ke Smlouvě o dílo mezi městem Litovel a Ing. █████████████████ jejímž\npředmětem je výkon autorského dozoru při realizaci stavební akce Unčovice - rekonstrukce komunikace západ.",
+  "items": [],
+  "tail": null,
+  "references_out": [],
+  "amounts": [],
+  "source_format": "tabular",
+  "agenda_title": "Dodatek č. 1 ke Smlouvě o dílo na činnost autorského dozoru při realizaci akce Unčovice - rekonstrukce komunikace západ",
+  "classification": {
+    "category": "transport",
+    "source": "model",
+    "status": "classified",
+    "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+    "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+    "text_sha256": "62e686bc018b79e5af312a579230c8f02fc29d04b361243e1830c4ae963a57fe",
+    "prediction": {
+      "category": "transport",
+      "confidence": 0.99,
+      "second_category": "infrastructure",
+      "second_confidence": 0.0,
+      "margin": 0.99,
+      "entropy": 0.05
+    }
+  }
+}

@@ -109324,6 +109324,1228 @@
     "budget_opatreni_approved": []
   },
   {
+    "id": "UR-1-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "návrh programu jednání s těmito změnami:\n- doplňuje se bod č. 36 - Dodatek č. 1 ke Smlouvě o dílo na činnost autorského dozoru při realizaci akce Unčovice - rekonstrukce\nkomunikace západ.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Schválení programu jednání",
+    "classification": {
+      "category": "transport",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "877e33b358208be7f2318d52ef4b943b062fb7cbdaa1bc2a0f29f53d9f64436d",
+      "prediction": {
+        "category": "transport",
+        "confidence": 0.99,
+        "second_category": "infrastructure",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.05
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-10-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "předložený záměr pronájmu pozemku parc.č. 825, o výměře 411 m2, k.ú. Litovel, za účelem zahrádkářské\nčinnosti, za cenu 2 Kč/m2/rok.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "2 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Zveřejnění záměrů pronájmu dvou zahrádek v Litovli",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "f952ff5a945e27c26c4b6f9d10885403b304f3b82447042055752440815ee97b",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-11-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "bere na vědomí",
+      "schvaluje"
+    ],
+    "subject": null,
+    "items": [
+      {
+        "label": "a",
+        "text": "bere na vědomí žádost Městského klubu Litovel (MK), ve věci spolupráce při organizování veřejnosti přístupných vánočních akcí na\nnáměstí Přemysla Otakara v Litovli ve dnech 27. 11. 2026 - Rozsvícení vánočního stromu, 6. 12. 2026 - Slet čertů, Mikulášů a Andělů a dne\n9. 12. 2026 - Česko zpívá koledy. Za účelem uspořádání akcí rada města souhlasí:\n- s bezplatným použitím všech podzemních rozvaděčů a přenosných rozvaděčů, přičemž spotřeba elektrické energie nebude Městskému\nklubu účtována.\n- s výpomocí Městské policie Litovel při omezení dopravy během akcí od 14:00 -19:00 hod.\n- s výpomocí TS Litovel, p.o. (montáž, demontáž stánků, pódia, odpadkové koše, úklid a další potřebné činnosti).\n- v době, kdy bude MK pořádat vánoční akce se stánky povolené městem nevztahují do výběru poplatků a ze strany Městského klubu\nnebude těmto stánkařům účtován poplatek za pronájem a za spotřebu el. energie."
+      },
+      {
+        "label": "b",
+        "text": "schvaluje předloženou Smlouvu o nájmu pozemku (krátkodobý pronájem), uzavřenou mezi městem a MK Litovel, na pronájem\nvyhrazené části pozemku parc.č. 1573/1, ost. plocha, za účelem uspořádání tří veřejnosti přístupných akcí, spojených se stánkovým\nprodejem, ve dnech 27. 11., 5. 12., a 9. 12. 2026, za cenu nájemného 300 Kč/akce + případné DPH."
+      }
+    ],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "300 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Žádost Městského klubu Litovel, Smlouva o nájmu části pozemku, krátkodobý pronájem, vánoční akce na náměstí.",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "bfa702f400bf164f488bc84b6591d96d875e347be4877a70ce3b2b55122fca6d",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "culture",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-12-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje",
+      "souhlasí"
+    ],
+    "subject": null,
+    "items": [
+      {
+        "label": "a",
+        "text": "souhlasí s poskytnutím daru ve výši 10.000 Kč na provoz Pošty Partner v Cholině v roce 2026."
+      },
+      {
+        "label": "b",
+        "text": "schvaluje uzavření smlouvy o poskytnutí daru mezi městem Litovel a obcí Cholina v předloženém znění a rozpočtovou změnu týkající se\ntohoto daru."
+      }
+    ],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "10.000 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Finanční příspěvek - pošta Cholina",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "5725e78fb793544a0bd22c133183b706bda104cd8c7cfa127d8ffaa3ca305aad",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "social",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-13-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "uzavření smlouvy o smlouvě budoucí o zřízení věcného břemene se společností DOUBRAVA.NET s.r.o. na\nstraně budoucího oprávněného pro umístění stavby „Telekomunikační vedení - Rozvadovice - Nasobůrky – Litovel“ v předloženém znění.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Smlouva o smlouvě budoucí o zřízení věcného břemene (optika Unčovice - Rozvadovice)",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "6e7a33c7855cbdf9e8d2a41a9f222fe41f77e073dde6ec3a7fd6a4355587b3a5",
+      "prediction": {
+        "category": "property",
+        "confidence": 0.99,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.04
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-14-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "uzavření Smlouvy o smlouvě budoucí o zřízení věcného břemene a dohodu o umístění stavby č. IP-12-\n8036460 mezi městem Litovel a spol. ČEZ Distribuce, a.s., k tíži pozemků parc.č. 1602/12 a 1602/9 k.ú. Litovel, v předloženém znění.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Smlouva o budoucí smlouvě o zřízení věcného břemene a dohodu o umístění stavby č. IP-12-8036460",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "f31afdbbff40506930910cb5f77ffe155dd615fa963761abd977f74af32689fb",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-15-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "uzavření Smlouvy o smlouvě budoucí o zřízení věcného břemene k tíži pozemku parc.č. 305/6 k.ú. Litovel\nv předloženém znění.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Smlouva o smlouvě budoucí o zřízení věcného břemene (kabel. vedení NN k p.č.st. 1027)",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "0f42913600588769f85e21c8bd3512b461cd8743a2d194fbe6a46c0476a7f390",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-16-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "uzavření Smlouvy o zřízení věcného břemene - služebnosti č. IP-12-8035208/VB/001 se společností ČEZ\nDistribuce, a.s., k tíži pozemku parc.č. 1850 k.ú. Litovel, v předloženém znění.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Smlouva o zřízení věcného břemene - služebnosti č. IP-12-8035208/VB/001",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "f60f478c297e631df0c2072cf307d4364044a9b2237476fd62f3c72f4e998d86",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-17-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "uzavření Smlouvy o zřízení věcného břemene - služebnosti č. IP-12-8034597/VB/002 se společností ČEZ\nDistribuce, a.s., k tíži pozemku parc.č.335/1, k.ú. Chudobín, v předloženém znění.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Smlouva o zřízení věcného břemene - služebnosti č. IP-12-8034597/VB/002",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "def287cc6fe2da178e037821c5c1dda4cef551ec8dd4e68533ebe4d3108695d5",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-18-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "doporučuje"
+    ],
+    "subject": "Zastupitelstvu města Litovel schválit předloženou Darovací smlouvu mezi Olomouckým krajem, jako\ndárcem, a městem Litovel, jako obdarovaným, jejímž předmětem je darování nově vytvořených pozemků parc.č. 334/3, 334/4, 334/5, 334/6,\n334/7 a 335/6, celkem 3 793 m2, vše k.ú. Myslechovice.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Darovací smlouva - Olomoucký kraj - po dokončení stavby \"Prodloužení a oprava chodníku v Myslechovicích podél sil. III/3732\"",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "387abb584528a1d2cb2db3c8595b3ecd0b832a6f2176811c47b3d48ce17bceb5",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "culture",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-19-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "uzavření Smlouvy o výpůjčce hodinového stroje a ciferníků na radniční věži pro roky 2027 - 2031 mezi\nměstem Litovel a Vlastivědným muzeem v Olomouci, v předloženém znění.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Smlouva o výpůjčce - Vlastivědné muzeum Olomouc - hodinový stroj a ciferníky ve věži",
+    "classification": {
+      "category": "culture",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "5acff4d268f81690463f367885321a2253e11860626488bf44934cd95962fe54",
+      "prediction": {
+        "category": "culture",
+        "confidence": 1.0,
+        "second_category": "education",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.03
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-2-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "předložený záměr prodeje části pozemku parc.č. 34/4, o výměře cca 250 m2, k.ú. Myslechovice, za cenu dle\nznaleckého posudku, minimálně však za 500 Kč/m2, za podmínek uvedených v záměru. Vedlejší náklady hradí kupující.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "500 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Žádost o prodej části pozemku parc.č. 34/4, o výměře cca 250 m2, k.ú. Myslechovice",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "3e08c196ef82c7707aa9c3962615b5026308ef9a9886ae3179cff58c3817042f",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-20-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "uzavření Dodatku č. 1 ke Smlouvě o výpůjčce uzavřené se Základní školou Litovel, Vítězná 1250, okres\nOlomouc, ze dne 16. 10. 2002 v předloženém znění.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Dodatek č. 1 ke smlouvě o výpůjčce (budova ZŠ Vítězná)",
+    "classification": {
+      "category": "education",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "6e0bbace742d7042b3c2fc94dc7637182d73c14cc4e2240ddc1e27fdb4a5e56d",
+      "prediction": {
+        "category": "education",
+        "confidence": 0.99,
+        "second_category": "waste",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.04
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-21-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "uzavření předloženého Dodatku č. 2 k Pachtovní smlouvě uzavřené mezi městem Litovel a Zemědělským\ndružstvem Haňovice dne 14. 1. 2020.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Dodatek č. 2 k Pachtovní smlouvě se ZD Haňovice",
+    "classification": {
+      "category": "environment",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "debdd6efa9e137780688a4ef81ab297bf064885dd769a04c2e35d2f5bb0b715e",
+      "prediction": {
+        "category": "environment",
+        "confidence": 0.99,
+        "second_category": "transport",
+        "second_confidence": 0.01,
+        "margin": 0.98,
+        "entropy": 0.07
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-22-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "uzavření Dodatku č. 3 ke Smlouvě o dílo k akci „Část 1 – Odkanalizování a likvidace OV v místní části Savín\na zásobování místní části Savín pitnou vodou“ mezi městem Litovel a Kanalizace a vodovod Litovel, správce společnosti STRABAG, a.s.,\ndruhý společník QUANTUM a.s., v předloženém znění",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Dodatek č. 3 - „Část 1 – Odkanalizování a likvidace OV v místní části Savín a zásobování místní části Savín pitnou vodou“",
+    "classification": {
+      "category": "infrastructure",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "0de6a994dc4e63872d4478429b45569d76b14f55ffeee1ca3cbaa9e339c26f54",
+      "prediction": {
+        "category": "infrastructure",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.04
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-23-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "bere na vědomí",
+      "schvaluje"
+    ],
+    "subject": null,
+    "items": [
+      {
+        "label": "a",
+        "text": "bere na vědomí důvodovou zprávu včetně příloh."
+      },
+      {
+        "label": "b",
+        "text": "schvaluje dle důvodové zprávy a příloh rozpočtové změny 182/2026/RM až 188/2026/RM."
+      }
+    ],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Rozpočtové změny v kompetenci rady města",
+    "classification": {
+      "category": "finance",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "36e54e985a415d71bd0a7000b94a21feea3a5eacf906fa34b7f9651dbdd30a64",
+      "prediction": {
+        "category": "finance",
+        "confidence": 1.0,
+        "second_category": "culture",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-24-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "výběr zhotovitele OBŠIL elektro s.r.o. IČO 219 40 908, pro realizaci veřejné zakázky \"Instalace fotovoltaické\nelektrárny na ČOV ve městě Litovel\". Současně Rada města Litovel pověřuje starostu města k podpisu a vydání Rozhodnutí o výběru\ndodavatele.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Výběr zhotovitele - Instalace fotovoltaické elektrárny na ČOV ve městě Litovel",
+    "classification": {
+      "category": "infrastructure",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "6055fe71f882f717e5b448902733b265ba0f2f6ed3030be900efba421c7a2bce",
+      "prediction": {
+        "category": "infrastructure",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.04
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-25-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "revokuje"
+    ],
+    "subject": "usnesení rady města č. RM/2057/67 ze dne 29. 1. 2026 a schvaluje uzavření Dohody o splátkách k úhradě\npohledávky za dlužníkem - panem █████████████, v předloženém znění.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Dohoda o splátkách",
+    "classification": {
+      "category": "finance",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "c9b50a23e5d4ac38acd2ff7a4850824fff14e2eb94d4b22d8b707d9724622300",
+      "prediction": {
+        "category": "finance",
+        "confidence": 1.0,
+        "second_category": "culture",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.03
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-26-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [],
+    "subject": "Rada města souhlasí s podáním žádosti Mateřské školy G. Frištenského, příspěvkové organizace o podporu v rámci Operačního programu\nJan Amos Komenský (OP JAK). Rada města souhlasí se spoluúčastí v maximální výši 150.000 Kč.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "150.000 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Mateřské školy - souhlas zřizovatele se zapojení do OP JAK",
+    "classification": {
+      "category": "education",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "6942cb072dc4595b542e810f7d29b04bd25699308bcdfe441748afafecf74114",
+      "prediction": {
+        "category": "education",
+        "confidence": 0.99,
+        "second_category": "culture",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.04
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-27-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [],
+    "subject": "Rada města souhlasí s podáním žádosti Mateřské školy Gemerská, příspěvkové organizace o podporu v rámci Operačního programu Jan\nAmos Komenský (OP JAK). Rada města souhlasí se spoluúčastí v maximální výši 150.000 Kč.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "150.000 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Mateřské školy - souhlas zřizovatele se zapojení do OP JAK",
+    "classification": {
+      "category": "education",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "c52da0b1eb893555d263c1eb95fc1200dc11ae8fec86f9cf6133b1c4a31749c8",
+      "prediction": {
+        "category": "education",
+        "confidence": 0.99,
+        "second_category": "culture",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.04
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-28-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [],
+    "subject": "Rada města jakožto zřizovatel Základní školy a mateřské školy Nasobůrky odpovídá na jednotlivé body dotazu takto:\n1. novela školského zákona nařizuje obcím, které zřizují dvě a více škol jejich sloučení, pokud mají méně než 180 žáků. Nejzazší\ntermín je stanoven na 31. prosinec 2028. Město Litovel uvažuje o sloučení v dřívějším termínu. V tomto případě by základní škola\nv Nasobůrkách byla zrušena, mateřská škola by pokračovala, ovšem ne jako samostatný právnický subjekt - pokud nebude jiná\nalternativa řešení.\n2. město Litovel by nemělo námitky ke zřízení samostatné soukromé školy.\n3. město Litovel by bylo ochotno pronajmout část budovy nebo budovu celou soukromému subjektu. O podmínkách pronájmu by se\nmuselo jednat.\n4. pro další postup by město vyžadovalo koncepci, resp. vizi soukromého subjektu na chod soukromé školy a jeho požadavky vůči\nměstu.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Dotaz ředitelky ZŠ Nasobůrky na budoucnost školy",
+    "classification": {
+      "category": "education",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "bb14333c7f34051bc28071a067417053575a58c82a10e2afb39883e0bf05da83",
+      "prediction": {
+        "category": "education",
+        "confidence": 0.99,
+        "second_category": "waste",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.04
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-29-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": null,
+    "items": [
+      {
+        "label": "a",
+        "text": "schvaluje s účinností od 1. 1. 2027 zvýšení měsíčního nájemného u nově uzavíraných nájemních smluv na byty ve vlastnictví města\nLitovel takto:\n• byty standardního typu („standard“) ve výši 80 Kč/m² podlahové plochy,\n• byty se sníženou kvalitou („substandard“) ve výši 72 Kč/m² podlahové plochy."
+      },
+      {
+        "label": "b",
+        "text": "schvaluje s účinností od 1. 1. 2027 zvýšení měsíčního nájemného u nájemních smluv uzavřených na dobu určitou, u nichž dochází\nk prodloužení nájemního vztahu, a to takto:\n• byty standardního typu („standard“) ve výši 80 Kč/m² podlahové plochy,\n• byty se sníženou kvalitou („substandard“) ve výši 72 Kč/m² podlahové plochy."
+      },
+      {
+        "label": "c",
+        "text": "schvaluje, že zvýšení měsíčního nájemného podle bodů a) až b) tohoto usnesení se nevztahuje na obytné místnosti U Stadionu 1087 a dále\nna byty zrekonstruované na náklady města Litovel, které byly pronajaty na základě zveřejněného záměru a u nichž sjednané nájemné\npřesahuje částku 100 Kč/m² podlahové plochy."
+      }
+    ],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "100 Kč",
+      "72 Kč",
+      "80 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Zvýšení nájemného v obecních bytech v majetku města Litovel",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "f6c85919feb938f190eb9f000ea7e342a9b9286e931e3b5d2d23de3d0d4a2b5e",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "education",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-3-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "doporučuje"
+    ],
+    "subject": "Zastupitelstvu města Litovel",
+    "items": [
+      {
+        "label": "a",
+        "text": "schválit předložená Pravidla prodeje pozemku města Litovel, Unčovice – stavební pozemek parc.č. 93/3."
+      },
+      {
+        "label": "b",
+        "text": "schválit předložený záměr prodeje pozemku parc.č. 93/3, o výměře cca 1 410 m2, k.ú. Unčovice, za cenu stanovenou znaleckým\nposudkem a to min. za cenu 2.996,48 Kč/m2 vč. DPH."
+      },
+      {
+        "label": "c",
+        "text": "jmenovat komisi pro otevírání a hodnocení nabídek týkající se prodeje stavebního pozemku parc.č. 93/3 v Unčovicích ve složení: Mgr.\nLubomír Broza, Mgr. Ivana Nevěčná a Mgr. Eliška Člupná. Jako náhradníka jmenuje Viktora Kohouta, Mgr. Ivetu Seidlovou a Bc. Ivanu\nDuchovný."
+      }
+    ],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "48 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Záměr prodeje stavebního pozemku parc.č. 93/3, 1493 m2, k.ú. Unčovice a pravidla prodeje",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "f20cff3a4e4a924b46cba481c9a31e492542cae856f650a448cdbfea1864c2ab",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-30-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "s účinností od 1. 4. 2027 zvýšení měsíčního nájemného u nájemních smluv uzavřených na dobu neurčitou v\nsouladu s § 2249 zákona č. 89/2012 Sb., občanský zákoník, takto:\nu bytů se smluvním nájemným:\n• byty standardního typu („standard“) ve výši 67 Kč/m² podlahové plochy,\n• byty se sníženou kvalitou („substandard“) ve výši 60 Kč/m² podlahové plochy,\nu bytů s věcně usměrňovaným nájemným ve výši 37 Kč/m² podlahové plochy.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "37 Kč",
+      "60 Kč",
+      "67 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Zvýšení nájemného v obecních bytech v majetku města Litovel",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "9eb0eb38c072489b9731eb5aad4cf5bc2fc895face50dce3d0559dad1ab57ad9",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "education",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-31-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "stanovuje"
+    ],
+    "subject": " že závěsný odznak může užívat při významných příležitostech a občanských obřadech místostarosta pan Mgr.\nLubomír Broza, členové rady města Ing. Martin Benešl, Mgr. Tomáš Dědek, Mgr. Kateřina Faksa a členové zastupitelstva města MUDr.\nDajána Dvorská, Mgr. Eva Hrachovcová a Bc. Zdeněk Jančí.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Právo užívat závěsný odznak",
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "8fdedd409741a2b490f4e5d31ea9a490e363cd19e962f81f013a57072a39e492",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "culture",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-32-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "předložený Dodatek č. 1 ke Smlouvě o dílo mezi městem Litovel a Ing. █████████████████ jejímž\npředmětem je výkon autorského dozoru při realizaci stavební akce Unčovice - rekonstrukce komunikace západ.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Dodatek č. 1 ke Smlouvě o dílo na činnost autorského dozoru při realizaci akce Unčovice - rekonstrukce komunikace západ",
+    "classification": {
+      "category": "transport",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "62e686bc018b79e5af312a579230c8f02fc29d04b361243e1830c4ae963a57fe",
+      "prediction": {
+        "category": "transport",
+        "confidence": 0.99,
+        "second_category": "infrastructure",
+        "second_confidence": 0.0,
+        "margin": 0.99,
+        "entropy": 0.05
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-4-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "doporučuje"
+    ],
+    "subject": "Zastupitelstvu města Litovel schválit předloženou Kupní smlouvu mezi městem Litovel, jako prodávajícím\na ██████████████████████████████████, jako kupujícími, jejímž předmětem je prodej nově vzniklých pozemků parc.č.\n224/2, o výměře 3 m2 a 224/3, o výměře 4 m2, vše ostatní plocha/jiná plocha, k.ú. Myslechovice, za cenu 500 Kč/m2. Vedlejší náklady hradí\nkupující.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "500 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Kupní smlouva - prodej nově vzniklých pozemků parc.č. 224/2 a 224/3, celkem 7 m2, k.ú. Myslechovice",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "6af52ca7443526b8bdba4b71d52ee4ef7843873d4dd2f5d3406a77cd0a539f6f",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-5-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [],
+    "subject": "Rada schvaluje uzavření Dohody o ukončení účinnosti Smlouvy o nájmu prostoru sloužícího k podnikání, č.j. LIT 14289/2023 ze dne\n9. června 2023, uzavřené s MUDr.████████████████████████████, IČ: 49592874, se sídlem Kollárova 664/1, 784 01\nLitovel. Dohoda se týká pronájmu nebytových prostor v budově č.p. 664 na ulici Kollárova (poliklinika Litovel), o celkové výměře 41,25\nm2. K ukončení nájemního vztahu dojde ke dni 31. 12. 2026.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Dohoda o ukončení účinnosti Smlouvy o nájmu prostoru sloužícího k podnikání - MUDr. Šárka Nesetová Šmakalová",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "c95ca668d96fcb766799a78a114b55b70cf162e6897bd3cb416f4b7dc0528501",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "education",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-6-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [],
+    "subject": "Rada schvaluje uzavření Dohody o ukončení účinnosti Smlouvy o nájmu prostoru sloužícího k podnikání, č.j. LIT 14309/2023 ze dne\n9. června 2023, uzavřené s MUDr. ██████████████, IČ: 60338415, se sídlem Kollárova 664/1, 784 01 Litovel. Dohoda se týká\npronájmu nebytových prostor v budově č.p. 664 na ulici Kollárova (poliklinika Litovel), o celkové výměře 59,32 m2. K ukončení nájemního\nvztahu dojde ke dni 31. 12. 2026.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Dohoda o ukončení účinnosti Smlouvy o nájmu prostoru sloužícího k podnikání - MUDr. Věra Křížová",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "c320fcfc2d68af8b2a0d73fa770978eb73357dd1ca5d6cdee29ef92c06de710f",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "education",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-7-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [],
+    "subject": "Rada schvaluje uzavření Smlouvy o nájmu prostoru sloužícího k podnikání mezi městem Litovel a společností Pediatrie Litovel s.r.o.,\nzastoupenou jednatelkou MUDr. ████████████████, MBA, v předloženém znění.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Smlouva o nájmu prostoru sloužícího k podnikání - Pediatrie Litovel s.r.o.",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "1a258ddb5a3d5c8213900741d33335a6efbf294a1dc38efcfae5f00bb3e93208",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-8-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "souhlasí"
+    ],
+    "subject": "s neprodloužením Smlouvy o nájmu č. j. LIT 22463/2024 ze dne 1. 11. 2024, ve znění případných dodatků,\nuzavřené mezi městem Litovel a slečnou ██████████████████, přičemž nájemní vztah skončí uplynutím sjednané doby nájmu\ndne 31. 1. 2027.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Smlouva o nájmu obytné místnosti č. 206, U Stadionu 1087",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "e4cd4d045a745491f44929db627e08f472979c94291b2e6dee83a61673e385b0",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "culture",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UR-9-1/26",
+    "datum": "2026-11-12",
+    "organ": "Rada města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "předložený záměr pronájmu části pozemku parc.č. 515/1, díl č. 5, o výměře 224 m2, k.ú. Litovel, za účelem\nzahrádkářské činnosti, za cenu 2 Kč/m2/rok.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "2 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Zveřejnění záměrů pronájmu dvou zahrádek v Litovli",
+    "classification": {
+      "category": "property",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "757bfa2c18b03fcff4134fb70ac302b1af265e1a0636a94e17ba6caec71a0b9b",
+      "prediction": {
+        "category": "property",
+        "confidence": 1.0,
+        "second_category": "transport",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.01
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
+  },
+  {
     "id": "UZ-1-1/26",
     "datum": "2026-11-02",
     "organ": "Zastupitelstvo města Litovel",
@@ -109337,6 +110559,42 @@
     "amounts": [],
     "source_format": "tabular",
     "agenda_title": "Schválení programu jednání",
+    "voting": {
+      "for": {
+        "count": 20,
+        "voters": [
+          "Ing. Martin Benešl",
+          "Mgr. Lubomír Broza",
+          "Mgr. Kateřina Faksa",
+          "Mgr. Tomáš Dědek",
+          "MUDr. Dajána Dvorská",
+          "Mgr. Eva Hrachovcová",
+          "Aleš Hubáček",
+          "Bc. Zdeněk Jančí",
+          "Jiří Kohout, DiS.",
+          "Viktor Kohout",
+          "Ing. Martin Pavlík",
+          "Ing. Zdeněk Potužák",
+          "Michaela Spannbauer",
+          "Mgr. Mirko Spurník",
+          "Ludmila Zavadilová",
+          "Karel Zmund",
+          "Alena Albrechtová",
+          "Mgr. Michal Rakowski, MBA",
+          "Lenka Zabloudilová",
+          "Ing. Hana Zlámalová Krumniklová"
+        ]
+      },
+      "against": {
+        "count": 0,
+        "voters": []
+      },
+      "abstained": {
+        "count": 0,
+        "voters": []
+      },
+      "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
+    },
     "classification": {
       "category": "administration",
       "source": "model",
@@ -109357,7 +110615,22 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-10-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "volí"
+    ],
+    "subject": "Mgr. Mirko Spurníka předsedou Kontrolního\nvýboru.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Volba předsedy Kontrolní výboru",
     "voting": {
       "for": {
         "count": 20,
@@ -109393,22 +110666,7 @@
         "voters": []
       },
       "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
-    }
-  },
-  {
-    "id": "UZ-10-1/26",
-    "datum": "2026-11-02",
-    "organ": "Zastupitelstvo města Litovel",
-    "actions": [
-      "volí"
-    ],
-    "subject": "Mgr. Mirko Spurníka předsedou Kontrolního\nvýboru.",
-    "items": [],
-    "tail": null,
-    "references_out": [],
-    "amounts": [],
-    "source_format": "tabular",
-    "agenda_title": "Volba předsedy Kontrolní výboru",
+    },
     "classification": {
       "category": "administration",
       "source": "model",
@@ -109429,7 +110687,25 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-11-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "stanovení výše odměn pro členy\nZastupitelstva města Litovel, členy Rady města Litovel a předsedy výborů\nZML s účinností od 2. 11. 2026 dle předloženého návrhu a stanoví paušální\nnáhradu ušlého výdělku ve výši 288 Kč/hod, max. 2.880 Kč/den. Členovi ZML\nvzniká nárok na funkční odměnu až po složení slibu člena ZML.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [
+      "2.880 Kč",
+      "288 Kč"
+    ],
+    "source_format": "tabular",
+    "agenda_title": "Rozhodnutí o odměnách za výkon funkcí neuvolněných členů zastupitelstva (§ 72 zákona č. 128/2000 Sb. a § 71 odst. 3, paušálních náhrad pro členy ZM OSVČ)",
     "voting": {
       "for": {
         "count": 20,
@@ -109465,25 +110741,7 @@
         "voters": []
       },
       "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
-    }
-  },
-  {
-    "id": "UZ-11-1/26",
-    "datum": "2026-11-02",
-    "organ": "Zastupitelstvo města Litovel",
-    "actions": [
-      "schvaluje"
-    ],
-    "subject": "stanovení výše odměn pro členy\nZastupitelstva města Litovel, členy Rady města Litovel a předsedy výborů\nZML s účinností od 2. 11. 2026 dle předloženého návrhu a stanoví paušální\nnáhradu ušlého výdělku ve výši 288 Kč/hod, max. 2.880 Kč/den. Členovi ZML\nvzniká nárok na funkční odměnu až po složení slibu člena ZML.",
-    "items": [],
-    "tail": null,
-    "references_out": [],
-    "amounts": [
-      "2.880 Kč",
-      "288 Kč"
-    ],
-    "source_format": "tabular",
-    "agenda_title": "Rozhodnutí o odměnách za výkon funkcí neuvolněných členů zastupitelstva (§ 72 zákona č. 128/2000 Sb. a § 71 odst. 3, paušálních náhrad pro členy ZM OSVČ)",
+    },
     "classification": {
       "category": "finance",
       "source": "model",
@@ -109504,43 +110762,7 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
-    "voting": {
-      "for": {
-        "count": 20,
-        "voters": [
-          "Ing. Martin Benešl",
-          "Mgr. Lubomír Broza",
-          "Mgr. Kateřina Faksa",
-          "Mgr. Tomáš Dědek",
-          "MUDr. Dajána Dvorská",
-          "Mgr. Eva Hrachovcová",
-          "Aleš Hubáček",
-          "Bc. Zdeněk Jančí",
-          "Jiří Kohout, DiS.",
-          "Viktor Kohout",
-          "Ing. Martin Pavlík",
-          "Ing. Zdeněk Potužák",
-          "Michaela Spannbauer",
-          "Mgr. Mirko Spurník",
-          "Ludmila Zavadilová",
-          "Karel Zmund",
-          "Alena Albrechtová",
-          "Mgr. Michal Rakowski, MBA",
-          "Lenka Zabloudilová",
-          "Ing. Hana Zlámalová Krumniklová"
-        ]
-      },
-      "against": {
-        "count": 0,
-        "voters": []
-      },
-      "abstained": {
-        "count": 0,
-        "voters": []
-      },
-      "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
-    }
+    "budget_opatreni_approved": []
   },
   {
     "id": "UZ-12-1/26",
@@ -109608,6 +110830,42 @@
     "amounts": [],
     "source_format": "tabular",
     "agenda_title": "Delegování zástupců města do orgánů společností",
+    "voting": {
+      "for": {
+        "count": 20,
+        "voters": [
+          "Ing. Martin Benešl",
+          "Mgr. Lubomír Broza",
+          "Mgr. Kateřina Faksa",
+          "Mgr. Tomáš Dědek",
+          "MUDr. Dajána Dvorská",
+          "Mgr. Eva Hrachovcová",
+          "Aleš Hubáček",
+          "Bc. Zdeněk Jančí",
+          "Jiří Kohout, DiS.",
+          "Viktor Kohout",
+          "Ing. Martin Pavlík",
+          "Ing. Zdeněk Potužák",
+          "Michaela Spannbauer",
+          "Mgr. Mirko Spurník",
+          "Ludmila Zavadilová",
+          "Karel Zmund",
+          "Alena Albrechtová",
+          "Mgr. Michal Rakowski, MBA",
+          "Lenka Zabloudilová",
+          "Ing. Hana Zlámalová Krumniklová"
+        ]
+      },
+      "against": {
+        "count": 0,
+        "voters": []
+      },
+      "abstained": {
+        "count": 0,
+        "voters": []
+      },
+      "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
+    },
     "classification": {
       "category": "infrastructure",
       "source": "model",
@@ -109628,7 +110886,22 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-2-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "schvaluje"
+    ],
+    "subject": "návrhovou a volební komisi.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Schválení návrhové a volební komise",
     "voting": {
       "for": {
         "count": 20,
@@ -109664,22 +110937,7 @@
         "voters": []
       },
       "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
-    }
-  },
-  {
-    "id": "UZ-2-1/26",
-    "datum": "2026-11-02",
-    "organ": "Zastupitelstvo města Litovel",
-    "actions": [
-      "schvaluje"
-    ],
-    "subject": "návrhovou a volební komisi.",
-    "items": [],
-    "tail": null,
-    "references_out": [],
-    "amounts": [],
-    "source_format": "tabular",
-    "agenda_title": "Schválení návrhové a volební komise",
+    },
     "classification": {
       "category": "administration",
       "source": "model",
@@ -109700,43 +110958,7 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
-    "voting": {
-      "for": {
-        "count": 20,
-        "voters": [
-          "Ing. Martin Benešl",
-          "Mgr. Lubomír Broza",
-          "Mgr. Kateřina Faksa",
-          "Mgr. Tomáš Dědek",
-          "MUDr. Dajána Dvorská",
-          "Mgr. Eva Hrachovcová",
-          "Aleš Hubáček",
-          "Bc. Zdeněk Jančí",
-          "Jiří Kohout, DiS.",
-          "Viktor Kohout",
-          "Ing. Martin Pavlík",
-          "Ing. Zdeněk Potužák",
-          "Michaela Spannbauer",
-          "Mgr. Mirko Spurník",
-          "Ludmila Zavadilová",
-          "Karel Zmund",
-          "Alena Albrechtová",
-          "Mgr. Michal Rakowski, MBA",
-          "Lenka Zabloudilová",
-          "Ing. Hana Zlámalová Krumniklová"
-        ]
-      },
-      "against": {
-        "count": 0,
-        "voters": []
-      },
-      "abstained": {
-        "count": 0,
-        "voters": []
-      },
-      "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
-    }
+    "budget_opatreni_approved": []
   },
   {
     "id": "UZ-3-1/26",
@@ -109765,27 +110987,6 @@
     "amounts": [],
     "source_format": "tabular",
     "agenda_title": "Určení, které funkce budou členové zastupitelstva vykonávat jako dlouhodobě uvolnění (§ 71 zákona č. 128/2000 Sb.)",
-    "classification": {
-      "category": "administration",
-      "source": "model",
-      "status": "classified",
-      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
-      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
-      "text_sha256": "67c8dd2bad65e4fe72c080b90116d037fce11e0e08022422466a47cc4ec1f583",
-      "prediction": {
-        "category": "administration",
-        "confidence": 1.0,
-        "second_category": "social",
-        "second_confidence": 0.0,
-        "margin": 1.0,
-        "entropy": 0.02
-      }
-    },
-    "term_id": "2026-2030",
-    "term_label": "Volební období 2026-2030",
-    "references_in": [],
-    "budget_change_links": [],
-    "budget_opatreni_approved": [],
     "voting": {
       "for": {
         "count": 20,
@@ -109821,7 +111022,28 @@
         "voters": []
       },
       "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
-    }
+    },
+    "classification": {
+      "category": "administration",
+      "source": "model",
+      "status": "classified",
+      "model_url": "https://github.com/litovle/litovel-resolution-classifier/releases/download/v1.0.0/litovel-resolution-classifier-v1.0.0.tar.gz",
+      "model_sha256": "6ad39105467ebd487349bb9b3ef6f2ea5ffcdf360ae1ac1190d410d7ebc0d69a",
+      "text_sha256": "67c8dd2bad65e4fe72c080b90116d037fce11e0e08022422466a47cc4ec1f583",
+      "prediction": {
+        "category": "administration",
+        "confidence": 1.0,
+        "second_category": "social",
+        "second_confidence": 0.0,
+        "margin": 1.0,
+        "entropy": 0.02
+      }
+    },
+    "term_id": "2026-2030",
+    "term_label": "Volební období 2026-2030",
+    "references_in": [],
+    "budget_change_links": [],
+    "budget_opatreni_approved": []
   },
   {
     "id": "UZ-4-1/26",
@@ -109846,6 +111068,42 @@
     "amounts": [],
     "source_format": "tabular",
     "agenda_title": "Určení způsobu volby starosty, místostarosty a členů rady",
+    "voting": {
+      "for": {
+        "count": 20,
+        "voters": [
+          "Ing. Martin Benešl",
+          "Mgr. Lubomír Broza",
+          "Mgr. Kateřina Faksa",
+          "Mgr. Tomáš Dědek",
+          "MUDr. Dajána Dvorská",
+          "Mgr. Eva Hrachovcová",
+          "Aleš Hubáček",
+          "Bc. Zdeněk Jančí",
+          "Jiří Kohout, DiS.",
+          "Viktor Kohout",
+          "Ing. Martin Pavlík",
+          "Ing. Zdeněk Potužák",
+          "Michaela Spannbauer",
+          "Mgr. Mirko Spurník",
+          "Ludmila Zavadilová",
+          "Karel Zmund",
+          "Alena Albrechtová",
+          "Mgr. Michal Rakowski, MBA",
+          "Lenka Zabloudilová",
+          "Ing. Hana Zlámalová Krumniklová"
+        ]
+      },
+      "against": {
+        "count": 0,
+        "voters": []
+      },
+      "abstained": {
+        "count": 0,
+        "voters": []
+      },
+      "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
+    },
     "classification": {
       "category": "administration",
       "source": "model",
@@ -109866,43 +111124,7 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
-    "voting": {
-      "for": {
-        "count": 20,
-        "voters": [
-          "Ing. Martin Benešl",
-          "Mgr. Lubomír Broza",
-          "Mgr. Kateřina Faksa",
-          "Mgr. Tomáš Dědek",
-          "MUDr. Dajána Dvorská",
-          "Mgr. Eva Hrachovcová",
-          "Aleš Hubáček",
-          "Bc. Zdeněk Jančí",
-          "Jiří Kohout, DiS.",
-          "Viktor Kohout",
-          "Ing. Martin Pavlík",
-          "Ing. Zdeněk Potužák",
-          "Michaela Spannbauer",
-          "Mgr. Mirko Spurník",
-          "Ludmila Zavadilová",
-          "Karel Zmund",
-          "Alena Albrechtová",
-          "Mgr. Michal Rakowski, MBA",
-          "Lenka Zabloudilová",
-          "Ing. Hana Zlámalová Krumniklová"
-        ]
-      },
-      "against": {
-        "count": 0,
-        "voters": []
-      },
-      "abstained": {
-        "count": 0,
-        "voters": []
-      },
-      "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
-    }
+    "budget_opatreni_approved": []
   },
   {
     "id": "UZ-5-1/26",
@@ -109918,6 +111140,21 @@
     "amounts": [],
     "source_format": "tabular",
     "agenda_title": "Volba starosty",
+    "voting": {
+      "for": {
+        "count": 17,
+        "voters": null
+      },
+      "against": {
+        "count": 0,
+        "voters": []
+      },
+      "abstained": {
+        "count": 0,
+        "voters": []
+      },
+      "raw": "pro: 17 proti: 0 zdržel se: 0"
+    },
     "classification": {
       "category": "administration",
       "source": "model",
@@ -109938,22 +111175,7 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
-    "voting": {
-      "for": {
-        "count": 17,
-        "voters": null
-      },
-      "against": {
-        "count": 0,
-        "voters": []
-      },
-      "abstained": {
-        "count": 0,
-        "voters": []
-      },
-      "raw": "pro: 17 proti: 0 zdržel se: 0"
-    }
+    "budget_opatreni_approved": []
   },
   {
     "id": "UZ-6-1/26",
@@ -109969,6 +111191,21 @@
     "amounts": [],
     "source_format": "tabular",
     "agenda_title": "Volba místostarosty",
+    "voting": {
+      "for": {
+        "count": 16,
+        "voters": null
+      },
+      "against": {
+        "count": 0,
+        "voters": []
+      },
+      "abstained": {
+        "count": 0,
+        "voters": []
+      },
+      "raw": "pro: 16 proti: 0 zdržel se: 0"
+    },
     "classification": {
       "category": "administration",
       "source": "model",
@@ -109989,22 +111226,7 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
-    "voting": {
-      "for": {
-        "count": 16,
-        "voters": null
-      },
-      "against": {
-        "count": 0,
-        "voters": []
-      },
-      "abstained": {
-        "count": 0,
-        "voters": []
-      },
-      "raw": "pro: 16 proti: 0 zdržel se: 0"
-    }
+    "budget_opatreni_approved": []
   },
   {
     "id": "UZ-7-1/26",
@@ -110020,6 +111242,21 @@
     "amounts": [],
     "source_format": "tabular",
     "agenda_title": "Volba členů rady",
+    "voting": {
+      "for": {
+        "count": 18,
+        "voters": null
+      },
+      "against": {
+        "count": 0,
+        "voters": []
+      },
+      "abstained": {
+        "count": 0,
+        "voters": []
+      },
+      "raw": "pro: 18 proti: 0 zdržel se: 0"
+    },
     "classification": {
       "category": "administration",
       "source": "model",
@@ -110040,22 +111277,7 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
-    "voting": {
-      "for": {
-        "count": 18,
-        "voters": null
-      },
-      "against": {
-        "count": 0,
-        "voters": []
-      },
-      "abstained": {
-        "count": 0,
-        "voters": []
-      },
-      "raw": "pro: 18 proti: 0 zdržel se: 0"
-    }
+    "budget_opatreni_approved": []
   },
   {
     "id": "UZ-8-1/26",
@@ -110071,6 +111293,42 @@
     "amounts": [],
     "source_format": "tabular",
     "agenda_title": "Určení počtu členů Finančního a Kontrolního výboru",
+    "voting": {
+      "for": {
+        "count": 20,
+        "voters": [
+          "Ing. Martin Benešl",
+          "Mgr. Lubomír Broza",
+          "Mgr. Kateřina Faksa",
+          "Mgr. Tomáš Dědek",
+          "MUDr. Dajána Dvorská",
+          "Mgr. Eva Hrachovcová",
+          "Aleš Hubáček",
+          "Bc. Zdeněk Jančí",
+          "Jiří Kohout, DiS.",
+          "Viktor Kohout",
+          "Ing. Martin Pavlík",
+          "Ing. Zdeněk Potužák",
+          "Michaela Spannbauer",
+          "Mgr. Mirko Spurník",
+          "Ludmila Zavadilová",
+          "Karel Zmund",
+          "Alena Albrechtová",
+          "Mgr. Michal Rakowski, MBA",
+          "Lenka Zabloudilová",
+          "Ing. Hana Zlámalová Krumniklová"
+        ]
+      },
+      "against": {
+        "count": 0,
+        "voters": []
+      },
+      "abstained": {
+        "count": 0,
+        "voters": []
+      },
+      "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
+    },
     "classification": {
       "category": "administration",
       "source": "model",
@@ -110091,7 +111349,22 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
+    "budget_opatreni_approved": []
+  },
+  {
+    "id": "UZ-9-1/26",
+    "datum": "2026-11-02",
+    "organ": "Zastupitelstvo města Litovel",
+    "actions": [
+      "volí"
+    ],
+    "subject": "Ing. Martina Pavlíka předsedou Finančního\nvýboru.",
+    "items": [],
+    "tail": null,
+    "references_out": [],
+    "amounts": [],
+    "source_format": "tabular",
+    "agenda_title": "Volba předsedy Finančního výboru",
     "voting": {
       "for": {
         "count": 20,
@@ -110127,22 +111400,7 @@
         "voters": []
       },
       "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
-    }
-  },
-  {
-    "id": "UZ-9-1/26",
-    "datum": "2026-11-02",
-    "organ": "Zastupitelstvo města Litovel",
-    "actions": [
-      "volí"
-    ],
-    "subject": "Ing. Martina Pavlíka předsedou Finančního\nvýboru.",
-    "items": [],
-    "tail": null,
-    "references_out": [],
-    "amounts": [],
-    "source_format": "tabular",
-    "agenda_title": "Volba předsedy Finančního výboru",
+    },
     "classification": {
       "category": "administration",
       "source": "model",
@@ -110163,43 +111421,7 @@
     "term_label": "Volební období 2026-2030",
     "references_in": [],
     "budget_change_links": [],
-    "budget_opatreni_approved": [],
-    "voting": {
-      "for": {
-        "count": 20,
-        "voters": [
-          "Ing. Martin Benešl",
-          "Mgr. Lubomír Broza",
-          "Mgr. Kateřina Faksa",
-          "Mgr. Tomáš Dědek",
-          "MUDr. Dajána Dvorská",
-          "Mgr. Eva Hrachovcová",
-          "Aleš Hubáček",
-          "Bc. Zdeněk Jančí",
-          "Jiří Kohout, DiS.",
-          "Viktor Kohout",
-          "Ing. Martin Pavlík",
-          "Ing. Zdeněk Potužák",
-          "Michaela Spannbauer",
-          "Mgr. Mirko Spurník",
-          "Ludmila Zavadilová",
-          "Karel Zmund",
-          "Alena Albrechtová",
-          "Mgr. Michal Rakowski, MBA",
-          "Lenka Zabloudilová",
-          "Ing. Hana Zlámalová Krumniklová"
-        ]
-      },
-      "against": {
-        "count": 0,
-        "voters": []
-      },
-      "abstained": {
-        "count": 0,
-        "voters": []
-      },
-      "raw": "pro: (20) Ing. Martin Benešl, Mgr. Lubomír Broza, Mgr.\nKateřina Faksa, Mgr. Tomáš Dědek, MUDr. Dajána\nDvorská, Mgr. Eva Hrachovcová, Aleš Hubáček, Bc.\nZdeněk Jančí, Jiří Kohout, DiS., Viktor Kohout, Ing.\nMartin Pavlík, Ing. Zdeněk Potužák, Michaela\nSpannbauer, Mgr. Mirko Spurník, Ludmila Zavadilová,\nKarel Zmund, Alena Albrechtová, Mgr. Michal\nRakowski, MBA, Lenka Zabloudilová, Ing. Hana\nZlámalová Krumniklová proti: (0) zdržel se: (0)"
-    }
+    "budget_opatreni_approved": []
   },
   {
     "id": "ZM/1/1/2022",
