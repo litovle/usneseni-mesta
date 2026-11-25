@@ -229,6 +229,16 @@ oznámení na úřední desce Litovle a hledá nové dokumenty:
 - výpisy usnesení rady nebo zastupitelstva,
 - rozpočtová opatření.
 
+Sken načítá oficiální `/cs/urad/uredni-deska/aktualni-oznameni.html` i výpis
+z formuláře stejné desky `/redakce/index.php?clanek=47101&lanG=cs`.
+Výsledky spojí podle druhu a čísla dokumentu, protože i úspěšná HTTP odpověď
+může obsahovat zastaralý seznam. Výpadek nebo neplatný obsah jedné adresy
+označí varováním a použije druhou; když nelze načíst ani jednu, běh selže.
+Vlastní `--notice-url` se načítá samostatně, bez přidávání dalších adres.
+Manifest a text obou PR obsahují stav každé adresy, počet nalezených dokumentů
+a případné chybějící dokumenty oproti spojenému výpisu. Selhání jedné adresy
+je v PR výslovně označeno varováním.
+
 Nové PDF uloží do `resources/`, naparsuje jen nově stažené soubory, přegeneruje
 navazující data a připraví jeden pull request v tomto repozitáři a jeden pull
 request v `litovle/litovle.cz`. Workflow lze spustit i ručně přes

@@ -25,6 +25,8 @@ except ImportError:
 
 BASE_URL = "https://www.litovel.eu"
 NOTICE_BOARD_URL = f"{BASE_URL}/cs/urad/uredni-deska/aktualni-oznameni.html"
+# The search form on the official board submits to this alternate view.
+DYNAMIC_NOTICE_BOARD_URL = f"{BASE_URL}/redakce/index.php?clanek=47101&lanG=cs"
 USER_AGENT = "usneseni-mesta-litovel-sync/1.0 (+https://github.com/litovle/usneseni-mesta)"
 
 
@@ -336,6 +338,41 @@ def download_pdf(session: requests.Session, url: str) -> bytes:
     return content
 
 
+def fetch_notice_board(session: requests.Session, notice_url: str, *, board_results: list[dict] | None = None) -> list[Notice]:
+    """Combine the official views: a successful response can still be stale."""
+    urls = (NOTICE_BOARD_URL, DYNAMIC_NOTICE_BOARD_URL) if notice_url in {
+        NOTICE_BOARD_URL, DYNAMIC_NOTICE_BOARD_URL,
+    } else (notice_url,)
+    notices = {}
+    reports = []
+    view_keys = {}
+    readable = 0
+    for url in urls:
+        try:
+            text = fetch_text(session, url)
+            if not BeautifulSoup(text, "html.parser").select_one("table.uredni_deska_vypis"):
+                raise ValueError("Response does not contain a notice-board table")
+            found = parse_notice_board(text, url)
+        except (requests.RequestException, ValueError) as error:
+            print(f"::warning::Cannot read notice board at {url} ({type(error).__name__})")
+            reports.append({"url": url, "status": "failed", "error": type(error).__name__})
+            continue
+        readable += 1
+        reports.append({"url": url, "status": "ok", "notice_count": len(found)})
+        view_keys[url] = {(notice.kind, notice.key) for notice in found}
+        print(f"Notice board {url}: {len(found)} relevant notices")
+        for notice in found:
+            notices.setdefault((notice.kind, notice.key), notice)
+    for report in reports:
+        if report["status"] == "ok":
+            report["missing_keys"] = sorted(key for _, key in notices.keys() - view_keys[report["url"]])
+    if board_results is not None:
+        board_results.extend(reports)
+    if not readable:
+        raise RuntimeError("No readable notice-board table found at any configured URL")
+    return list(notices.values())
+
+
 def sync_notices(
     *,
     notice_url: str,
@@ -343,9 +380,10 @@ def sync_notices(
     ro_dir: Path,
     workdir: Path,
     dry_run: bool,
+    board_results: list[dict] | None = None,
 ) -> list[DownloadedFile]:
     session = request_session()
-    notices = parse_notice_board(fetch_text(session, notice_url), notice_url)
+    notices = fetch_notice_board(session, notice_url, board_results=board_results)
     known = existing_keys(workdir, resources_dir, ro_dir)
     downloaded: list[DownloadedFile] = []
 
@@ -378,11 +416,13 @@ def sync_notices(
     return downloaded
 
 
-def write_manifest(path: Path, downloaded: list[DownloadedFile], dry_run: bool) -> None:
+def write_manifest(path: Path, downloaded: list[DownloadedFile], dry_run: bool,
+                   board_results: list[dict] | None = None) -> None:
     payload = {
         "dry_run": dry_run,
         "found": bool(downloaded),
         "downloaded": [asdict(item) for item in downloaded],
+        "notice_boards": board_results or [],
     }
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -396,7 +436,21 @@ def write_pr_body(path: Path, manifest_path: Path, downloaded: list[DownloadedFi
     else:
         lines.append("No new matching PDFs were found.")
     lines.append("")
-    lines.append(f"Source notice board: {NOTICE_BOARD_URL}")
+    reports = json.loads(manifest_path.read_text(encoding="utf-8")).get("notice_boards", [])
+    if reports:
+        lines.append("Notice-board checks:")
+        if any(report["status"] == "failed" for report in reports):
+            lines.append("**Warning:** One notice-board view failed; documents were obtained from the readable view.")
+        for report in reports:
+            if report["status"] == "failed":
+                lines.append(f"- {report['url']}: FAILED ({report['error']}).")
+            else:
+                lines.append(f"- {report['url']}: OK, {report['notice_count']} relevant notices.")
+                if report.get("missing_keys"):
+                    keys = ", ".join(f"`{key}`" for key in report["missing_keys"])
+                    lines.append(f"  Missing from this view compared with the combined results: {keys}.")
+    else:
+        lines.append(f"Source notice board: {NOTICE_BOARD_URL}")
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -420,14 +474,16 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
+    board_results = []
     downloaded = sync_notices(
         notice_url=args.notice_url,
         resources_dir=args.resources,
         ro_dir=args.ro_pdf,
         workdir=args.workdir,
         dry_run=args.dry_run,
+        board_results=board_results,
     )
-    write_manifest(args.manifest, downloaded, args.dry_run)
+    write_manifest(args.manifest, downloaded, args.dry_run, board_results)
     write_pr_body(args.pr_body, args.manifest, downloaded, args.dry_run)
     write_github_output(downloaded, args.dry_run)
 
