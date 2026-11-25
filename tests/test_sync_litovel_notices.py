@@ -1,18 +1,30 @@
 import tempfile
 import unittest
+import requests
+import contextlib
+import io
+import json
 from pathlib import Path
+from unittest.mock import patch
 
 from tools.sync_litovel_notices import (
     Attachment,
     Notice,
+    NOTICE_BOARD_URL,
+    DYNAMIC_NOTICE_BOARD_URL,
     budget_filename,
     existing_budget_keys,
     existing_resolution_keys,
     fetch_text,
+    fetch_notice_board,
     parse_attachments,
     parse_notice_board,
     parse_resolution_key,
     target_filename,
+    sync_notices,
+    main,
+    write_manifest,
+    write_pr_body,
 )
 
 
@@ -74,6 +86,131 @@ DETAIL_HTML = """
 
 
 class SyncLitovelNoticesTest(unittest.TestCase):
+    def test_cli_puts_a_failed_source_in_both_the_manifest_and_pr_body(self):
+        def response(session, url):
+            if url == NOTICE_BOARD_URL:
+                raise requests.Timeout()
+            return NOTICE_BOARD_HTML if url == DYNAMIC_NOTICE_BOARD_URL else DETAIL_HTML
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            manifest, body = root / "manifest.json", root / "body.md"
+            argv = ["sync_litovel_notices.py", "--dry-run", "--resources", str(root / "resources"),
+                    "--ro-pdf", str(root / "ro"), "--workdir", str(root / "work"),
+                    "--manifest", str(manifest), "--pr-body", str(body)]
+            with patch("sys.argv", argv), patch("tools.sync_litovel_notices.fetch_text", side_effect=response), \
+                    patch("tools.sync_litovel_notices.write_github_output"), \
+                    contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(main(), 0)
+            payload = json.loads(manifest.read_text())
+            text = body.read_text()
+        self.assertEqual(payload["notice_boards"][0],
+                         {"url": NOTICE_BOARD_URL, "status": "failed", "error": "Timeout"})
+        self.assertEqual(payload["notice_boards"][1]["status"], "ok")
+        self.assertEqual(len(payload["downloaded"]), 3)
+        self.assertIn("**Warning:**", text)
+        self.assertIn(f"{NOTICE_BOARD_URL}: FAILED (Timeout)", text)
+        self.assertIn(f"{DYNAMIC_NOTICE_BOARD_URL}: OK, 3 relevant notices", text)
+
+    def test_pr_body_reports_different_documents_even_when_source_counts_match(self):
+        reports = []
+        newer = NOTICE_BOARD_HTML.replace("č. 9/2026", "č. 19/2026")
+        with patch("tools.sync_litovel_notices.fetch_text", side_effect=[NOTICE_BOARD_HTML, newer]), \
+                contextlib.redirect_stdout(io.StringIO()):
+            fetch_notice_board(None, NOTICE_BOARD_URL, board_results=reports)
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest, body = Path(tmp) / "manifest.json", Path(tmp) / "body.md"
+            write_manifest(manifest, [], True, reports)
+            write_pr_body(body, manifest, [], True)
+            text = body.read_text()
+        self.assertEqual([r["notice_count"] for r in reports], [3, 3])
+        self.assertEqual(reports[0]["missing_keys"], ["RO/19/2026"])
+        self.assertEqual(reports[1]["missing_keys"], ["RO/9/2026"])
+        self.assertIn("Missing from this view compared with the combined results: `RO/19/2026`", text)
+        self.assertIn("Missing from this view compared with the combined results: `RO/9/2026`", text)
+        self.assertNotIn("FAILED", text)
+
+    def test_primary_view_failure_uses_the_alternate_view(self):
+        with patch("tools.sync_litovel_notices.fetch_text", side_effect=[requests.Timeout(), NOTICE_BOARD_HTML]), \
+                contextlib.redirect_stdout(io.StringIO()) as output:
+            notices = fetch_notice_board(None, NOTICE_BOARD_URL)
+        self.assertEqual({n.key for n in notices}, {"RO/9/2026", "RM/73/2026", "ZM/26/2026"})
+        self.assertIn("::warning::", output.getvalue())
+
+    def test_successful_views_are_combined_without_duplicate_downloads(self):
+        newer = NOTICE_BOARD_HTML.replace("č. 9/2026", "č. 19/2026")
+        with patch("tools.sync_litovel_notices.fetch_text", side_effect=[NOTICE_BOARD_HTML, newer]) as fetch, \
+                contextlib.redirect_stdout(io.StringIO()):
+            notices = fetch_notice_board(None, NOTICE_BOARD_URL)
+        self.assertEqual({n.key for n in notices}, {"RO/9/2026", "RO/19/2026", "RM/73/2026", "ZM/26/2026"})
+        self.assertEqual(len(notices), 4)
+        self.assertEqual([c.args[1] for c in fetch.call_args_list], [NOTICE_BOARD_URL, DYNAMIC_NOTICE_BOARD_URL])
+
+    def test_http_200_without_a_board_is_not_treated_as_no_new_documents(self):
+        with patch("tools.sync_litovel_notices.fetch_text", side_effect=["<html>Maintenance</html>", NOTICE_BOARD_HTML]), \
+                contextlib.redirect_stdout(io.StringIO()) as output:
+            notices = fetch_notice_board(None, NOTICE_BOARD_URL)
+        self.assertEqual(len(notices), 3)
+        self.assertIn("::warning::", output.getvalue())
+
+    def test_unavailable_or_invalid_views_fail_instead_of_reporting_no_updates(self):
+        for responses in ([requests.Timeout(), requests.ConnectionError()], ["<html>Error</html>"] * 2):
+            with self.subTest(responses=responses), \
+                    patch("tools.sync_litovel_notices.fetch_text", side_effect=responses), \
+                    contextlib.redirect_stdout(io.StringIO()), \
+                    self.assertRaisesRegex(RuntimeError, "No readable notice-board table"):
+                fetch_notice_board(None, NOTICE_BOARD_URL)
+
+    def test_legitimate_empty_boards_remain_a_successful_scan(self):
+        with patch("tools.sync_litovel_notices.fetch_text", return_value='<table class="uredni_deska_vypis"></table>'), \
+                contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(fetch_notice_board(None, NOTICE_BOARD_URL), [])
+
+    def test_custom_notice_url_does_not_add_unrelated_sources(self):
+        custom = "https://example.org/custom-board"
+        with patch("tools.sync_litovel_notices.fetch_text", return_value=NOTICE_BOARD_HTML) as fetch, \
+                contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(len(fetch_notice_board(None, custom)), 3)
+        fetch.assert_called_once_with(None, custom)
+
+    def test_default_scan_survives_one_official_view_being_unavailable(self):
+        pretty_url = "https://www.litovel.eu/cs/urad/uredni-deska/aktualni-oznameni.html"
+
+        def response(session, url):
+            if url == pretty_url:
+                return NOTICE_BOARD_HTML
+            if "detail_claim=" in url:
+                return DETAIL_HTML
+            raise requests.Timeout("alternate view unavailable")
+
+        with tempfile.TemporaryDirectory() as tmp, \
+                patch("tools.sync_litovel_notices.fetch_text", side_effect=response):
+            root = Path(tmp)
+            found = sync_notices(notice_url=NOTICE_BOARD_URL, resources_dir=root / "resources",
+                                 ro_dir=root / "ro", workdir=root / "work", dry_run=True)
+        self.assertEqual({item.key for item in found}, {"RO/9/2026", "RM/73/2026", "ZM/26/2026"})
+
+    def test_default_scan_finds_a_new_notice_missing_from_the_stale_pretty_url(self):
+        current_url = "https://www.litovel.eu/redakce/index.php?clanek=47101&lanG=cs"
+        current_html = """<table class="uredni_deska_vypis"><tr>
+            <td></td><td>25.11.2026-31.12.2026</td>
+            <td><a href="/redakce/index.php?detail_claim=307537">Rozpočtové opatření č.19/2026 schválené Radou města Litovel dne 12. listopadu 2026</a></td>
+            <td>MěÚ Litovel</td><td>-----</td></tr></table>"""
+
+        def response(session, url):
+            if url == current_url:
+                return current_html
+            if "detail_claim=307537" in url:
+                return DETAIL_HTML
+            return '<table class="uredni_deska_vypis"></table>'
+
+        with tempfile.TemporaryDirectory() as tmp, \
+                patch("tools.sync_litovel_notices.fetch_text", side_effect=response):
+            root = Path(tmp)
+            found = sync_notices(notice_url=NOTICE_BOARD_URL, resources_dir=root / "resources",
+                                 ro_dir=root / "ro", workdir=root / "work", dry_run=True)
+        self.assertEqual([item.key for item in found], ["RO/19/2026"])
+
     def test_prefixed_numbers_and_numbered_notice_titles_identify_the_meeting(self):
         cases = {
             "UZ-1-1/26": "ZM/1/2026",
