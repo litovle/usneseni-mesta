@@ -239,6 +239,11 @@ Pro pull request do `litovle.cz` musí být v tomto repozitáři nastavený secr
 `LITOVLE_CZ_PAT` s oprávněním zapisovat obsah a vytvářet pull requesty v
 `litovle/litovle.cz`.
 
+Oba workflow nejprve vytvoří oba pull requesty a teprve potom požádají o review.
+Žádost o review při síťové chybě nebo HTTP 429/5xx opakují nejvýše třikrát.
+Neúspěšná žádost zůstane viditelná jako varování; nezastaví vytvoření PR s
+exportem webu. Chyby samotného zpracování dat nebo vytvoření PR běh nadále zastaví.
+
 === Ruční zpracování PDF
 
 Pokud automatická synchronizace selže například kvůli ochraně webu, lze z

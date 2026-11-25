@@ -147,6 +147,25 @@ class PipelineStagesTest(unittest.TestCase):
 
 
 class IncrementalWorkflowTest(unittest.TestCase):
+    def test_review_requests_cannot_abort_either_pull_request_publication(self):
+        repo = Path(pipeline.__file__).resolve().parent
+        for filename in ("sync-litovel-notices.yml", "manual-litovel-pdf.yml"):
+            with self.subTest(workflow=filename):
+                text = (repo / ".github/workflows" / filename).read_text()
+                steps = re.split(r"(?m)^      - name: ", text)[1:]
+                publishers = [step for step in steps if "uses: peter-evans/create-pull-request@" in step]
+                self.assertEqual(len(publishers), 2)
+                for step in publishers:
+                    self.assertNotIn("reviewers:", step,
+                                     "A review API failure currently prevents the second PR from being published")
+                    self.assertNotIn("continue-on-error:", step,
+                                     "Actual publication failures must still fail the workflow")
+                reviews = [step for step in steps if "tools/request_pr_review.py" in step]
+                self.assertEqual(len(reviews), 2)
+                for step in reviews:
+                    self.assertIn("continue-on-error: true", step)
+                    self.assertGreater(steps.index(step), max(steps.index(p) for p in publishers))
+
     def test_workflow_release_defaults_and_organization_match_runtime(self):
         from resolution_classification import DEFAULT_SHA256, DEFAULT_URL
 
