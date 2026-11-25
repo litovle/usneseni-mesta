@@ -109934,8 +109934,101 @@
     "term_id": "2026-2030",
     "term_label": "Volební období 2026-2030",
     "references_in": [],
-    "budget_change_links": [],
-    "budget_opatreni_approved": []
+    "budget_change_links": [
+      {
+        "budget_change_id": "182/2026/RM",
+        "opatreni_id": "RO/19/2026",
+        "plain_title": "přijaté pojistné plnění",
+        "affected_place": "",
+        "source": "text",
+        "match": "range",
+        "section_types": [
+          "prijmy",
+          "vydaje"
+        ],
+        "row_count": 2
+      },
+      {
+        "budget_change_id": "183/2026/RM",
+        "opatreni_id": "RO/19/2026",
+        "plain_title": "přijaté pojistné plnění",
+        "affected_place": "",
+        "source": "text",
+        "match": "range",
+        "section_types": [
+          "prijmy",
+          "vydaje"
+        ],
+        "row_count": 2
+      },
+      {
+        "budget_change_id": "184/2026/RM",
+        "opatreni_id": "RO/19/2026",
+        "plain_title": "OBH - zpracování PD na rekonstrukci střechy věže obj. nám Př. Otakara 762/6",
+        "affected_place": "zpracování PD na rekonstrukci střechy věže obj. nám Př. Otakara 762/6",
+        "source": "text",
+        "match": "range",
+        "section_types": [
+          "vydaje"
+        ],
+        "row_count": 2
+      },
+      {
+        "budget_change_id": "185/2026/RM",
+        "opatreni_id": "RO/19/2026",
+        "plain_title": "Chořelice - nový herní prvek na dětské hřiště",
+        "affected_place": "Chořelice",
+        "source": "text",
+        "match": "range",
+        "section_types": [
+          "vydaje"
+        ],
+        "row_count": 2
+      },
+      {
+        "budget_change_id": "186/2026/RM",
+        "opatreni_id": "RO/19/2026",
+        "plain_title": "Litovel - zhotovení oplocení ul. Šafaříkova",
+        "affected_place": "Litovel",
+        "source": "text",
+        "match": "range",
+        "section_types": [
+          "vydaje"
+        ],
+        "row_count": 2
+      },
+      {
+        "budget_change_id": "187/2026/RM",
+        "opatreni_id": "RO/19/2026",
+        "plain_title": "Unčovice - generální úklid Sokolovny",
+        "affected_place": "Unčovice / generální úklid Sokolovny",
+        "source": "text",
+        "match": "range",
+        "section_types": [
+          "vydaje"
+        ],
+        "row_count": 3
+      },
+      {
+        "budget_change_id": "188/2026/RM",
+        "opatreni_id": "RO/19/2026",
+        "plain_title": "Olomoucký kraj - účel. neinv. dotace pro ZŠ Vítězná - Talent Olomouckého kraje 2026",
+        "affected_place": "Olomoucký kraj",
+        "source": "text",
+        "match": "range",
+        "section_types": [
+          "prijmy",
+          "vydaje"
+        ],
+        "row_count": 2
+      }
+    ],
+    "budget_opatreni_approved": [
+      {
+        "opatreni_id": "RO/19/2026",
+        "source": "ro_header"
+      }
+    ]
   },
   {
     "id": "UR-24-1/26",
