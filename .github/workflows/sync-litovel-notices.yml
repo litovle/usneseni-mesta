@@ -53,6 +53,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_tabular_resolution_pdf.py'
           python -m unittest discover -s tests -p 'test_resolution_ids.py'
           python -m unittest discover -s tests -p 'test_sync_litovel_notices.py'
+          python -m unittest discover -s tests -p 'test_request_pr_review.py'
 
       - name: Scan notice board
         id: scan
@@ -164,6 +165,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Create usneseni-mesta pull request
+        id: data_pr
         if: (steps.scan.outputs.found == 'true' || steps.classification.outputs.changed == 'true') && steps.scan.outputs.dry_run != 'true'
         uses: peter-evans/create-pull-request@v8
         with:
@@ -176,12 +178,12 @@ jobs:
           author: robot-honza <293300540+robot-honza@users.noreply.github.com>
           committer: robot-honza <293300540+robot-honza@users.noreply.github.com>
           body: ${{ steps.pr_body.outputs.body }}
-          reviewers: honza-kasik
           add-paths: |
             resources
             work
 
       - name: Create litovle.cz pull request
+        id: web_pr
         if: (steps.scan.outputs.found == 'true' || steps.classification.outputs.changed == 'true') && steps.scan.outputs.dry_run != 'true'
         uses: peter-evans/create-pull-request@v8
         with:
@@ -194,7 +196,24 @@ jobs:
           author: robot-honza <293300540+robot-honza@users.noreply.github.com>
           committer: robot-honza <293300540+robot-honza@users.noreply.github.com>
           body: ${{ steps.pr_body.outputs.body }}
-          reviewers: honza-kasik
+
+      - name: Request data pull request review
+        if: steps.data_pr.outputs.pull-request-number != '' && steps.data_pr.outputs.pull-request-operation != 'closed'
+        continue-on-error: true
+        working-directory: usneseni-mesta
+        env:
+          GH_TOKEN: ${{ secrets.LITOVLE_CZ_PAT }}
+          PR_NUMBER: ${{ steps.data_pr.outputs.pull-request-number }}
+        run: python tools/request_pr_review.py --repo litovle/usneseni-mesta --number "$PR_NUMBER" --reviewer honza-kasik
+
+      - name: Request website pull request review
+        if: steps.web_pr.outputs.pull-request-number != '' && steps.web_pr.outputs.pull-request-operation != 'closed'
+        continue-on-error: true
+        working-directory: usneseni-mesta
+        env:
+          GH_TOKEN: ${{ secrets.LITOVLE_CZ_PAT }}
+          PR_NUMBER: ${{ steps.web_pr.outputs.pull-request-number }}
+        run: python tools/request_pr_review.py --repo litovle/litovle.cz --number "$PR_NUMBER" --reviewer honza-kasik
 
       - name: Create failure issue
         if: failure()
